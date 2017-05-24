@@ -1,16 +1,15 @@
-﻿using System.Net;
-using System.Net.Http;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HttpMock;
 using Moq;
 using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
 using NeuroLinker.Interfaces.Factories;
 using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 using NeuroLinker.Workers;
 using NUnit.Framework;
+using System.Net;
+using System.Net.Http;
 
 namespace NeuroLinker.Tests.Workers
 {
@@ -44,7 +43,8 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.PushAnimeDetailsToMal(animeDummy.Object, user, pass).Result;
 
             // assert
-            result.Should().BeFalse();
+            result.Success.Should().BeFalse();
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.BadRequest);
             httpMock.AssertWasCalled(x => x.Post(path));
         }
 
@@ -74,7 +74,8 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.PushAnimeDetailsToMal(animeDummy.Object, user, pass).Result;
 
             // assert
-            result.Should().BeTrue();
+            result.Success.Should().BeTrue();
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
             httpMock.AssertWasCalled(x => x.Post(path));
         }
 
@@ -107,7 +108,8 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.PushAnimeDetailsToMal(animeDummy.Object, user, pass).Result;
 
             // assert
-            result.Should().BeTrue();
+            result.Success.Should().BeTrue();
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
             httpMock.AssertWasCalled(x => x.Post(path));
         }
 

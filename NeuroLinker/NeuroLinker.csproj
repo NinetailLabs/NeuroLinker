@@ -59,12 +59,14 @@
     <Compile Include="Interfaces\Workers\IListRetrievalWorker.cs" />
     <Compile Include="Models\Ography.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\DataPushResultModel.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\SeasonData.cs" />
     <Compile Include="Interfaces\Workers\ISeasonWorker.cs" />
     <Compile Include="Models\Seiyuu.cs" />
     <Compile Include="Workers\DataPushWorker.cs" />
     <Compile Include="Interfaces\Workers\IRequestProcessor.cs" />
+    <Compile Include="Interfaces\Workers\IDataPushWorker.cs" />
     <Compile Include="Workers\ListRetrievalWorker.cs" />
     <Compile Include="Helpers\MalRouteBuilder.cs" />
     <Compile Include="Extensions\AnimeInformationScrapingExtensions.cs" />

@@ -1,15 +1,15 @@
-using System;
-using System.Threading.Tasks;
 using NeuroLinker.Extensions;
 using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
 using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
+using System;
+using System.Threading.Tasks;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Workers
 {
+    //TODO - All responses must be wrapped so we can also return the http status code. While most items deal & report errors this is not good enough (specifically from an Http api perspective)
     /// <summary>
     /// Wrapper class for request processing
     /// </summary>
@@ -130,6 +130,7 @@ namespace NeuroLinker.Workers
         /// <returns>True - Credentials are valid, otherwise false</returns>
         public async Task<bool> VerifyCredentials(string username, string password)
         {
+            //TODO - This must return a better response. Probably the same kind of reponse as the DataPush
             var page = await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(),
                 username, password);
             return page.Contains(username);
