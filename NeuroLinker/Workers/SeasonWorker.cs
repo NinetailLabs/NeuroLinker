@@ -5,6 +5,8 @@ using NeuroLinker.Enumerations;
 using NeuroLinker.Extensions;
 using NeuroLinker.Helpers;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 using VaraniumSharp.Attributes;
 

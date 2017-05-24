@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using NeuroLinker.Enumerations;
 using NeuroLinker.Models;
 
-namespace NeuroLinker.Interfaces
+namespace NeuroLinker.Interfaces.Workers
 {
     /// <summary>
     /// Retreive season information

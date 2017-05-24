@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Factories;
+using NeuroLinker.Interfaces.Helpers;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Helpers
@@ -17,7 +19,7 @@ namespace NeuroLinker.Helpers
         /// <summary>
         /// DI Constructor
         /// </summary>
-        /// <param name="httpClientFactory"></param>
+        /// <param name="httpClientFactory">HttpClient Factory instance</param>
         public PageRetriever(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;

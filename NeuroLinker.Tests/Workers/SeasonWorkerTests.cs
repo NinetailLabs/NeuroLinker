@@ -1,12 +1,12 @@
-﻿using System;
-using System.IO;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HtmlAgilityPack;
 using Moq;
 using NeuroLinker.Enumerations;
-using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Workers;
 using NUnit.Framework;
+using System;
+using System.IO;
 
 namespace NeuroLinker.Tests.Workers
 {

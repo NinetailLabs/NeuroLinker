@@ -5,6 +5,8 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using NeuroLinker.Helpers;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 using VaraniumSharp.Attributes;
 
@@ -52,13 +54,13 @@ namespace NeuroLinker.Workers
                 }
 
                 var xmlInfoSerializer = new XmlSerializer(typeof(UserListInformation));
-                var info = (UserListInformation) xmlInfoSerializer.Deserialize(userInfo.CreateReader());
+                var info = (UserListInformation)xmlInfoSerializer.Deserialize(userInfo.CreateReader());
                 userList.Info = info;
 
                 var xmlAnimeSerializer = new XmlSerializer(typeof(UserListAnime));
                 foreach (var item in userAnime)
                 {
-                    var anime = (UserListAnime) xmlAnimeSerializer.Deserialize(item.CreateReader());
+                    var anime = (UserListAnime)xmlAnimeSerializer.Deserialize(item.CreateReader());
                     userList.Anime.Add(anime);
                 }
             }

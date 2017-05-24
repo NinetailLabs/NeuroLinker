@@ -6,6 +6,7 @@ using NeuroLinker.Workers;
 using NUnit.Framework;
 using System;
 using System.IO;
+using NeuroLinker.Interfaces.Helpers;
 
 namespace NeuroLinker.Tests.Workers
 {

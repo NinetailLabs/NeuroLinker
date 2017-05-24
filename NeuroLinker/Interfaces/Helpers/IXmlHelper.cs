@@ -1,4 +1,4 @@
-﻿namespace NeuroLinker.Interfaces
+﻿namespace NeuroLinker.Interfaces.Helpers
 {
     /// <summary>
     /// Assist in manipulating XML

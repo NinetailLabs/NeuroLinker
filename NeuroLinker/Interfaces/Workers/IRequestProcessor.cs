@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using NeuroLinker.Models;
 
-namespace NeuroLinker.Interfaces
+namespace NeuroLinker.Interfaces.Workers
 {
     public interface IRequestProcessor
     {

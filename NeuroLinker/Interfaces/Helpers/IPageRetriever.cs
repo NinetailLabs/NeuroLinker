@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
-namespace NeuroLinker.Interfaces
+namespace NeuroLinker.Interfaces.Helpers
 {
     /// <summary>
     /// Retrieves a web page from a URL and load it into an <see cref="HtmlDocument"/>

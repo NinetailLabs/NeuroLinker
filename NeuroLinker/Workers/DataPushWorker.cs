@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using NeuroLinker.Helpers;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Factories;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 
 namespace NeuroLinker.Workers

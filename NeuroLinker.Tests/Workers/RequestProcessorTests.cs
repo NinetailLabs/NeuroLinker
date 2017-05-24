@@ -5,6 +5,7 @@ using HtmlAgilityPack;
 using Moq;
 using NeuroLinker.Helpers;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Workers;
 using NUnit.Framework;
 

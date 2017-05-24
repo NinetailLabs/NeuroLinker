@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Helpers
