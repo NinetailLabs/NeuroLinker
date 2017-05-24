@@ -14,6 +14,7 @@ NUGET
     Microsoft.Win32.Primitives (4.3) - redirects: force, framework: >= net463
     Moq (4.7.10)
       Castle.Core (>= 4.0)
+    msdn.4.5.2 (0.1.0-alpha-1611021200)
     NETStandard.Library (1.6.1) - redirects: force, framework: >= net463
       Microsoft.Win32.Primitives (>= 4.3)
       System.AppContext (>= 4.3)

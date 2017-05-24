@@ -8,6 +8,7 @@ nuget HtmlAgilityPack
 nuget HttpMock 1.3.3
 nuget log4net redirects: force
 nuget Moq
+nuget msdn.4.5.2 0.1.0-alpha-1611021200
 nuget Newtonsoft.Json
 nuget NUnit redirects: force
 nuget VaraniumSharp

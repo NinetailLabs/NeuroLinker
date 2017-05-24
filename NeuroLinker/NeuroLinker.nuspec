@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/21.0.07/nuspec.xsd">
+      <id>NeuroLinker</id>
+      <version>0.1.0</version>
+      <authors>NineTail Labs</authors>
+      <owners>NineTail Labs</owners>
+      <title>NeuroLinker</title>
+      <description>NeuroLinker is a scraping library for MyAnimeList.</description>
+      <summary>NeuroLinker is a scraping library for MyAnimeList.</summary>
+      <licenseUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/NinetailLabs/NeuroLinker</projectUrl>
+      <iconUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/develop/icon.png</iconUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) NineTail Labs 2017</copyright>
+      <releaseNotes>Added BlockUntil extension to provide a cheap way of blocking while waiting for data processing</releaseNotes>
+      <tags>C# NeuroLinker MyAnimeList Scraper</tags>
+
+       <dependencies>
+        <dependency id="HtmlAgilityPack" version="1.4.9.5"/>
+        <dependency id="Newtonsoft.Json" version="10.1.0"/>
+        <dependency id="VaraniumSharp" version="1.14.0"/>
+      </dependencies>
+
+   </metadata>
+
+   <files>
+      <file src="./bin/Release/NeuroLinker.dll" target="lib\net462" />
+      <file src="./bin/Release/NeuroLinker.xml" target="lib\net462" />      
+   </files>
+</package>

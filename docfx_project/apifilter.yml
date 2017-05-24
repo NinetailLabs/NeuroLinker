@@ -1,0 +1,4 @@
+apiRules:
+- exclude:
+    uidRegex: ^NeuroLinker\.Tests
+    type: Type

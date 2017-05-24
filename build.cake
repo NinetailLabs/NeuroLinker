@@ -187,7 +187,7 @@ Task ("Push")
 
 Task ("Documentation")
 	.Does (() => {
-		DocFx("docfx.json", new DocFxSettings{
+		DocFxBuild("docfx.json", new DocFxBuildSettings{
 			WorkingDirectory = "./docfx_project"
 		});
 
