@@ -9,21 +9,25 @@ namespace NeuroLinker.Extensions
     /// </summary>
     public static class UserInformationScrapingExtensions
     {
+        #region Public Methods
+
         /// <summary>
-        /// Retrieve the user's Watch status
+        /// Retrieve the user's current watched episode
         /// </summary>
         /// <param name="anime">Anime instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
         /// <returns>Anime instance</returns>
-        public static Anime RetrieveUserStatus(this Anime anime, HtmlDocument doc)
+        public static Anime RetrieveUserEpisode(this Anime anime, HtmlDocument doc)
         {
-            var statusNode = doc.DocumentNode
-                .SelectSingleNode("//select[@name='myinfo_status']")
-                .ChildNodes
-                .FirstOrDefault(x => x.GetAttributeValue("selected", "") == "selected");
-
-            anime.UserWatchedStatus = statusNode?.NextSibling.InnerText;
-
+            var episodeNode = doc.DocumentNode
+                .SelectSingleNode("//input[@type='text' and @name='myinfo_watchedeps']")
+                .Attributes["value"]
+                .Value;
+            int episodeWatched;
+            if (int.TryParse(episodeNode, out episodeWatched))
+            {
+                anime.UserWatchedEpisodes = episodeWatched;
+            }
             return anime;
         }
 
@@ -52,23 +56,23 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve the user's current watched episode
+        /// Retrieve the user's Watch status
         /// </summary>
         /// <param name="anime">Anime instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
         /// <returns>Anime instance</returns>
-        public static Anime RetrieveUserEpisode(this Anime anime, HtmlDocument doc)
+        public static Anime RetrieveUserStatus(this Anime anime, HtmlDocument doc)
         {
-            var episodeNode = doc.DocumentNode
-                .SelectSingleNode("//input[@type='text' and @name='myinfo_watchedeps']")
-                .Attributes["value"]
-                .Value;
-            int episodeWatched;
-            if (int.TryParse(episodeNode, out episodeWatched))
-            {
-                anime.UserWatchedEpisodes = episodeWatched;
-            }
+            var statusNode = doc.DocumentNode
+                .SelectSingleNode("//select[@name='myinfo_status']")
+                .ChildNodes
+                .FirstOrDefault(x => x.GetAttributeValue("selected", "") == "selected");
+
+            anime.UserWatchedStatus = statusNode?.NextSibling.InnerText;
+
             return anime;
         }
+
+        #endregion
     }
 }

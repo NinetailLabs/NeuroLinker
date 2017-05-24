@@ -5,6 +5,8 @@
     /// </summary>
     public interface IXmlHelper
     {
+        #region Public Methods
+
         /// <summary>
         /// Serialize an object to XML
         /// </summary>
@@ -12,5 +14,7 @@
         /// <param name="data">Data that should be serialized</param>
         /// <returns>Serialized object</returns>
         string SerializeData<T>(T data);
+
+        #endregion
     }
 }

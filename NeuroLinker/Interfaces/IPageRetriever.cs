@@ -9,6 +9,24 @@ namespace NeuroLinker.Interfaces
     /// </summary>
     public interface IPageRetriever
     {
+        #region Public Methods
+
+        /// <summary>
+        /// Retrieve a web document as a string
+        /// </summary>
+        /// <param name="url">Url from which data should be retrieved</param>
+        /// <returns>Document at the Url as a string</returns>
+        Task<string> RetrieveDocumentAsStringAsync(string url);
+
+        /// <summary>
+        /// Retrieve a web document as a string
+        /// </summary>
+        /// <param name="url">Url from which data should be retrieved</param>
+        /// <param name="username">Username for authentication</param>
+        /// <param name="password">Password for authentication</param>
+        /// <returns>Document at the Url as a string</returns>
+        Task<string> RetrieveDocumentAsStringAsync(string url, string username, string password);
+
         /// <summary>
         /// Retrieve web page from the specified URL without authentication.
         /// Assume the page is encoded as UTF-8
@@ -39,20 +57,6 @@ namespace NeuroLinker.Interfaces
         Task<HtmlDocument> RetrieveHtmlPageAsync(string url, string username, string password,
             Encoding pageEncoding);
 
-        /// <summary>
-        /// Retrieve a web document as a string
-        /// </summary>
-        /// <param name="url">Url from which data should be retrieved</param>
-        /// <returns>Document at the Url as a string</returns>
-        Task<string> RetrieveDocumentAsStringAsync(string url);
-
-        /// <summary>
-        /// Retrieve a web document as a string
-        /// </summary>
-        /// <param name="url">Url from which data should be retrieved</param>
-        /// <param name="username">Username for authentication</param>
-        /// <param name="password">Password for authentication</param>
-        /// <returns>Document at the Url as a string</returns>
-        Task<string> RetrieveDocumentAsStringAsync(string url, string username, string password);
+        #endregion
     }
 }

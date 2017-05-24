@@ -8,6 +8,10 @@ namespace NeuroLinker.Helpers
     /// </summary>
     public class Utf8StringWriter : StringWriter
     {
+        #region Properties
+
         public override Encoding Encoding => Encoding.UTF8;
+
+        #endregion
     }
 }

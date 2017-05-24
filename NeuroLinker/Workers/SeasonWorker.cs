@@ -16,6 +16,8 @@ namespace NeuroLinker.Workers
     [AutomaticContainerRegistration(typeof(ISeasonWorker))]
     public class SeasonWorker : ISeasonWorker
     {
+        #region Constructor
+
         /// <summary>
         /// DI Constructor
         /// </summary>
@@ -24,6 +26,10 @@ namespace NeuroLinker.Workers
         {
             _pageRetriever = pageRetriever;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Retrieve information about shows in a specific season
@@ -78,7 +84,6 @@ namespace NeuroLinker.Workers
             var year = currentDate.Year;
             if (currentSeason == Seasons.Winter && currentDate.Month == 12)
             {
-                //For some reason MAL classifies winter 2015 as winter 2016 so adjust for this fact
                 year++;
             }
 
@@ -94,6 +99,12 @@ namespace NeuroLinker.Workers
             return seasonData;
         }
 
+        #endregion
+
+        #region Variables
+
         private readonly IPageRetriever _pageRetriever;
+
+        #endregion
     }
 }

@@ -13,35 +13,7 @@ namespace NeuroLinker.Tests.Workers
 {
     public class DataPushWorkerTests
     {
-        [Test]
-        public void AddingNewAnimeWorksCorrectly()
-        {
-            // arrange
-            const string url = "http://localhost:8654";
-            const string path = "/api/animelist/add/0.xml";
-            MalRouteBuilder.AdjustRoot(url);
-            var httpMock = HttpMockRepository.At(url);
-            httpMock.Stub(t => t.Post(path))
-                .OK();
-
-            var animeDummy = new Mock<AnimeUpdate>();
-            const string user = "User";
-            const string pass = "Pass";
-            var fixture = new DataPushWorkerFixture();
-            var userListDummy = new Mock<UserList>();
-
-            fixture.ListRetrievalWorkerMock.Setup(t => t.RetrieveUserListAsync(user))
-                .ReturnsAsync(userListDummy.Object);
-
-            var sut = fixture.Instance;
-
-            // act
-            var result = sut.PushAnimeDetailsToMal(animeDummy.Object, user, pass).Result;
-
-            // assert
-            result.Should().BeTrue();
-            httpMock.AssertWasCalled(x => x.Post(path));
-        }
+        #region Public Methods
 
         [Test]
         public void AddingNewAnimeWithErrorResponseWorksCorrectly()
@@ -70,6 +42,36 @@ namespace NeuroLinker.Tests.Workers
 
             // assert
             result.Should().BeFalse();
+            httpMock.AssertWasCalled(x => x.Post(path));
+        }
+
+        [Test]
+        public void AddingNewAnimeWorksCorrectly()
+        {
+            // arrange
+            const string url = "http://localhost:8654";
+            const string path = "/api/animelist/add/0.xml";
+            MalRouteBuilder.AdjustRoot(url);
+            var httpMock = HttpMockRepository.At(url);
+            httpMock.Stub(t => t.Post(path))
+                .OK();
+
+            var animeDummy = new Mock<AnimeUpdate>();
+            const string user = "User";
+            const string pass = "Pass";
+            var fixture = new DataPushWorkerFixture();
+            var userListDummy = new Mock<UserList>();
+
+            fixture.ListRetrievalWorkerMock.Setup(t => t.RetrieveUserListAsync(user))
+                .ReturnsAsync(userListDummy.Object);
+
+            var sut = fixture.Instance;
+
+            // act
+            var result = sut.PushAnimeDetailsToMal(animeDummy.Object, user, pass).Result;
+
+            // assert
+            result.Should().BeTrue();
             httpMock.AssertWasCalled(x => x.Post(path));
         }
 
@@ -106,17 +108,11 @@ namespace NeuroLinker.Tests.Workers
             httpMock.AssertWasCalled(x => x.Post(path));
         }
 
+        #endregion
+
         private class DataPushWorkerFixture
         {
-            public Mock<IHttpClientFactory> HttpClientFactoryMock { get; } = new Mock<IHttpClientFactory>();
-            public Mock<IListRetrievalWorker> ListRetrievalWorkerMock { get; } = new Mock<IListRetrievalWorker>();
-            public Mock<IXmlHelper> XmlHelperMock { get; } = new Mock<IXmlHelper>();
-
-            public IHttpClientFactory HttpClientFactory => HttpClientFactoryMock.Object;
-            public IListRetrievalWorker ListRetrievalWorker => ListRetrievalWorkerMock.Object;
-            public IXmlHelper XmlHelper => XmlHelperMock.Object;
-
-            public DataPushWorker Instance { get; }
+            #region Constructor
 
             public DataPushWorkerFixture()
             {
@@ -126,6 +122,21 @@ namespace NeuroLinker.Tests.Workers
 
                 Instance = new DataPushWorker(HttpClientFactory, ListRetrievalWorker, XmlHelper);
             }
+
+            #endregion
+
+            #region Properties
+
+            public IHttpClientFactory HttpClientFactory => HttpClientFactoryMock.Object;
+            public Mock<IHttpClientFactory> HttpClientFactoryMock { get; } = new Mock<IHttpClientFactory>();
+
+            public DataPushWorker Instance { get; }
+            public IListRetrievalWorker ListRetrievalWorker => ListRetrievalWorkerMock.Object;
+            public Mock<IListRetrievalWorker> ListRetrievalWorkerMock { get; } = new Mock<IListRetrievalWorker>();
+            public IXmlHelper XmlHelper => XmlHelperMock.Object;
+            public Mock<IXmlHelper> XmlHelperMock { get; } = new Mock<IXmlHelper>();
+
+            #endregion
         }
     }
 }

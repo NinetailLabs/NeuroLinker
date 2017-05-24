@@ -10,18 +10,20 @@ namespace NeuroLinker.Tests.Extensions
 {
     public class UserInformationScrapingExtensionTests
     {
+        #region Public Methods
+
         [Test]
-        public void UserWatchStatusIsCorrectlyRetrieved()
+        public void UserScoreIsRetrievedCorrectly()
         {
             // arrange
             var fixture = new UserInformationScrapingExtensionsFixture();
             var sut = fixture.Instance;
 
             // act
-            sut.RetrieveUserStatus(fixture.Document);
+            sut.RetrieveUserScore(fixture.Document);
 
             // assert
-            sut.UserWatchedStatus.Should().Be("Completed");
+            sut.UserScore.Should().Be(10);
         }
 
         [Test]
@@ -39,24 +41,24 @@ namespace NeuroLinker.Tests.Extensions
         }
 
         [Test]
-        public void UserScoreIsRetrievedCorrectly()
+        public void UserWatchStatusIsCorrectlyRetrieved()
         {
             // arrange
             var fixture = new UserInformationScrapingExtensionsFixture();
             var sut = fixture.Instance;
 
             // act
-            sut.RetrieveUserScore(fixture.Document);
+            sut.RetrieveUserStatus(fixture.Document);
 
             // assert
-            sut.UserScore.Should().Be(10);
+            sut.UserWatchedStatus.Should().Be("Completed");
         }
+
+        #endregion
 
         private class UserInformationScrapingExtensionsFixture
         {
-            public HtmlDocument Document { get; }
-
-            public Anime Instance { get; }
+            #region Constructor
 
             public UserInformationScrapingExtensionsFixture()
             {
@@ -70,6 +72,16 @@ namespace NeuroLinker.Tests.Extensions
 
                 Instance = new Anime();
             }
+
+            #endregion
+
+            #region Properties
+
+            public HtmlDocument Document { get; }
+
+            public Anime Instance { get; }
+
+            #endregion
         }
     }
 }

@@ -4,12 +4,10 @@ using Newtonsoft.Json;
 
 namespace NeuroLinker.Models
 {
-    [Serializable, XmlRoot("myinfo")]
+    [Serializable][XmlRoot("myinfo")]
     public class UserListInformation
     {
-        [XmlElement(ElementName = "user_id")]
-        [JsonProperty(PropertyName = "user_id")]
-        public string UserId { get; set; }
+        #region Properties
 
         [XmlElement(ElementName = "user_name")]
         [JsonProperty(PropertyName = "username")]
@@ -23,10 +21,6 @@ namespace NeuroLinker.Models
         [JsonProperty(PropertyName = "completed")]
         public int Completed { get; set; }
 
-        [XmlElement(ElementName = "user_onhold")]
-        [JsonProperty(PropertyName = "on_hold")]
-        public int OnHold { get; set; }
-
         [XmlElement(ElementName = "user_dropped")]
         [JsonProperty(PropertyName = "dropped")]
         public int Dropped { get; set; }
@@ -38,5 +32,15 @@ namespace NeuroLinker.Models
         [XmlElement(ElementName = "user_days_spent_watching")]
         [JsonProperty(PropertyName = "days_watching")]
         public double DaysWatching { get; set; }
+
+        [XmlElement(ElementName = "user_onhold")]
+        [JsonProperty(PropertyName = "on_hold")]
+        public int OnHold { get; set; }
+
+        [XmlElement(ElementName = "user_id")]
+        [JsonProperty(PropertyName = "user_id")]
+        public string UserId { get; set; }
+
+        #endregion
     }
 }

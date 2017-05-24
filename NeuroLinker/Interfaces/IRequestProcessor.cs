@@ -5,6 +5,22 @@ namespace NeuroLinker.Interfaces
 {
     public interface IRequestProcessor
     {
+        #region Public Methods
+
+        /// <summary>
+        /// Retrieve a Character from MAL
+        /// </summary>
+        /// <param name="characterId">Character Id</param>
+        /// <returns>Populated Character</returns>
+        Task<Character> DoCharacterRetrieval(int characterId);
+
+        /// <summary>
+        /// Retrieve a Seiyuu from MAL
+        /// </summary>
+        /// <param name="seiyuuId"></param>
+        /// <returns></returns>
+        Task<Seiyuu> DoSeiyuuRetrieval(int seiyuuId);
+
         /// <summary>
         /// Retrieve an anime from MAL
         /// </summary>
@@ -29,18 +45,6 @@ namespace NeuroLinker.Interfaces
         /// <returns>True - Credentials are valid, otherwise false</returns>
         Task<bool> VerifyCredentials(string username, string password);
 
-        /// <summary>
-        /// Retrieve a Character from MAL
-        /// </summary>
-        /// <param name="characterId">Character Id</param>
-        /// <returns>Populated Character</returns>
-        Task<Character> DoCharacterRetrieval(int characterId);
-
-        /// <summary>
-        /// Retrieve a Seiyuu from MAL
-        /// </summary>
-        /// <param name="seiyuuId"></param>
-        /// <returns></returns>
-        Task<Seiyuu> DoSeiyuuRetrieval(int seiyuuId);
+        #endregion
     }
 }

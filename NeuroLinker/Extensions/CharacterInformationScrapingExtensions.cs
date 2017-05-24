@@ -12,6 +12,8 @@ namespace NeuroLinker.Extensions
     /// </summary>
     public static class CharacterInformationScrapingExtensions
     {
+        #region Public Methods
+
         public static Anime PopulateCharacterAndSeiyuuInformation(this Anime anime, HtmlDocument doc)
         {
             var rows = doc.DocumentNode
@@ -41,6 +43,10 @@ namespace NeuroLinker.Extensions
 
             return anime;
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Create a new Character instance from HtmlNodes
@@ -102,5 +108,7 @@ namespace NeuroLinker.Extensions
             }
             return character;
         }
+
+        #endregion
     }
 }

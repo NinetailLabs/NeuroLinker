@@ -14,6 +14,8 @@ namespace NeuroLinker.Workers
     [AutomaticContainerRegistration(typeof(IRequestProcessor))]
     public class RequestProcessor : IRequestProcessor
     {
+        #region Constructor
+
         /// <summary>
         /// DI Constructor
         /// </summary>
@@ -23,100 +25,9 @@ namespace NeuroLinker.Workers
             _pageRetriever = pageRetriever;
         }
 
-        /// <summary>
-        /// Retrieve an anime from MAL
-        /// </summary>
-        /// <param name="id">MAL Id</param>
-        /// <returns>Anime instance</returns>
-        public async Task<Anime> GetAnime(int id)
-        {
-            return await DoAnimeRetrieval(id, null);
-        }
+        #endregion
 
-        /// <summary>
-        /// Retrieve an anime from MAL
-        /// </summary>
-        /// <param name="id">MAL Id</param>
-        /// <param name="username">Username</param>
-        /// <param name="password">Password</param>
-        /// <returns>Anime instance</returns>
-        public async Task<Anime> GetAnime(int id, string username, string password)
-        {
-            return await DoAnimeRetrieval(id, new Tuple<string, string>(username, password));
-        }
-
-        /// <summary>
-        /// Verify user credentials
-        /// </summary>
-        /// <param name="username">Username</param>
-        /// <param name="password">Password</param>
-        /// <returns>True - Credentials are valid, otherwise false</returns>
-        public async Task<bool> VerifyCredentials(string username, string password)
-        {
-            var page = await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(),
-                username, password);
-            return page.Contains(username);
-        }
-
-        /// <summary>
-        /// Retrieve an anime from MAL
-        /// </summary>
-        /// <param name="id">MAL Id</param>
-        /// <param name="loginDetails">Username and password for retrieving user information. Pass null to retrieve pulbic page</param>
-        /// <returns>Anime instance</returns>
-        private async Task<Anime> DoAnimeRetrieval(int id, Tuple<string, string> loginDetails)
-        {
-            var anime = new Anime();
-
-            try
-            {
-                var animePageTask = loginDetails == null
-                    ? _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id))
-                    : _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id), loginDetails.Item1,
-                        loginDetails.Item2);
-                var characterTask = _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(id));
-
-                var animeDoc = await animePageTask;
-                var characterDoc = await characterTask;
-
-                anime
-                    .RetrieveAnimeId(animeDoc)
-                    .RetrieveAnimeTitle(animeDoc)
-                    .RetrieveAlternativeTitles(animeDoc)
-                    .RetrieveImage(animeDoc)
-                    .RetrieveType(animeDoc)
-                    .RetrieveEpisodes(animeDoc)
-                    .RetrieveStatus(animeDoc)
-                    .RetrieveAirDates(animeDoc)
-                    .RetrieveRating(animeDoc)
-                    .RetrieveRank(animeDoc)
-                    .RetrievePopularity(animeDoc)
-                    .RetrieveScore(animeDoc)
-                    .RetrieveMemberCount(animeDoc)
-                    .RetrieveFavotireCount(animeDoc)
-                    .RetrieveGenres(animeDoc)
-                    .RetrieveInfoUrls(animeDoc)
-                    .RetrieveRelatedAnime(animeDoc)
-                    .PopulateCharacterAndSeiyuuInformation(characterDoc);
-
-                if (loginDetails != null)
-                {
-                    anime
-                        .RetrieveUserScore(animeDoc)
-                        .RetrieveUserEpisode(animeDoc)
-                        .RetrieveUserStatus(animeDoc);
-                }
-            }
-            catch (Exception exception)
-            {
-                anime.ErrorOccured = true;
-                anime.ErrorMessage = exception.Message;
-            }
-
-            // TODO - Add sanity check
-
-            return anime;
-        }
+        #region Public Methods
 
         /// <summary>
         /// Retrieve a Character from MAL
@@ -187,6 +98,111 @@ namespace NeuroLinker.Workers
             return seiyuu;
         }
 
+        /// <summary>
+        /// Retrieve an anime from MAL
+        /// </summary>
+        /// <param name="id">MAL Id</param>
+        /// <returns>Anime instance</returns>
+        public async Task<Anime> GetAnime(int id)
+        {
+            return await DoAnimeRetrieval(id, null);
+        }
+
+        /// <summary>
+        /// Retrieve an anime from MAL
+        /// </summary>
+        /// <param name="id">MAL Id</param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <returns>Anime instance</returns>
+        public async Task<Anime> GetAnime(int id, string username, string password)
+        {
+            return await DoAnimeRetrieval(id, new Tuple<string, string>(username, password));
+        }
+
+        /// <summary>
+        /// Verify user credentials
+        /// </summary>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <returns>True - Credentials are valid, otherwise false</returns>
+        public async Task<bool> VerifyCredentials(string username, string password)
+        {
+            var page = await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(),
+                username, password);
+            return page.Contains(username);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Retrieve an anime from MAL
+        /// </summary>
+        /// <param name="id">MAL Id</param>
+        /// <param name="loginDetails">Username and password for retrieving user information. Pass null to retrieve pulbic page</param>
+        /// <returns>Anime instance</returns>
+        private async Task<Anime> DoAnimeRetrieval(int id, Tuple<string, string> loginDetails)
+        {
+            var anime = new Anime();
+
+            try
+            {
+                var animePageTask = loginDetails == null
+                    ? _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id))
+                    : _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id), loginDetails.Item1,
+                        loginDetails.Item2);
+                var characterTask = _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(id));
+
+                var animeDoc = await animePageTask;
+                var characterDoc = await characterTask;
+
+                anime
+                    .RetrieveAnimeId(animeDoc)
+                    .RetrieveAnimeTitle(animeDoc)
+                    .RetrieveAlternativeTitles(animeDoc)
+                    .RetrieveImage(animeDoc)
+                    .RetrieveType(animeDoc)
+                    .RetrieveEpisodes(animeDoc)
+                    .RetrieveStatus(animeDoc)
+                    .RetrieveAirDates(animeDoc)
+                    .RetrieveRating(animeDoc)
+                    .RetrieveRank(animeDoc)
+                    .RetrievePopularity(animeDoc)
+                    .RetrieveScore(animeDoc)
+                    .RetrieveMemberCount(animeDoc)
+                    .RetrieveFavotireCount(animeDoc)
+                    .RetrieveGenres(animeDoc)
+                    .RetrieveInfoUrls(animeDoc)
+                    .RetrieveRelatedAnime(animeDoc)
+                    .PopulateCharacterAndSeiyuuInformation(characterDoc);
+
+                if (loginDetails != null)
+                {
+                    anime
+                        .RetrieveUserScore(animeDoc)
+                        .RetrieveUserEpisode(animeDoc)
+                        .RetrieveUserStatus(animeDoc);
+                }
+            }
+            catch (Exception exception)
+            {
+                anime.ErrorOccured = true;
+                anime.ErrorMessage = exception.Message;
+            }
+
+            // TODO - Add sanity check
+
+            return anime;
+        }
+
+        #endregion
+
+        #region Variables
+
         private readonly IPageRetriever _pageRetriever;
+
+        #endregion
     }
 }

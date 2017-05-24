@@ -85,35 +85,6 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Get the start date of the season for a spesific date
-        /// </summary>
-        /// <param name="date">The date to lookup</param>
-        /// <returns>The date on which the season started</returns>
-        public static DateTime SeasonStart(this DateTime date)
-        {
-            DateTime seasonDate;
-
-            if (date.Month >= 3 && date.Month <= 5)
-            {
-                seasonDate = new DateTime(date.Year, 3, 1);
-            }
-            else if (date.Month >= 6 && date.Month <= 8)
-            {
-                seasonDate = new DateTime(date.Year, 6, 1);
-            }
-            else if (date.Month >= 9 && date.Month <= 11)
-            {
-                seasonDate = new DateTime(date.Year, 9, 1);
-            }
-            else
-            {
-                seasonDate = date.Month == 12 ? new DateTime(date.Year, 12, 1) : new DateTime((date.Year - 1), 12, 1);
-            }
-
-            return seasonDate;
-        }
-
-        /// <summary>
         /// Get the end date of the season for a spesific date
         /// </summary>
         /// <param name="date">The date to lookup</param>
@@ -142,6 +113,35 @@ namespace NeuroLinker.Extensions
             }
 
             return endDate;
+        }
+
+        /// <summary>
+        /// Get the start date of the season for a spesific date
+        /// </summary>
+        /// <param name="date">The date to lookup</param>
+        /// <returns>The date on which the season started</returns>
+        public static DateTime SeasonStart(this DateTime date)
+        {
+            DateTime seasonDate;
+
+            if (date.Month >= 3 && date.Month <= 5)
+            {
+                seasonDate = new DateTime(date.Year, 3, 1);
+            }
+            else if (date.Month >= 6 && date.Month <= 8)
+            {
+                seasonDate = new DateTime(date.Year, 6, 1);
+            }
+            else if (date.Month >= 9 && date.Month <= 11)
+            {
+                seasonDate = new DateTime(date.Year, 9, 1);
+            }
+            else
+            {
+                seasonDate = date.Month == 12 ? new DateTime(date.Year, 12, 1) : new DateTime(date.Year - 1, 12, 1);
+            }
+
+            return seasonDate;
         }
 
         #endregion

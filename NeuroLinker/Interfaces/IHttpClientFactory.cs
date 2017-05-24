@@ -7,6 +7,8 @@ namespace NeuroLinker.Interfaces
     /// </summary>
     public interface IHttpClientFactory
     {
+        #region Public Methods
+
         /// <summary>
         /// Get an instance of the HttpClient
         /// </summary>
@@ -14,5 +16,7 @@ namespace NeuroLinker.Interfaces
         /// <param name="password">Password for authentication</param>
         /// <returns>HttpClient instance</returns>
         HttpClient GetHttpClient(string username, string password);
+
+        #endregion
     }
 }

@@ -12,6 +12,22 @@ namespace NeuroLinker.Tests.Workers
 {
     public class SeasonWorkerTests
     {
+        #region Public Methods
+
+        [Test]
+        public void RetrievingCurrentSeasonWorksCorrectly()
+        {
+            // arrange
+            var fixture = new SeasonWorkerFixture();
+            var sut = fixture.Instance;
+
+            // act
+            var result = sut.RetrieveCurrentSeason().Result;
+
+            // assert
+            result.Count.Should().Be(285);
+        }
+
         [Test]
         public void RetrievingSpecificSeasonWorksCorrectly()
         {
@@ -32,27 +48,11 @@ namespace NeuroLinker.Tests.Workers
             result.Should().Contain(x => x.Title == "One Room Special");
         }
 
-        [Test]
-        public void RetrievingCurrentSeasonWorksCorrectly()
-        {
-            // arrange
-            var fixture = new SeasonWorkerFixture();
-            var sut = fixture.Instance;
-
-            // act
-            var result = sut.RetrieveCurrentSeason().Result;
-
-            // assert
-            result.Count.Should().Be(285);
-        }
+        #endregion
 
         private class SeasonWorkerFixture
         {
-            public Mock<IPageRetriever> PageRetrieverMock { get; } = new Mock<IPageRetriever>();
-
-            public IPageRetriever PageRetriever => PageRetrieverMock.Object;
-
-            public SeasonWorker Instance { get; }
+            #region Constructor
 
             public SeasonWorkerFixture()
             {
@@ -70,6 +70,17 @@ namespace NeuroLinker.Tests.Workers
 
                 Instance = new SeasonWorker(PageRetriever);
             }
+
+            #endregion
+
+            #region Properties
+
+            public SeasonWorker Instance { get; }
+
+            public IPageRetriever PageRetriever => PageRetrieverMock.Object;
+            public Mock<IPageRetriever> PageRetrieverMock { get; } = new Mock<IPageRetriever>();
+
+            #endregion
         }
     }
 }

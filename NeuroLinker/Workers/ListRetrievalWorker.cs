@@ -16,6 +16,8 @@ namespace NeuroLinker.Workers
     [AutomaticContainerRegistration(typeof(IListRetrievalWorker))]
     public class ListRetrievalWorker : IListRetrievalWorker
     {
+        #region Constructor
+
         /// <summary>
         /// DI Constructor
         /// </summary>
@@ -24,6 +26,10 @@ namespace NeuroLinker.Workers
         {
             _pageRetriever = pageRetriever;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Retrieve a user's MAL list
@@ -65,6 +71,12 @@ namespace NeuroLinker.Workers
             return userList;
         }
 
+        #endregion
+
+        #region Variables
+
         private readonly IPageRetriever _pageRetriever;
+
+        #endregion
     }
 }

@@ -6,29 +6,23 @@ namespace NeuroLinker.Models
     [XmlRoot(ElementName = "entry")]
     public class AnimeUpdate
     {
+        #region Properties
+
         [JsonProperty(PropertyName = "anime_id")]
         [XmlIgnore]
         public int AnimeId { get; set; }
 
-        [JsonProperty(PropertyName = "episodes")]
-        [XmlElement(ElementName = "episode")]
-        public int Episodes { get; set; }
+        [JsonProperty(PropertyName = "enable_discussion")]
+        [XmlElement(ElementName = "enable_discussion")]
+        public int EnableDiscussion { get; set; }
 
-        [JsonProperty(PropertyName = "status")]
-        [XmlElement(ElementName = "status")]
-        public string Status { get; set; }
+        [JsonProperty(PropertyName = "enable_rewatching")]
+        [XmlElement(ElementName = "enable_rewatching")]
+        public int EnableRewatching { get; set; }
 
-        [JsonProperty(PropertyName = "score")]
-        [XmlElement(ElementName = "score")]
-        public int Score { get; set; }
-
-        [JsonProperty(PropertyName = "storage_type")]
-        [XmlElement(ElementName = "storage_type")]
-        public int StorageType { get; set; }
-
-        [JsonProperty(PropertyName = "storage_value")]
-        [XmlElement(ElementName = "storage_value")]
-        public float StorageValue { get; set; }
+        [JsonProperty(PropertyName = "comments")]
+        [XmlElement(ElementName = "comments")]
+        public string Comments { get; set; }
 
         [JsonProperty(PropertyName = "rewatched")]
         [XmlElement(ElementName = "times_rewatched")]
@@ -50,20 +44,30 @@ namespace NeuroLinker.Models
         [XmlElement(ElementName = "priority")]
         public int Priority { get; set; }
 
-        [JsonProperty(PropertyName = "enable_discussion")]
-        [XmlElement(ElementName = "enable_discussion")]
-        public int EnableDiscussion { get; set; }
+        [JsonProperty(PropertyName = "episodes")]
+        [XmlElement(ElementName = "episode")]
+        public int Episodes { get; set; }
 
-        [JsonProperty(PropertyName = "enable_rewatching")]
-        [XmlElement(ElementName = "enable_rewatching")]
-        public int EnableRewatching { get; set; }
+        [JsonProperty(PropertyName = "storage_type")]
+        [XmlElement(ElementName = "storage_type")]
+        public int StorageType { get; set; }
 
-        [JsonProperty(PropertyName = "comments")]
-        [XmlElement(ElementName = "comments")]
-        public string Comments { get; set; }
+        [JsonProperty(PropertyName = "storage_value")]
+        [XmlElement(ElementName = "storage_value")]
+        public float StorageValue { get; set; }
+
+        [JsonProperty(PropertyName = "status")]
+        [XmlElement(ElementName = "status")]
+        public string Status { get; set; }
+
+        [JsonProperty(PropertyName = "score")]
+        [XmlElement(ElementName = "score")]
+        public int Score { get; set; }
 
         [JsonProperty(PropertyName = "tags")]
         [XmlElement(ElementName = "tags")]
         public string Tags { get; set; }
+
+        #endregion
     }
 }

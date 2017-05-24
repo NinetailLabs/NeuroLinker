@@ -11,6 +11,8 @@ namespace NeuroLinker.Factories
     [AutomaticContainerRegistration(typeof(IHttpClientFactory))]
     public class HttpClientFactory : IHttpClientFactory
     {
+        #region Public Methods
+
         /// <summary>
         /// Get an instance of the HttpClient
         /// </summary>
@@ -22,7 +24,6 @@ namespace NeuroLinker.Factories
             var requiresAuth = !string.IsNullOrEmpty(username)
                                && !string.IsNullOrEmpty(password);
 
-            //TODO - Check if the one below will work with MAL
             //var client = requiresAuth
             //    ? new HttpClient(new HttpClientHandler
             //    {
@@ -38,5 +39,7 @@ namespace NeuroLinker.Factories
 
             return client;
         }
+
+        #endregion
     }
 }

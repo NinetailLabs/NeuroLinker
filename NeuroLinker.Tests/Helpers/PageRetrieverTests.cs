@@ -11,6 +11,8 @@ namespace NeuroLinker.Tests.Helpers
     // TODO - Update to use proper fixtures!
     public class PageRetrieverTests
     {
+        #region Public Methods
+
         [Test]
         public void BasicPageRetrievalWorks()
         {
@@ -82,5 +84,7 @@ namespace NeuroLinker.Tests.Helpers
             // assert
             result.Should().Be("Hello World");
         }
+
+        #endregion
     }
 }

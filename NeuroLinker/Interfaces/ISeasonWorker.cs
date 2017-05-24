@@ -10,6 +10,8 @@ namespace NeuroLinker.Interfaces
     /// </summary>
     public interface ISeasonWorker
     {
+        #region Public Methods
+
         /// <summary>
         /// Retrieve information about shows in a specific season
         /// </summary>
@@ -24,5 +26,7 @@ namespace NeuroLinker.Interfaces
         /// </summary>
         /// <returns>Collection containing season data for the next three seasons</returns>
         Task<List<SeasonData>> RetrieveCurrentSeason();
+
+        #endregion
     }
 }

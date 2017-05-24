@@ -11,90 +11,7 @@ namespace NeuroLinker.Tests.Extensions
 {
     public class SeiyuuPageScraperExtensionsTests
     {
-        [Test]
-        public void SeiyuuNameIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveName(fixture.Document);
-
-            // assert
-            sut.Name.Should().Be("Mamiko Noto");
-        }
-
-        [Test]
-        public void SeiyuuGivenNameIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveGivenName(fixture.Document);
-
-            // assert
-            sut.GivenName.Should().Be("麻美子");
-        }
-
-        [Test]
-        public void SeiyuuFamilyNameIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveFamilyName(fixture.Document);
-
-            // assert
-            sut.FamilyName.Should().Be("能登");
-        }
-
-        [Test]
-        public void SeiyuuBirthdayIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveBirthday(fixture.Document);
-
-            // assert
-            sut.BirthDay.Should().Be(new DateTime(1980, 02, 06));
-        }
-
-        [Test]
-        public void SeiyuuWebsiteIsCorectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveWebsite(fixture.Document);
-
-            // assert
-            sut.Website.Should().Be("http://osawa-inc.co.jp/blocks/index/talent00130.html");
-        }
-
-        [Test]
-        public void SeiyuuAdditionalInformationIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveAdditionalInformation(fixture.Document);
-
-            // assert
-            sut.More.Count.Should().Be(6);
-            sut.More.First().Should().Be("Birth place: Kanazawa, Ishikawa Prefecture, Japan");
-        }
+        #region Public Methods
 
         [Test]
         public void RetrievingRolesRetrievesTheCorrectNumberOfRoles()
@@ -138,11 +55,96 @@ namespace NeuroLinker.Tests.Extensions
             clannad.RoleType.Should().Be("Main");
         }
 
+        [Test]
+        public void SeiyuuAdditionalInformationIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveAdditionalInformation(fixture.Document);
+
+            // assert
+            sut.More.Count.Should().Be(6);
+            sut.More.First().Should().Be("Birth place: Kanazawa, Ishikawa Prefecture, Japan");
+        }
+
+        [Test]
+        public void SeiyuuBirthdayIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveBirthday(fixture.Document);
+
+            // assert
+            sut.BirthDay.Should().Be(new DateTime(1980, 02, 06));
+        }
+
+        [Test]
+        public void SeiyuuFamilyNameIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveFamilyName(fixture.Document);
+
+            // assert
+            sut.FamilyName.Should().Be("能登");
+        }
+
+        [Test]
+        public void SeiyuuGivenNameIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveGivenName(fixture.Document);
+
+            // assert
+            sut.GivenName.Should().Be("麻美子");
+        }
+
+        [Test]
+        public void SeiyuuNameIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveName(fixture.Document);
+
+            // assert
+            sut.Name.Should().Be("Mamiko Noto");
+        }
+
+        [Test]
+        public void SeiyuuWebsiteIsCorectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveWebsite(fixture.Document);
+
+            // assert
+            sut.Website.Should().Be("http://osawa-inc.co.jp/blocks/index/talent00130.html");
+        }
+
+        #endregion
+
         private class SeiyuuPageScraperExtensionsFixture
         {
-            public HtmlDocument Document { get; }
-
-            public Seiyuu Instance { get; }
+            #region Constructor
 
             public SeiyuuPageScraperExtensionsFixture()
             {
@@ -156,6 +158,16 @@ namespace NeuroLinker.Tests.Extensions
 
                 Instance = new Seiyuu();
             }
+
+            #endregion
+
+            #region Properties
+
+            public HtmlDocument Document { get; }
+
+            public Seiyuu Instance { get; }
+
+            #endregion
         }
     }
 }

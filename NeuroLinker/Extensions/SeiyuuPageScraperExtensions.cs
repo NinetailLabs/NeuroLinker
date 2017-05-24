@@ -13,105 +13,7 @@ namespace NeuroLinker.Extensions
     /// </summary>
     public static class SeiyuuPageScraperExtensions
     {
-        /// <summary>
-        /// Retrieve Seiyuu's name
-        /// </summary>
-        /// <param name="seiyuu">Seiyuu instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Seiyuu instance</returns>
-        public static Seiyuu RetrieveName(this Seiyuu seiyuu, HtmlDocument doc)
-        {
-            seiyuu.Name = doc.DocumentNode
-                .SelectNodes("//meta")
-                .FirstOrDefault(x => x.Attributes["property"]?.Value == "og:title")
-                ?.Attributes["content"]
-                ?.Value;
-
-            return seiyuu;
-        }
-
-        /// <summary>
-        /// Retrieve Seiyuu's given name
-        /// </summary>
-        /// <param name="seiyuu">Seiyuu instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Seiyuu instance</returns>
-        public static Seiyuu RetrieveGivenName(this Seiyuu seiyuu, HtmlDocument doc)
-        {
-            seiyuu.GivenName = doc
-                .DocumentNode
-                .SelectNodes("//div")
-                .FirstOrDefault(x => x.FirstChild?.Name == "span" && x.FirstChild?.InnerText == "Given name:")
-                ?.ChildNodes["#text"]
-                ?.InnerText
-                .Trim();
-
-            return seiyuu;
-        }
-
-        /// <summary>
-        /// Retrieve Seiyuu's family name
-        /// </summary>
-        /// <param name="seiyuu">Seiyuu instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Seiyuu instance</returns>
-        public static Seiyuu RetrieveFamilyName(this Seiyuu seiyuu, HtmlDocument doc)
-        {
-            seiyuu.FamilyName = doc
-                .DocumentNode
-                .SelectNodes("//span")
-                .FirstOrDefault(x => x.InnerText == "Family name:")
-                ?.NextSibling
-                ?.InnerText
-                .Trim();
-
-            return seiyuu;
-        }
-
-        /// <summary>
-        /// Retrieve Seiyuu's birthday
-        /// </summary>
-        /// <param name="seiyuu">Seiyuu instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Seiyuu instance</returns>
-        public static Seiyuu RetrieveBirthday(this Seiyuu seiyuu, HtmlDocument doc)
-        {
-            var stringBirthday = doc
-                .DocumentNode
-                .SelectNodes("//div")
-                .FirstOrDefault(x => x.FirstChild?.Name == "span" && x.FirstChild?.InnerText == "Birthday:")
-                ?.ChildNodes["#text"]
-                ?.InnerText
-                .Trim();
-
-            DateTime bday;
-            if (DateTime.TryParse(stringBirthday, out bday))
-            {
-                seiyuu.BirthDay = bday;
-            }
-
-            return seiyuu;
-        }
-
-        /// <summary>
-        /// Retrieve Seiyuu's website
-        /// </summary>
-        /// <param name="seiyuu">Seiyuu instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Seiyuu instance</returns>
-        public static Seiyuu RetrieveWebsite(this Seiyuu seiyuu, HtmlDocument doc)
-        {
-           seiyuu.Website = doc
-                .DocumentNode
-                .SelectNodes("//span")
-                .FirstOrDefault(x => x.InnerText == "Website:")
-                ?.NextSibling
-                ?.NextSibling
-                ?.Attributes["href"]
-                .Value;
-
-            return seiyuu;
-        }
+        #region Public Methods
 
         /// <summary>
         /// Retrieve Seiyuu information under the more heading
@@ -135,7 +37,6 @@ namespace NeuroLinker.Extensions
                 {
                     continue;
                 }
-
 
                 if (entry.EndsWith(":"))
                 {
@@ -167,6 +68,86 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
+        /// Retrieve Seiyuu's birthday
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveBirthday(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+            var stringBirthday = doc
+                .DocumentNode
+                .SelectNodes("//div")
+                .FirstOrDefault(x => x.FirstChild?.Name == "span" && x.FirstChild?.InnerText == "Birthday:")
+                ?.ChildNodes["#text"]
+                ?.InnerText
+                .Trim();
+
+            DateTime bday;
+            if (DateTime.TryParse(stringBirthday, out bday))
+            {
+                seiyuu.BirthDay = bday;
+            }
+
+            return seiyuu;
+        }
+
+        /// <summary>
+        /// Retrieve Seiyuu's family name
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveFamilyName(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+            seiyuu.FamilyName = doc
+                .DocumentNode
+                .SelectNodes("//span")
+                .FirstOrDefault(x => x.InnerText == "Family name:")
+                ?.NextSibling
+                ?.InnerText
+                .Trim();
+
+            return seiyuu;
+        }
+
+        /// <summary>
+        /// Retrieve Seiyuu's given name
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveGivenName(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+            seiyuu.GivenName = doc
+                .DocumentNode
+                .SelectNodes("//div")
+                .FirstOrDefault(x => x.FirstChild?.Name == "span" && x.FirstChild?.InnerText == "Given name:")
+                ?.ChildNodes["#text"]
+                ?.InnerText
+                .Trim();
+
+            return seiyuu;
+        }
+
+        /// <summary>
+        /// Retrieve Seiyuu's name
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveName(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+            seiyuu.Name = doc.DocumentNode
+                .SelectNodes("//meta")
+                .FirstOrDefault(x => x.Attributes["property"]?.Value == "og:title")
+                ?.Attributes["content"]
+                ?.Value;
+
+            return seiyuu;
+        }
+
+        /// <summary>
         /// Retrieve the Seiyuu's roles
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
@@ -193,6 +174,30 @@ namespace NeuroLinker.Extensions
 
             return seiyuu;
         }
+
+        /// <summary>
+        /// Retrieve Seiyuu's website
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveWebsite(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+           seiyuu.Website = doc
+                .DocumentNode
+                .SelectNodes("//span")
+                .FirstOrDefault(x => x.InnerText == "Website:")
+                ?.NextSibling
+                ?.NextSibling
+                ?.Attributes["href"]
+                .Value;
+
+            return seiyuu;
+        }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Create a <see cref="Roles"/> instance and populate it with anime data
@@ -263,5 +268,7 @@ namespace NeuroLinker.Extensions
 
             return role;
         }
+
+        #endregion
     }
 }

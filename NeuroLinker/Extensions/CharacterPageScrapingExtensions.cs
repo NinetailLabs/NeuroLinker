@@ -12,67 +12,22 @@ namespace NeuroLinker.Extensions
     /// </summary>
     public static class CharacterPageScrapingExtensions
     {
+        #region Public Methods
+
         /// <summary>
-        /// Get the Character's name
+        /// Retrieve character's Animeography
         /// </summary>
         /// <param name="character">Character instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
         /// <returns>Character instance</returns>
-        public static Character RetrieveCharacterName(this Character character, HtmlDocument doc)
+        public static Character RetrieveAnimeography(this Character character, HtmlDocument doc)
         {
-            character.Name = doc.DocumentNode
-                .SelectNodes("//div[@class='normal_header']")
-                .ToList()[2]
-                .InnerText;
-
-            return character;
-        }
-
-        /// <summary>
-        /// Get the Character's image URL
-        /// </summary>
-        /// <param name="character">Character instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Character instance</returns>
-        public static Character RetrieveCharacterImage(this Character character, HtmlDocument doc)
-        {
-            var image = doc.DocumentNode
-                .SelectNodes("//table")[0]
-                .ChildNodes["tr"]
-                .ChildNodes["td"]
-                .ChildNodes["div"]
-                .ChildNodes["a"]
-                .ChildNodes["img"];
-
-            character.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
-            return character;
-        }
-
-        /// <summary>
-        /// Get the Character's favorite count
-        /// </summary>
-        /// <param name="character">Character instance to populate</param>
-        /// <param name="doc">Html document from which data should be pulled</param>
-        /// <returns>Character instance</returns>
-        public static Character RetrieveFavoriteCount(this Character character, HtmlDocument doc)
-        {
-            var count = doc.DocumentNode
-                .SelectNodes("//table")[0]
-                .ChildNodes["tr"]
-                .ChildNodes["td"]
+            var rows = doc
+                .GetOgraphyTables()[0]
                 .ChildNodes
-                .FirstOrDefault(t => t.InnerText.Contains("Member Favorites"))
-                ?.InnerText
-                .Replace("\r\n", "")
-                .Replace("Member Favorites:", "")
-                .Replace(",", "")
-                .Trim();
+                .Where(x => x.Name == "tr");
 
-            int memberCount;
-            if (int.TryParse(count, out memberCount))
-            {
-                character.FavoriteCount = memberCount;
-            }
+            character.Animeography = ParseOgraphy(rows);
 
             return character;
         }
@@ -116,19 +71,66 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve character's Animeography
+        /// Get the Character's image URL
         /// </summary>
         /// <param name="character">Character instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
         /// <returns>Character instance</returns>
-        public static Character RetrieveAnimeography(this Character character, HtmlDocument doc)
+        public static Character RetrieveCharacterImage(this Character character, HtmlDocument doc)
         {
-            var rows = doc
-                .GetOgraphyTables()[0]
-                .ChildNodes
-                .Where(x => x.Name == "tr");
+            var image = doc.DocumentNode
+                .SelectNodes("//table")[0]
+                .ChildNodes["tr"]
+                .ChildNodes["td"]
+                .ChildNodes["div"]
+                .ChildNodes["a"]
+                .ChildNodes["img"];
 
-            character.Animeography = ParseOgraphy(rows);
+            character.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            return character;
+        }
+
+        /// <summary>
+        /// Get the Character's name
+        /// </summary>
+        /// <param name="character">Character instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Character instance</returns>
+        public static Character RetrieveCharacterName(this Character character, HtmlDocument doc)
+        {
+            character.Name = doc.DocumentNode
+                .SelectNodes("//div[@class='normal_header']")
+                .ToList()[2]
+                .InnerText;
+
+            return character;
+        }
+
+        /// <summary>
+        /// Get the Character's favorite count
+        /// </summary>
+        /// <param name="character">Character instance to populate</param>
+        /// <param name="doc">Html document from which data should be pulled</param>
+        /// <returns>Character instance</returns>
+        public static Character RetrieveFavoriteCount(this Character character, HtmlDocument doc)
+        {
+            var count = doc.DocumentNode
+                .SelectNodes("//table")[0]
+                .ChildNodes["tr"]
+                .ChildNodes["td"]
+                .ChildNodes
+                .FirstOrDefault(t => t.InnerText.Contains("Member Favorites"))
+                ?.InnerText
+                .Replace("\r\n", "")
+                .Replace("Member Favorites:", "")
+                .Replace(",", "")
+                .Trim();
+
+            int memberCount;
+            if (int.TryParse(count, out memberCount))
+            {
+                character.FavoriteCount = memberCount;
+            }
 
             return character;
         }
@@ -200,6 +202,10 @@ namespace NeuroLinker.Extensions
             return character;
         }
 
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
         /// Return tables that contain anime and manga ography
         /// </summary>
@@ -257,5 +263,7 @@ namespace NeuroLinker.Extensions
 
             return results;
         }
+
+        #endregion
     }
 }

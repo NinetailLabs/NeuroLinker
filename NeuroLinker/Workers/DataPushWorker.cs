@@ -14,6 +14,8 @@ namespace NeuroLinker.Workers
     /// </summary>
     public class DataPushWorker
     {
+        #region Constructor
+
         /// <summary>
         /// DI Constructor
         /// </summary>
@@ -27,6 +29,10 @@ namespace NeuroLinker.Workers
             _listRetrievalWorker = listRetrievalWorker;
             _xmlHelper = xmlHelper;
         }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Push user details to MAL.
@@ -46,6 +52,10 @@ namespace NeuroLinker.Workers
                 ? await UpdateAnimeDetails(details, username, password)
                 : await UpdateAnimeDetails(details, username, password, true);
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Push update/add details to MAL
@@ -77,8 +87,14 @@ namespace NeuroLinker.Workers
             }
         }
 
+        #endregion
+
+        #region Variables
+
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IListRetrievalWorker _listRetrievalWorker;
         private readonly IXmlHelper _xmlHelper;
+
+        #endregion
     }
 }

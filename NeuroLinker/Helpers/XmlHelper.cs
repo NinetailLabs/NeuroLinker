@@ -12,6 +12,8 @@ namespace NeuroLinker.Helpers
     [AutomaticContainerRegistration(typeof(IXmlHelper))]
     public class XmlHelper : IXmlHelper
     {
+        #region Public Methods
+
         /// <summary>
         /// Serialize an object to XML
         /// </summary>
@@ -30,5 +32,7 @@ namespace NeuroLinker.Helpers
                 return mStream.ToString();
             }
         }
+
+        #endregion
     }
 }

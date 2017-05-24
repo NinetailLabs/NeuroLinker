@@ -12,6 +12,8 @@ namespace NeuroLinker.Helpers
     [AutomaticContainerRegistration(typeof(IPageRetriever))]
     public class PageRetriever : IPageRetriever
     {
+        #region Constructor
+
         /// <summary>
         /// DI Constructor
         /// </summary>
@@ -19,6 +21,35 @@ namespace NeuroLinker.Helpers
         public PageRetriever(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Retrieve a web document as a string
+        /// </summary>
+        /// <param name="url">Url from which data should be retrieved</param>
+        /// <returns>Document at the Url as a string</returns>
+        public async Task<string> RetrieveDocumentAsStringAsync(string url)
+        {
+            return await RetrieveDocumentAsStringAsync(url, null, null);
+        }
+
+        /// <summary>
+        /// Retrieve a web document as a string
+        /// </summary>
+        /// <param name="url">Url from which data should be retrieved</param>
+        /// <param name="username">Username for authentication</param>
+        /// <param name="password">Password for authentication</param>
+        /// <returns>Document at the Url as a string</returns>
+        public async Task<string> RetrieveDocumentAsStringAsync(string url, string username, string password)
+        {
+            var client = _httpClientFactory.GetHttpClient(username, password);
+
+            var data = await client.GetStringAsync(url);
+            return data;
         }
 
         /// <summary>
@@ -67,31 +98,12 @@ namespace NeuroLinker.Helpers
             return document;
         }
 
-        /// <summary>
-        /// Retrieve a web document as a string
-        /// </summary>
-        /// <param name="url">Url from which data should be retrieved</param>
-        /// <returns>Document at the Url as a string</returns>
-        public async Task<string> RetrieveDocumentAsStringAsync(string url)
-        {
-            return await RetrieveDocumentAsStringAsync(url, null, null);
-        }
+        #endregion
 
-        /// <summary>
-        /// Retrieve a web document as a string
-        /// </summary>
-        /// <param name="url">Url from which data should be retrieved</param>
-        /// <param name="username">Username for authentication</param>
-        /// <param name="password">Password for authentication</param>
-        /// <returns>Document at the Url as a string</returns>
-        public async Task<string> RetrieveDocumentAsStringAsync(string url, string username, string password)
-        {
-            var client = _httpClientFactory.GetHttpClient(username, password);
-
-            var data = await client.GetStringAsync(url);
-            return data;
-        }
+        #region Variables
 
         private readonly IHttpClientFactory _httpClientFactory;
+
+        #endregion
     }
 }
