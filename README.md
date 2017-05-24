@@ -11,4 +11,9 @@ NeuroLinker is a scraping library for MyAnimeList capable of retrieving:
 - User List
 - Verify user credentials
 
-It is designed to be hosted inside larger projects providing easy access to MAL information
+It is designed to be hosted inside larger projects providing easy access to MAL information.
+
+Code documentation is available [here](https://ninetaillabs.github.io/NeuroLinker/index.html)
+
+## Icon
+[Synapses](https://thenounproject.com/term/synapses/892443/) by [Alberto LM](https://thenounproject.com/albertoLM/) from the Noun Project
