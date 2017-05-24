@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{9CB41120-B02B-466B-8B27-4F6A1CB62273}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLinker", "NeuroLinker\NeuroLinker.csproj", "{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLinker.Tests", "NeuroLinker.Tests\NeuroLinker.Tests.csproj", "{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
