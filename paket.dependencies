@@ -1,0 +1,12 @@
+source https://api.nuget.org/v3/index.json
+
+framework >= net462
+
+nuget FluentAssertions
+nuget HtmlAgilityPack
+nuget HttpMock 1.3.3
+nuget NUnit redirects: force
+nuget VaraniumSharp
+nuget log4net redirects: force
+nuget Newtonsoft.Json
+nuget Moq
