@@ -1,11 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using NeuroLinker.Enumerations;
 using NeuroLinker.Extensions;
 using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
+using NeuroLinker.ResponseWrappers;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Workers
@@ -37,14 +39,18 @@ namespace NeuroLinker.Workers
         /// <param name="year">Year for which season data should be retrieved</param>
         /// <param name="season">Season for which data should be retrieved</param>
         /// <returns>Collection of show for the selected season</returns>
-        public async Task<List<SeasonData>> GetSeasonData(int year, Seasons season)
+        public async Task<RetrievalWrapper<SeasonShowCollection>> GetSeasonData(int year, Seasons season)
         {
-            var seasonList = new List<SeasonData>();
+            var collectionWrapper = new SeasonShowCollection();
             try
             {
                 var doc = await _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.SeasonUrl(year, season));
+                if (doc.ResponseStatusCode == null)
+                {
+                    throw doc.Exception;
+                }
 
-                var links = doc.DocumentNode
+                var links = doc.Document.DocumentNode
                     .SelectNodes("//a[@class='link-title']");
 
                 foreach (var link in links)
@@ -61,14 +67,15 @@ namespace NeuroLinker.Workers
                         Id = id,
                         Title = title
                     };
-                    seasonList.Add(tmpData);
+                    collectionWrapper.SeasonShows.Add(tmpData);
                 }
+                return new RetrievalWrapper<SeasonShowCollection>(doc.ResponseStatusCode.Value, doc.Success,
+                    collectionWrapper);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                //TODO - Log this exception
+                return new RetrievalWrapper<SeasonShowCollection>(exception, collectionWrapper);
             }
-            return seasonList;
         }
 
         /// <summary>
@@ -76,10 +83,10 @@ namespace NeuroLinker.Workers
         /// This information also includes data for the next two seasons
         /// </summary>
         /// <returns>Collection containing season data for the next three seasons</returns>
-        public async Task<List<SeasonData>> RetrieveCurrentSeason()
+        public async Task<RetrievalWrapper<SeasonShowCollection>> RetrieveCurrentSeason()
         {
             var currentDate = DateTime.Now;
-            var seasonData = new List<SeasonData>();
+            var seasonWrapper = new SeasonShowCollection();
             var currentSeason = currentDate.CalculateCurrentSeason();
             var year = currentDate.Year;
             if (currentSeason == Seasons.Winter && currentDate.Month == 12)
@@ -89,14 +96,15 @@ namespace NeuroLinker.Workers
 
             for (var r = 0; r < 3; r++)
             {
-                seasonData.AddRange(await GetSeasonData(year, currentSeason));
+                var seasonData = await GetSeasonData(year, currentSeason);
+                seasonWrapper.SeasonShows.AddRange(seasonData.ResponseData.SeasonShows);
 
                 //Get info for the next season
                 year = currentSeason.NextSeasonYear(year);
                 currentSeason = currentSeason.GetNextSeason();
             }
 
-            return seasonData;
+            return new RetrievalWrapper<SeasonShowCollection>(HttpStatusCode.OK, true, seasonWrapper);
         }
 
         #endregion

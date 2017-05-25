@@ -1,12 +1,14 @@
-﻿using System;
-using System.IO;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HtmlAgilityPack;
 using Moq;
 using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Workers;
 using NUnit.Framework;
+using System;
+using System.IO;
+using System.Net;
+using NeuroLinker.ResponseWrappers;
 
 namespace NeuroLinker.Tests.Workers
 {
@@ -14,9 +16,9 @@ namespace NeuroLinker.Tests.Workers
     {
         #region Public Methods
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void CredentialVerificationRespondsCorrectly(bool validResult)
+        [TestCase(true, HttpStatusCode.OK)]
+        [TestCase(false, HttpStatusCode.Unauthorized)]
+        public void CredentialVerificationRespondsCorrectly(bool validResult, HttpStatusCode statusCode)
         {
             // arrange
             const string user = "testUser";
@@ -31,13 +33,14 @@ namespace NeuroLinker.Tests.Workers
             {
                 fixture.PageRetrieverMock.Setup(
                         t => t.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(), user, pass))
-                    .ReturnsAsync(data);
+                    .ReturnsAsync(new StringRetrievalWrapper(HttpStatusCode.OK, true, data));
             }
             else
             {
                 fixture.PageRetrieverMock.Setup(
                         t => t.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(), user, pass))
-                    .ReturnsAsync("Invalid credentials");
+                    .ReturnsAsync(new StringRetrievalWrapper(HttpStatusCode.Unauthorized, false,
+                        "Invalid credentials"));
             }
 
             var sut = fixture.Instance;
@@ -46,7 +49,8 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.VerifyCredentials(user, pass).Result;
 
             // assert
-            result.Should().Be(validResult);
+            result.ResponseStatusCode.Should().Be(statusCode);
+            result.Success.Should().Be(validResult);
         }
 
         [Test]
@@ -65,17 +69,19 @@ namespace NeuroLinker.Tests.Workers
             }
 
             fixture.PageRetrieverMock
-               .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(characterId)))
-               .ReturnsAsync(document);
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(characterId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
 
             var sut = fixture.Instance;
 
             // act
-            var character = sut.DoCharacterRetrieval(characterId).Result;
+            var retrievalWrapper = sut.DoCharacterRetrieval(characterId).Result;
 
             // assert
-            character.Name.Should().Be("Asuna Yuuki (結城 明日奈 / アスナ)");
-            character.Id.Should().Be(characterId);
+            retrievalWrapper.Success.Should().BeTrue();
+            retrievalWrapper.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
+            retrievalWrapper.ResponseData.Name.Should().Be("Asuna Yuuki (結城 明日奈 / アスナ)");
+            retrievalWrapper.ResponseData.Id.Should().Be(characterId);
         }
 
         [Test]
@@ -86,17 +92,18 @@ namespace NeuroLinker.Tests.Workers
             var fixture = new RequestProcessorFixture();
 
             fixture.PageRetrieverMock
-               .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(characterId)))
-               .Throws(new Exception("Cannot load"));
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(characterId)))
+                .Throws(new Exception("Cannot load"));
 
             var sut = fixture.Instance;
 
             // act
-            var character = sut.DoCharacterRetrieval(characterId).Result;
+            var retrievalWrapper = sut.DoCharacterRetrieval(characterId).Result;
 
             // assert
-            character.ErrorOccured.Should().BeTrue();
-            character.ErrorMessage.Should().Be("Cannot load");
+            retrievalWrapper.Exception.Should().NotBeNull();
+            retrievalWrapper.ResponseData.ErrorOccured.Should().BeTrue();
+            retrievalWrapper.ResponseData.ErrorMessage.Should().Be("Cannot load");
         }
 
         [Test]
@@ -116,8 +123,9 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.GetAnime(animeId).Result;
 
             // assert
-            result.ErrorOccured.Should().BeTrue();
-            result.ErrorMessage.Should().Be("Cannot load");
+            result.Exception.Should().NotBeNull();
+            result.ResponseData.ErrorOccured.Should().BeTrue();
+            result.ResponseData.ErrorMessage.Should().Be("Cannot load");
         }
 
         [Test]
@@ -134,11 +142,12 @@ namespace NeuroLinker.Tests.Workers
             var sut = fixture.Instance;
 
             // act
-            var seiyuu = sut.DoSeiyuuRetrieval(seiyuuId).Result;
+            var retrievalWrapper = sut.DoSeiyuuRetrieval(seiyuuId).Result;
 
             // assert
-            seiyuu.ErrorOccured.Should().BeTrue();
-            seiyuu.ErrorMessage.Should().Be("Cannot load");
+            retrievalWrapper.Exception.Should().NotBeNull();
+            retrievalWrapper.ResponseData.ErrorOccured.Should().BeTrue();
+            retrievalWrapper.ResponseData.ErrorMessage.Should().Be("Cannot load");
         }
 
         [Test]
@@ -157,7 +166,7 @@ namespace NeuroLinker.Tests.Workers
 
             fixture.PageRetrieverMock
                 .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(animeId)))
-                .ReturnsAsync(document);
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
 
             var sut = fixture.Instance;
 
@@ -165,10 +174,13 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.GetAnime(animeId).Result;
 
             // assert
-            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)), Times.Once);
-            result.UserScore.Should().Be(0);
-            result.UserWatchedEpisodes.Should().Be(0);
-            result.UserWatchedStatus.Should().Be(null);
+            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)),
+                Times.Once);
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
+            result.Success.Should().BeTrue();
+            result.ResponseData.UserScore.Should().Be(0);
+            result.ResponseData.UserWatchedEpisodes.Should().Be(0);
+            result.ResponseData.UserWatchedStatus.Should().Be(null);
         }
 
         [Test]
@@ -189,7 +201,7 @@ namespace NeuroLinker.Tests.Workers
 
             fixture.PageRetrieverMock
                 .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(animeId), user, pass))
-                .ReturnsAsync(document);
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
 
             var sut = fixture.Instance;
 
@@ -197,10 +209,11 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.GetAnime(animeId, user, pass).Result;
 
             // assert
-            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)), Times.Once);
-            result.UserScore.Should().Be(10);
-            result.UserWatchedEpisodes.Should().Be(25);
-            result.UserWatchedStatus.Should().Be("Completed");
+            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)),
+                Times.Once);
+            result.ResponseData.UserScore.Should().Be(10);
+            result.ResponseData.UserWatchedEpisodes.Should().Be(25);
+            result.ResponseData.UserWatchedStatus.Should().Be("Completed");
         }
 
         [Test]
@@ -219,18 +232,20 @@ namespace NeuroLinker.Tests.Workers
             }
 
             fixture.PageRetrieverMock
-               .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId)))
-               .ReturnsAsync(document);
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
 
             var sut = fixture.Instance;
 
             // act
-            var seiyuu = sut.DoSeiyuuRetrieval(seiyuuId).Result;
+            var retrievalWrapper = sut.DoSeiyuuRetrieval(seiyuuId).Result;
 
             // assert
-            seiyuu.Id.Should().Be(seiyuuId);
-            seiyuu.Name.Should().Be("Mamiko Noto");
-            seiyuu.ErrorOccured.Should().BeFalse();
+            retrievalWrapper.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
+            retrievalWrapper.Success.Should().BeTrue();
+            retrievalWrapper.ResponseData.Id.Should().Be(seiyuuId);
+            retrievalWrapper.ResponseData.Name.Should().Be("Mamiko Noto");
+            retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
         }
 
         #endregion
@@ -252,7 +267,7 @@ namespace NeuroLinker.Tests.Workers
 
                 PageRetrieverMock
                     .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(malId)))
-                    .ReturnsAsync(characterDocument);
+                    .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, characterDocument));
             }
 
             public RequestProcessorFixture()

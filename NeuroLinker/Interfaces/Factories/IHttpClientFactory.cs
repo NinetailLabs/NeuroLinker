@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace NeuroLinker.Interfaces
+namespace NeuroLinker.Interfaces.Factories
 {
     /// <summary>
     /// Creates instance of HttpClient

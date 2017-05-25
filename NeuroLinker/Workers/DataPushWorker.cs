@@ -1,18 +1,23 @@
-﻿using System;
+﻿using NeuroLinker.Helpers;
+using NeuroLinker.Interfaces.Factories;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
+using NeuroLinker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
-using NeuroLinker.Models;
+using NeuroLinker.ResponseWrappers;
+using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Workers
 {
     /// <summary>
     /// Push user updates to MAL
     /// </summary>
-    public class DataPushWorker
+    [AutomaticContainerRegistration(typeof(IDataPushWorker))]
+    public class DataPushWorker : IDataPushWorker
     {
         #region Constructor
 
@@ -42,8 +47,7 @@ namespace NeuroLinker.Workers
         /// <param name="username">Username for authentication</param>
         /// <param name="password">Password for authentication</param>
         /// <returns>True - Update succeeded, otherwise false</returns>
-        // TODO - This should rather return the HTTP status code and reason phrase otherwise the client has no idea if/what went wrong
-        public async Task<bool> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password)
+        public async Task<DataPushResponseWrapper> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password)
         {
             var userlist = await _listRetrievalWorker.RetrieveUserListAsync(username);
             var item = userlist.Anime.FirstOrDefault(t => t.SeriesId == details.AnimeId);
@@ -65,7 +69,7 @@ namespace NeuroLinker.Workers
         /// <param name="password">Password for authentication</param>
         /// <param name="isupdate">Indicate if this is an update or an add</param>
         /// <returns>True - Update succeeded, otherwise false</returns>
-        private async Task<bool> UpdateAnimeDetails(AnimeUpdate details, string username, string password,
+        private async Task<DataPushResponseWrapper> UpdateAnimeDetails(AnimeUpdate details, string username, string password,
             bool isupdate = false)
         {
             try
@@ -79,11 +83,11 @@ namespace NeuroLinker.Workers
                     new KeyValuePair<string, string>("data", _xmlHelper.SerializeData(details))
                 }));
 
-                return result.IsSuccessStatusCode;
+                return new DataPushResponseWrapper(result.StatusCode, result.IsSuccessStatusCode);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                return new DataPushResponseWrapper(exception);
             }
         }
 

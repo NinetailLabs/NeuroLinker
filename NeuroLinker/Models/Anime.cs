@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using NeuroLinker.Interfaces.Models;
 using Newtonsoft.Json;
 
 namespace NeuroLinker.Models
 {
-    public class Anime
+    /// <summary>
+    /// Anime information
+    /// </summary>
+    public class Anime : IResponseData
     {
         #region Constructor
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Anime()
         {
             OtherTitles = new Dictionary<string, List<string>>

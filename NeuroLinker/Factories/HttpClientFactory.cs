@@ -1,6 +1,9 @@
 ﻿using System.Net.Http;
 using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Configuration;
+using NeuroLinker.Interfaces.Factories;
 using VaraniumSharp.Attributes;
+using VaraniumSharp.Enumerations;
 using VaraniumSharp.Extensions;
 
 namespace NeuroLinker.Factories
@@ -8,9 +11,30 @@ namespace NeuroLinker.Factories
     /// <summary>
     /// Creates instance of HttpClient
     /// </summary>
-    [AutomaticContainerRegistration(typeof(IHttpClientFactory))]
+    [AutomaticContainerRegistration(typeof(IHttpClientFactory), ServiceReuse.Default, true)]
     public class HttpClientFactory : IHttpClientFactory
     {
+        #region Constructor
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public HttpClientFactory()
+        {
+            _configuration = null;
+        }
+
+        /// <summary>
+        /// DI Constructor
+        /// </summary>
+        /// <param name="configuration">Http Client Configuration instance</param>
+        public HttpClientFactory(IHttpClientConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -24,14 +48,13 @@ namespace NeuroLinker.Factories
             var requiresAuth = !string.IsNullOrEmpty(username)
                                && !string.IsNullOrEmpty(password);
 
-            //var client = requiresAuth
-            //    ? new HttpClient(new HttpClientHandler
-            //    {
-            //        Credentials = new NetworkCredential(username, password)
-            //    })
-            //    : new HttpClient();
-
             var client = new HttpClient();
+
+            if (!string.IsNullOrEmpty(_configuration?.UserAgent))
+            {
+                client.DefaultRequestHeaders.Add(UserAgent, _configuration.UserAgent);
+            }
+
             if (requiresAuth)
             {
                 client.SetBasicAuthHeader(username, password);
@@ -39,6 +62,20 @@ namespace NeuroLinker.Factories
 
             return client;
         }
+
+        #endregion
+
+        #region Variables
+
+        /// <summary>
+        /// User-Agent header key
+        /// </summary>
+        private const string UserAgent = "User-Agent";
+
+        /// <summary>
+        /// Configuration instance
+        /// </summary>
+        private readonly IHttpClientConfiguration _configuration;
 
         #endregion
     }

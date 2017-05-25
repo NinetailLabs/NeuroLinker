@@ -1,9 +1,12 @@
-using System;
-using System.Threading.Tasks;
 using NeuroLinker.Extensions;
 using NeuroLinker.Helpers;
-using NeuroLinker.Interfaces;
+using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
+using System;
+using System.Net;
+using System.Threading.Tasks;
+using NeuroLinker.ResponseWrappers;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Workers
@@ -34,7 +37,7 @@ namespace NeuroLinker.Workers
         /// </summary>
         /// <param name="characterId">Character Id</param>
         /// <returns>Populated Character</returns>
-        public async Task<Character> DoCharacterRetrieval(int characterId)
+        public async Task<RetrievalWrapper<Character>> DoCharacterRetrieval(int characterId)
         {
             var character = new Character
             {
@@ -44,7 +47,12 @@ namespace NeuroLinker.Workers
 
             try
             {
-                var characterDoc = await _pageRetriever.RetrieveHtmlPageAsync(character.Url);
+                var characterResponse = await _pageRetriever.RetrieveHtmlPageAsync(character.Url);
+                if (characterResponse.ResponseStatusCode == null)
+                {
+                    throw characterResponse.Exception;
+                }
+                var characterDoc = characterResponse.Document;
 
                 character
                     .RetrieveCharacterName(characterDoc)
@@ -54,14 +62,16 @@ namespace NeuroLinker.Workers
                     .RetrieveAnimeography(characterDoc)
                     .RetrieveMangaograhy(characterDoc)
                     .RetrieveSeiyuu(characterDoc);
+                return new RetrievalWrapper<Character>(characterResponse.ResponseStatusCode.Value,
+                    characterResponse.Success,
+                    character);
             }
             catch (Exception exception)
             {
                 character.ErrorOccured = true;
                 character.ErrorMessage = exception.Message;
+                return new RetrievalWrapper<Character>(exception, character);
             }
-
-            return character;
         }
 
         /// <summary>
@@ -69,7 +79,7 @@ namespace NeuroLinker.Workers
         /// </summary>
         /// <param name="seiyuuId"></param>
         /// <returns></returns>
-        public async Task<Seiyuu> DoSeiyuuRetrieval(int seiyuuId)
+        public async Task<RetrievalWrapper<Seiyuu>> DoSeiyuuRetrieval(int seiyuuId)
         {
             var seiyuu = new Seiyuu
             {
@@ -78,7 +88,12 @@ namespace NeuroLinker.Workers
 
             try
             {
-                var seiyuuDoc = await _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId));
+                var seiyuuResponse = await _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId));
+                if (seiyuuResponse.ResponseStatusCode == null)
+                {
+                    throw seiyuuResponse.Exception;
+                }
+                var seiyuuDoc = seiyuuResponse.Document;
 
                 seiyuu
                     .RetrieveName(seiyuuDoc)
@@ -88,14 +103,15 @@ namespace NeuroLinker.Workers
                     .RetrieveAdditionalInformation(seiyuuDoc)
                     .RetrieveWebsite(seiyuuDoc)
                     .RetrieveRoles(seiyuuDoc);
+                return new RetrievalWrapper<Seiyuu>(seiyuuResponse.ResponseStatusCode.Value, seiyuuResponse.Success,
+                    seiyuu);
             }
             catch (Exception exception)
             {
                 seiyuu.ErrorOccured = true;
                 seiyuu.ErrorMessage = exception.Message;
+                return new RetrievalWrapper<Seiyuu>(exception, seiyuu);
             }
-
-            return seiyuu;
         }
 
         /// <summary>
@@ -103,7 +119,7 @@ namespace NeuroLinker.Workers
         /// </summary>
         /// <param name="id">MAL Id</param>
         /// <returns>Anime instance</returns>
-        public async Task<Anime> GetAnime(int id)
+        public async Task<RetrievalWrapper<Anime>> GetAnime(int id)
         {
             return await DoAnimeRetrieval(id, null);
         }
@@ -115,7 +131,7 @@ namespace NeuroLinker.Workers
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>Anime instance</returns>
-        public async Task<Anime> GetAnime(int id, string username, string password)
+        public async Task<RetrievalWrapper<Anime>> GetAnime(int id, string username, string password)
         {
             return await DoAnimeRetrieval(id, new Tuple<string, string>(username, password));
         }
@@ -126,11 +142,17 @@ namespace NeuroLinker.Workers
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>True - Credentials are valid, otherwise false</returns>
-        public async Task<bool> VerifyCredentials(string username, string password)
+        public async Task<DataPushResponseWrapper> VerifyCredentials(string username, string password)
         {
             var page = await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.VerifyCredentialsUrl(),
                 username, password);
-            return page.Contains(username);
+
+            if (page.ResponseStatusCode == null)
+            {
+                return new DataPushResponseWrapper(page.Exception);
+            }
+
+            return new DataPushResponseWrapper(page.ResponseStatusCode.Value, page.Success);
         }
 
         #endregion
@@ -143,7 +165,7 @@ namespace NeuroLinker.Workers
         /// <param name="id">MAL Id</param>
         /// <param name="loginDetails">Username and password for retrieving user information. Pass null to retrieve pulbic page</param>
         /// <returns>Anime instance</returns>
-        private async Task<Anime> DoAnimeRetrieval(int id, Tuple<string, string> loginDetails)
+        private async Task<RetrievalWrapper<Anime>> DoAnimeRetrieval(int id, Tuple<string, string> loginDetails)
         {
             var anime = new Anime();
 
@@ -155,8 +177,15 @@ namespace NeuroLinker.Workers
                         loginDetails.Item2);
                 var characterTask = _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(id));
 
-                var animeDoc = await animePageTask;
-                var characterDoc = await characterTask;
+                var animeResponse = await animePageTask;
+                if (animeResponse.ResponseStatusCode == null)
+                {
+                    throw animeResponse.Exception;
+                }
+                var characterResponse = await characterTask;
+
+                var animeDoc = animeResponse.Document;
+                var characterDoc = characterResponse.Document;
 
                 anime
                     .RetrieveAnimeId(animeDoc)
@@ -185,16 +214,18 @@ namespace NeuroLinker.Workers
                         .RetrieveUserEpisode(animeDoc)
                         .RetrieveUserStatus(animeDoc);
                 }
+
+                // TODO - Add sanity check
+
+                return new RetrievalWrapper<Anime>(animeResponse.ResponseStatusCode.Value, animeResponse.Success,
+                    anime);
             }
             catch (Exception exception)
             {
                 anime.ErrorOccured = true;
                 anime.ErrorMessage = exception.Message;
+                return new RetrievalWrapper<Anime>(exception, anime);
             }
-
-            // TODO - Add sanity check
-
-            return anime;
         }
 
         #endregion

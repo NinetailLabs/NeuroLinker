@@ -1,8 +1,12 @@
 using System.Threading.Tasks;
 using NeuroLinker.Models;
+using NeuroLinker.ResponseWrappers;
 
-namespace NeuroLinker.Interfaces
+namespace NeuroLinker.Interfaces.Workers
 {
+    /// <summary>
+    /// Manage data requests
+    /// </summary>
     public interface IRequestProcessor
     {
         #region Public Methods
@@ -12,21 +16,21 @@ namespace NeuroLinker.Interfaces
         /// </summary>
         /// <param name="characterId">Character Id</param>
         /// <returns>Populated Character</returns>
-        Task<Character> DoCharacterRetrieval(int characterId);
+        Task<RetrievalWrapper<Character>> DoCharacterRetrieval(int characterId);
 
         /// <summary>
         /// Retrieve a Seiyuu from MAL
         /// </summary>
         /// <param name="seiyuuId"></param>
         /// <returns></returns>
-        Task<Seiyuu> DoSeiyuuRetrieval(int seiyuuId);
+        Task<RetrievalWrapper<Seiyuu>> DoSeiyuuRetrieval(int seiyuuId);
 
         /// <summary>
         /// Retrieve an anime from MAL
         /// </summary>
         /// <param name="id">MAL Id</param>
         /// <returns>Anime instance</returns>
-        Task<Anime> GetAnime(int id);
+        Task<RetrievalWrapper<Anime>> GetAnime(int id);
 
         /// <summary>
         /// Retrieve an anime from MAL
@@ -35,7 +39,7 @@ namespace NeuroLinker.Interfaces
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>Anime instance</returns>
-        Task<Anime> GetAnime(int id, string username, string password);
+        Task<RetrievalWrapper<Anime>> GetAnime(int id, string username, string password);
 
         /// <summary>
         /// Verify user credentials
@@ -43,7 +47,7 @@ namespace NeuroLinker.Interfaces
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>True - Credentials are valid, otherwise false</returns>
-        Task<bool> VerifyCredentials(string username, string password);
+        Task<DataPushResponseWrapper> VerifyCredentials(string username, string password);
 
         #endregion
     }
