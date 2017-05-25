@@ -88,10 +88,8 @@ Task ("UnitTests")
         {
             tool.NUnit3(testAssemblies, new NUnit3Settings
             {
-                ErrorOutputFile = errorResultFile,
-                OutputFile = testResultFile,
+                Results = testResultFile,
                 TeamCity = runningOnTeamCity,
-                Full = true,
                 WorkingDirectory = ".",
                 Work = MakeAbsolute(Directory("."))
             });
@@ -105,7 +103,8 @@ Task ("UnitTests")
 
         PushTestResults(testResultFile);
 
-        if(FileExists(errorResultFile) && FileReadLines(errorResultFile).Count() > 0)
+      var testResult = XmlPeek(testResultFile, "/test-run/@result");
+        if(testResult == "Failed")
         {
             Information("Unit tests failed");
             testsSucceeded = false;
