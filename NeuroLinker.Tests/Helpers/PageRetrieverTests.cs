@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using FluentAssertions;
 using HttpMock;
@@ -82,7 +83,9 @@ namespace NeuroLinker.Tests.Helpers
             var result = sut.RetrieveDocumentAsStringAsync(fullUrl, null, null).Result;
 
             // assert
-            result.Should().Be("Hello World");
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
+            result.Success.Should().BeTrue();
+            result.RetrievedBody.Should().Be("Hello World");
         }
 
         #endregion

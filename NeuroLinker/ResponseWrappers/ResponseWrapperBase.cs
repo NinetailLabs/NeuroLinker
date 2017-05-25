@@ -1,13 +1,12 @@
-﻿using System;
+using System;
 using System.Net;
-using System.Runtime.Serialization;
 
-namespace NeuroLinker.Models
+namespace NeuroLinker.ResponseWrappers
 {
     /// <summary>
-    /// Contains result of a data push
+    /// Wrapper for retrieved data, it includes whether the retrieval was a success as well as the actual staus code received
     /// </summary>
-    public class DataPushResultModel
+    public class ResponseWrapperBase
     {
         #region Constructor
 
@@ -16,7 +15,7 @@ namespace NeuroLinker.Models
         /// </summary>
         /// <param name="responseStatusCode">HttpStatus code received from the remote server</param>
         /// <param name="success">Was the request successful or not</param>
-        public DataPushResultModel(HttpStatusCode responseStatusCode, bool success)
+        public ResponseWrapperBase(HttpStatusCode responseStatusCode, bool success)
         {
             ResponseStatusCode = responseStatusCode;
             Success = success;
@@ -27,7 +26,7 @@ namespace NeuroLinker.Models
         /// Construct with an exception
         /// </summary>
         /// <param name="exception">Exception that occured during retrieval</param>
-        public DataPushResultModel(Exception exception)
+        public ResponseWrapperBase(Exception exception)
         {
             Exception = exception;
             ResponseStatusCode = null;

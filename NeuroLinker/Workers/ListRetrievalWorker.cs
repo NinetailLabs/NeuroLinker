@@ -41,10 +41,11 @@ namespace NeuroLinker.Workers
         public async Task<UserList> RetrieveUserListAsync(string username)
         {
             var userList = new UserList();
-            var xmlString = await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.UserListUrl(username));
+            var retrievalWrapper =
+                await _pageRetriever.RetrieveDocumentAsStringAsync(MalRouteBuilder.UserListUrl(username));
             try
             {
-                var xml = XDocument.Parse(xmlString);
+                var xml = XDocument.Parse(retrievalWrapper.RetrievedBody);
                 var userInfo = xml.Root?.Element("myinfo");
                 var userAnime = xml.Root?.Elements("anime").ToList();
 

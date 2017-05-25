@@ -1,9 +1,9 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
-using NeuroLinker.Interfaces;
+﻿using HtmlAgilityPack;
 using NeuroLinker.Interfaces.Factories;
 using NeuroLinker.Interfaces.Helpers;
+using System.Text;
+using System.Threading.Tasks;
+using NeuroLinker.ResponseWrappers;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Helpers
@@ -34,7 +34,7 @@ namespace NeuroLinker.Helpers
         /// </summary>
         /// <param name="url">Url from which data should be retrieved</param>
         /// <returns>Document at the Url as a string</returns>
-        public async Task<string> RetrieveDocumentAsStringAsync(string url)
+        public async Task<StringRetrievalWrapper> RetrieveDocumentAsStringAsync(string url)
         {
             return await RetrieveDocumentAsStringAsync(url, null, null);
         }
@@ -46,12 +46,14 @@ namespace NeuroLinker.Helpers
         /// <param name="username">Username for authentication</param>
         /// <param name="password">Password for authentication</param>
         /// <returns>Document at the Url as a string</returns>
-        public async Task<string> RetrieveDocumentAsStringAsync(string url, string username, string password)
+        public async Task<StringRetrievalWrapper> RetrieveDocumentAsStringAsync(string url, string username,
+            string password)
         {
             var client = _httpClientFactory.GetHttpClient(username, password);
-
-            var data = await client.GetStringAsync(url);
-            return data;
+            var data = await client.GetAsync(url);
+            var responseWrapper = new StringRetrievalWrapper(data.StatusCode, data.IsSuccessStatusCode,
+                await data.Content.ReadAsStringAsync());
+            return responseWrapper;
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace NeuroLinker.Helpers
         /// </summary>
         /// <param name="url">URL from which page should be retrieved</param>
         /// <returns>Retrieved page</returns>
-        public async Task<HtmlDocument> RetrieveHtmlPageAsync(string url)
+        public async Task<HtmlDocumentRetrievalWrapper> RetrieveHtmlPageAsync(string url)
         {
             return await RetrieveHtmlPageAsync(url, string.Empty, string.Empty);
         }
@@ -73,7 +75,8 @@ namespace NeuroLinker.Helpers
         /// <param name="username">Username for authentication</param>
         /// <param name="password">Password for authentication</param>
         /// <returns>Retrieved page</returns>
-        public async Task<HtmlDocument> RetrieveHtmlPageAsync(string url, string username, string password)
+        public async Task<HtmlDocumentRetrievalWrapper> RetrieveHtmlPageAsync(string url, string username,
+            string password)
         {
             return await RetrieveHtmlPageAsync(url, username, password, Encoding.UTF8);
         }
@@ -87,17 +90,18 @@ namespace NeuroLinker.Helpers
         /// <param name="password">Password for authentication</param>
         /// <param name="pageEncoding">Encoding format of the page</param>
         /// <returns>Retrieved page</returns>
-        public async Task<HtmlDocument> RetrieveHtmlPageAsync(string url, string username, string password,
+        public async Task<HtmlDocumentRetrievalWrapper> RetrieveHtmlPageAsync(string url, string username,
+            string password,
             Encoding pageEncoding)
         {
             var client = _httpClientFactory.GetHttpClient(username, password);
 
-            var data = await client.GetStreamAsync(url);
+            var data = await client.GetAsync(url);
 
+            var content = await data.Content.ReadAsStreamAsync();
             var document = new HtmlDocument();
-            document.Load(data, pageEncoding);
-
-            return document;
+            document.Load(content, pageEncoding);
+            return new HtmlDocumentRetrievalWrapper(data.StatusCode, data.IsSuccessStatusCode, document);
         }
 
         #endregion

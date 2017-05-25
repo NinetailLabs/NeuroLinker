@@ -6,7 +6,9 @@ using NeuroLinker.Workers;
 using NUnit.Framework;
 using System;
 using System.IO;
+using System.Net;
 using NeuroLinker.Interfaces.Helpers;
+using NeuroLinker.ResponseWrappers;
 
 namespace NeuroLinker.Tests.Workers
 {
@@ -25,7 +27,7 @@ namespace NeuroLinker.Tests.Workers
             var data = File.ReadAllText(examplePath);
             fixture.PageRetrieverMock
                 .Setup(t => t.RetrieveDocumentAsStringAsync(MalRouteBuilder.UserListUrl(user)))
-                .ReturnsAsync(data);
+                .ReturnsAsync(new StringRetrievalWrapper(HttpStatusCode.OK, true, data));
 
             var sut = fixture.Instance;
 
@@ -47,7 +49,7 @@ namespace NeuroLinker.Tests.Workers
             var data = File.ReadAllText(examplePath);
             fixture.PageRetrieverMock
                 .Setup(t => t.RetrieveDocumentAsStringAsync(MalRouteBuilder.UserListUrl(user)))
-                .ReturnsAsync(data);
+                .ReturnsAsync(new StringRetrievalWrapper(HttpStatusCode.OK, true, data));
 
             var sut = fixture.Instance;
 

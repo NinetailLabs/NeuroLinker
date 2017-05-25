@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NeuroLinker.Models;
+using NeuroLinker.ResponseWrappers;
 
 namespace NeuroLinker.Interfaces.Workers
 {
@@ -16,6 +17,6 @@ namespace NeuroLinker.Interfaces.Workers
         /// <param name="username">Username for authentication</param>
         /// <param name="password">Password for authentication</param>
         /// <returns>True - Update succeeded, otherwise false</returns>
-        Task<DataPushResultModel> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password);
+        Task<DataPushResponseWrapper> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password);
     }
 }

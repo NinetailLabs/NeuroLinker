@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using NeuroLinker.ResponseWrappers;
 using VaraniumSharp.Attributes;
 
 namespace NeuroLinker.Workers
@@ -46,7 +47,7 @@ namespace NeuroLinker.Workers
         /// <param name="username">Username for authentication</param>
         /// <param name="password">Password for authentication</param>
         /// <returns>True - Update succeeded, otherwise false</returns>
-        public async Task<DataPushResultModel> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password)
+        public async Task<DataPushResponseWrapper> PushAnimeDetailsToMal(AnimeUpdate details, string username, string password)
         {
             var userlist = await _listRetrievalWorker.RetrieveUserListAsync(username);
             var item = userlist.Anime.FirstOrDefault(t => t.SeriesId == details.AnimeId);
@@ -68,7 +69,7 @@ namespace NeuroLinker.Workers
         /// <param name="password">Password for authentication</param>
         /// <param name="isupdate">Indicate if this is an update or an add</param>
         /// <returns>True - Update succeeded, otherwise false</returns>
-        private async Task<DataPushResultModel> UpdateAnimeDetails(AnimeUpdate details, string username, string password,
+        private async Task<DataPushResponseWrapper> UpdateAnimeDetails(AnimeUpdate details, string username, string password,
             bool isupdate = false)
         {
             try
@@ -82,11 +83,11 @@ namespace NeuroLinker.Workers
                     new KeyValuePair<string, string>("data", _xmlHelper.SerializeData(details))
                 }));
 
-                return new DataPushResultModel(result.StatusCode, result.IsSuccessStatusCode);
+                return new DataPushResponseWrapper(result.StatusCode, result.IsSuccessStatusCode);
             }
             catch (Exception exception)
             {
-                return new DataPushResultModel(exception);
+                return new DataPushResponseWrapper(exception);
             }
         }
 

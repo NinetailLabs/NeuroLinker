@@ -7,6 +7,8 @@ using NeuroLinker.Workers;
 using NUnit.Framework;
 using System;
 using System.IO;
+using System.Net;
+using NeuroLinker.ResponseWrappers;
 
 namespace NeuroLinker.Tests.Workers
 {
@@ -25,7 +27,7 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.RetrieveCurrentSeason().Result;
 
             // assert
-            result.Count.Should().Be(285);
+            result.ResponseData.SeasonShows.Count.Should().Be(285);
         }
 
         [Test]
@@ -38,9 +40,10 @@ namespace NeuroLinker.Tests.Workers
             var sut = fixture.Instance;
 
             // act
-            var result = sut.GetSeasonData(year, season).Result;
+            var resultWrapper = sut.GetSeasonData(year, season).Result;
 
             // assert
+            var result = resultWrapper.ResponseData.SeasonShows;
             result.Count.Should().Be(95);
             result.Should().Contain(x => x.Id == 25777);
             result.Should().Contain(x => x.Title == "Shingeki no Kyojin Season 2");
@@ -66,7 +69,7 @@ namespace NeuroLinker.Tests.Workers
 
                 PageRetrieverMock
                     .Setup(t => t.RetrieveHtmlPageAsync(It.IsAny<string>()))
-                    .ReturnsAsync(seasonDoc);
+                    .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, seasonDoc));
 
                 Instance = new SeasonWorker(PageRetriever);
             }
