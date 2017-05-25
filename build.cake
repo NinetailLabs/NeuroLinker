@@ -88,10 +88,8 @@ Task ("UnitTests")
         {
             tool.NUnit3(testAssemblies, new NUnit3Settings
             {
-                ErrorOutputFile = errorResultFile,
-                OutputFile = testResultFile,
+                Results = testResultFile,
                 TeamCity = runningOnTeamCity,
-                Full = true,
                 WorkingDirectory = ".",
                 Work = MakeAbsolute(Directory("."))
             });
@@ -105,7 +103,8 @@ Task ("UnitTests")
 
         PushTestResults(testResultFile);
 
-        if(FileExists(errorResultFile) && FileReadLines(errorResultFile).Count() > 0)
+      var testResult = XmlPeek(testResultFile, "/test-run/@result");
+        if(testResult == "Failed")
         {
             Information("Unit tests failed");
             testsSucceeded = false;
@@ -187,9 +186,10 @@ Task ("Push")
 
 Task ("Documentation")
 	.Does (() => {
-		DocFxBuild("docfx.json", new DocFxBuildSettings{
-			WorkingDirectory = "./docfx_project"
-		});
+		//DocFxBuild("docfx_project/docfx.json");
+		var tool = "./tools/docfx.console/tools/docfx.exe";
+		StartProcess(tool, new ProcessSettings{Arguments = "docfx_project/docfx.json"});
+
 
 		if(buildType != "master")
 		{
