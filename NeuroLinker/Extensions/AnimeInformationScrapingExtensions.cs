@@ -463,6 +463,11 @@ namespace NeuroLinker.Extensions
                 .TrimStart("\r\n".ToCharArray())
                 .Trim();
             synopsis = HttpUtility.HtmlDecode(synopsis);
+            if (!synopsis.Contains("\r\n") && synopsis.Contains("\n"))
+            {
+                synopsis = synopsis.Replace("\n", "\r\n");
+            }
+
             anime.Synopsis = synopsis;
 
             return anime;
