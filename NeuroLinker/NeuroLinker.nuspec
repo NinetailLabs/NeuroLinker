@@ -13,12 +13,12 @@
       <iconUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/develop/icon.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2017</copyright>
-      <releaseNotes>Added BlockUntil extension to provide a cheap way of blocking while waiting for data processing</releaseNotes>
+      <releaseNotes>Fixed incorrect dependency</releaseNotes>
       <tags>C# NeuroLinker MyAnimeList Scraper</tags>
 
        <dependencies>
         <dependency id="HtmlAgilityPack" version="1.4.9.5"/>
-        <dependency id="Newtonsoft.Json" version="10.1.0"/>
+        <dependency id="Newtonsoft.Json" version="10.0.1"/>
         <dependency id="VaraniumSharp" version="1.14.0"/>
       </dependencies>
 
