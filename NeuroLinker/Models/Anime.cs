@@ -29,6 +29,7 @@ namespace NeuroLinker.Models
             Genres = new List<string>();
             Tags = new List<string>();
             AdditionalInfoUrls = new InfoUrls();
+            FullStories = new List<Related>();
             MangaAdaptation = new List<Related>();
             Prequels = new List<Related>();
             Sequels = new List<Related>();
