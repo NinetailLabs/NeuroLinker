@@ -260,6 +260,22 @@ namespace NeuroLinker.Tests.Extensions
             sut.Sequels.First().Url.Should().Be(@"https://myanimelist.net/anime/20021/Sword_Art_Online__Extra_Edition");
         }
 
+        // Issue-13 - Some anime would crash with a null reference exception
+        [Test]
+        public void RelatedInformationShouldNotCauseANullReferenceCrash()
+        {
+            // arrange
+            const string page = "83.html";
+            var fixture = new PageScrapingLogicFixture(page);
+            var sut = fixture.Instance;
+
+            var act = new Action(() => sut.RetrieveRelatedAnime(fixture.Document));
+
+            // act
+            // assert
+            act.ShouldNotThrow<NullReferenceException>();
+        }
+
         [Test]
         public void ScoreIsRetrievedCorrectly()
         {
@@ -302,11 +318,11 @@ namespace NeuroLinker.Tests.Extensions
         {
             #region Constructor
 
-            public PageScrapingLogicFixture()
+            public PageScrapingLogicFixture(string htmlPage = "11757.html")
             {
                 Document = new HtmlDocument();
                 var path = AppDomain.CurrentDomain.BaseDirectory;
-                var examplePath = Path.Combine(path, "PageExamples", "11757.html");
+                var examplePath = Path.Combine(path, "PageExamples", htmlPage);
                 using (var htmlFile = File.Open(examplePath, FileMode.Open))
                 {
                     Document.Load(htmlFile);
