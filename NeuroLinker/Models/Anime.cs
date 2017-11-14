@@ -39,6 +39,7 @@ namespace NeuroLinker.Models
             SpinOffs = new List<Related>();
             Summaries = new List<Related>();
             AlternativeVersion = new List<Related>();
+            AlternativeSetting = new List<Related>();
             Others = new List<Related>();
             ErrorOccured = false;
         }
