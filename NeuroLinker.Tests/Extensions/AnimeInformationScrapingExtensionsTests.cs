@@ -261,11 +261,12 @@ namespace NeuroLinker.Tests.Extensions
         }
 
         // Issue-13 - Some anime would crash with a null reference exception
-        [Test]
-        public void RelatedInformationShouldNotCauseANullReferenceCrash()
+        [TestCase("83.html")]
+        [TestCase("84.html")]
+        [TestCase("116.html")]
+        public void RelatedInformationShouldNotCauseANullReferenceCrash(string page)
         {
             // arrange
-            const string page = "83.html";
             var fixture = new PageScrapingLogicFixture(page);
             var sut = fixture.Instance;
 
