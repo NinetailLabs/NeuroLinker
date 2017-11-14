@@ -13,7 +13,7 @@
       <iconUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/develop/icon.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2017</copyright>
-      <releaseNotes>Fixed NullReference exception that occurs when anime has a Full Story</releaseNotes>
+      <releaseNotes>Fixed more NullReference exception that occurs when anime an anime is created</releaseNotes>
       <tags>C# NeuroLinker MyAnimeList Scraper</tags>
 
        <dependencies>
