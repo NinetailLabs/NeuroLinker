@@ -5,6 +5,7 @@ using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using NeuroLinker.ResponseWrappers;
 using VaraniumSharp.Attributes;
@@ -182,6 +183,16 @@ namespace NeuroLinker.Workers
                 {
                     throw animeResponse.Exception;
                 }
+
+                if (!new HttpResponseMessage(animeResponse.ResponseStatusCode.Value)
+                    .IsSuccessStatusCode)
+                {
+                    anime.ErrorOccured = true;
+                    anime.ErrorMessage =
+                        $"Status code {animeResponse.ResponseStatusCode.Value} does not indicate success";
+                    return new RetrievalWrapper<Anime>(animeResponse.ResponseStatusCode.Value, false, anime);
+                }
+
                 var characterResponse = await characterTask;
 
                 var animeDoc = animeResponse.Document;
