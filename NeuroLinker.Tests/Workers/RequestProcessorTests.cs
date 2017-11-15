@@ -8,6 +8,7 @@ using NUnit.Framework;
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using NeuroLinker.ResponseWrappers;
 
 namespace NeuroLinker.Tests.Workers
@@ -51,6 +52,62 @@ namespace NeuroLinker.Tests.Workers
             // assert
             result.ResponseStatusCode.Should().Be(statusCode);
             result.Success.Should().Be(validResult);
+        }
+
+        [Test]
+        public void FailedHttpRetrievalDoesNotCauseAnException()
+        {
+            // arrange
+            const int malId = 13127;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{malId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(malId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.NotFound, true, document));
+
+            var sut = fixture.Instance;
+            var act = new Action(() => sut.GetAnime(malId).Wait());
+
+            // act
+            // assert
+            act.ShouldNotThrow<Exception>();
+        }
+
+        [Test]
+        public async Task IfAnimeDoesNotExistAnErrorIsPassedBackToTheCaller()
+        {
+            // arrange
+            const int malId = 13127;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{malId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(malId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.NotFound, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var result = await sut.GetAnime(malId);
+
+            // assert
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.NotFound);
+            result.Success.Should().BeFalse();
         }
 
         [Test]
