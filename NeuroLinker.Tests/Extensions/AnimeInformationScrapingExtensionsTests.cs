@@ -73,18 +73,19 @@ namespace NeuroLinker.Tests.Extensions
             sut.HighResImageUrl.Should().Be("https://myanimelist.cdn-dena.com/images/anime/11/39717l.jpg");
         }
 
-        [Test]
-        public void AnimeSynopsisIsRetrievedCorrectly()
+        [TestCase("11757.html", SaoSynopsis)]
+        [TestCase("34973.html", LoveLiveSynopsis)]
+        public void AnimeSynopsisIsRetrievedCorrectly(string page, string synopsis)
         {
             // arrange
-            var fixture = new PageScrapingLogicFixture();
+            var fixture = new PageScrapingLogicFixture(page);
             var sut = fixture.Instance;
 
             // act
             sut.RetrieveSynopsis(fixture.Document);
 
             // assert
-            sut.Synopsis.Should().Be(_synopsis);
+            sut.Synopsis.Should().Be(synopsis.Replace("\r\n", Environment.NewLine));
         }
 
         [Test]
@@ -154,7 +155,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveFavotireCount(fixture.Document);
 
             // assert
-            sut.FavoriteCount.Should().Be(42922);
+            sut.FavoriteCount.Should().Be(47544);
         }
 
         [Test]
@@ -209,7 +210,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveMemberCount(fixture.Document);
 
             // assert
-            sut.MemberCount.Should().Be(973483);
+            sut.MemberCount.Should().Be(1178885);
         }
 
         [Test]
@@ -237,14 +238,15 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveRank(fixture.Document);
 
             // assert
-            sut.Rank.Should().Be(904);
+            sut.Rank.Should().Be(1112);
         }
 
-        [Test]
-        public void RelatedInformationIsParsedCorrectly()
+        [TestCase("11757.html")]
+        [TestCase("11757_old.html")]
+        public void RelatedInformationIsParsedCorrectly(string page)
         {
             // arrange
-            var fixture = new PageScrapingLogicFixture();
+            var fixture = new PageScrapingLogicFixture(page);
             var sut = fixture.Instance;
 
             // act
@@ -288,7 +290,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveScore(fixture.Document);
 
             // assert
-            sut.MemberScore.Should().Be(7.78);
+            sut.MemberScore.Should().Be(7.69);
         }
 
         [Test]
@@ -309,9 +311,10 @@ namespace NeuroLinker.Tests.Extensions
 
         #region Variables
 
-        private readonly string _synopsis =
-                $"In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of \"NerveGear\" technology, players can control their avatars within the game using nothing but their own thoughts.{Environment.NewLine}{Environment.NewLine}Kazuto Kirigaya, nicknamed \"Kirito,\" is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game's creator has trapped them in his new world until they complete all one hundred levels of the game.{Environment.NewLine}{Environment.NewLine}In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell.{Environment.NewLine}{Environment.NewLine}[Written by MAL Rewrite]"
-            ;
+        private const string SaoSynopsis =
+                "In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of \"NerveGear\" technology, players can control their avatars within the game using nothing but their own thoughts.\r\n                                                    \r\n                                                    Kazuto Kirigaya, nicknamed \"Kirito,\" is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game's creator has trapped them in his new world until they complete all one hundred levels of the game.\r\n                                                    \r\n                                                    In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell.\r\n                                                    \r\n                                                    [Written by MAL Rewrite]";
+
+        private const string LoveLiveSynopsis = "The second season of the Love Live! spinoff series, Love Live! Sunshine!!";
 
         #endregion
 
