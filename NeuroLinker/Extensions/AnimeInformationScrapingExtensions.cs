@@ -1,12 +1,12 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using NeuroLinker.Helpers;
+using NeuroLinker.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-using HtmlAgilityPack;
-using NeuroLinker.Helpers;
-using NeuroLinker.Models;
 
 namespace NeuroLinker.Extensions
 {
@@ -358,7 +358,7 @@ namespace NeuroLinker.Extensions
                 .InnerText.Replace("\r\n", "");
 
             anime.Classification = Regex
-                .Split(txt, "                                    ")
+                .Split(txt, ":")
                 .Last()
                 .Trim()
                 .Replace("Rating:", "")
@@ -382,7 +382,9 @@ namespace NeuroLinker.Extensions
 
             return relatedNodes == null
                 ? anime
-                : anime.ParseRelatedTableCells(relatedNodes.FirstChild);
+                : relatedNodes.ChildNodes.Count > 1
+                    ? anime.ParseRelatedTableRows(relatedNodes)
+                    : anime.ParseRelatedTableCells(relatedNodes.FirstChild);
         }
 
         /// <summary>
@@ -616,6 +618,26 @@ namespace NeuroLinker.Extensions
                 }
 
                 break;
+            }
+
+            return anime;
+        }
+
+        /// <summary>
+        /// If the related items is a proper table with multiple ```tr``` rows instead of one ```tr``` row with another embedded ```tr``` then the direct parsing method fails,
+        /// instead this method should be called to parse each individual ```tr```
+        /// </summary>
+        /// <param name="anime">Anime instance to populate</param>
+        /// <param name="rowsToParse">Node containing the rows</param>
+        /// <returns>Anime instance</returns>
+        private static Anime ParseRelatedTableRows(this Anime anime, HtmlNode rowsToParse)
+        {
+            foreach (var row in rowsToParse.ChildNodes)
+            {
+                if (row.Name == "tr")
+                {
+                    anime.ParseRelatedTableCells(row);
+                }
             }
 
             return anime;
