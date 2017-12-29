@@ -202,6 +202,7 @@ namespace NeuroLinker.Workers
                     .RetrieveAnimeId(animeDoc)
                     .RetrieveAnimeTitle(animeDoc)
                     .RetrieveAlternativeTitles(animeDoc)
+                    .RetrieveSynopsis(animeDoc)
                     .RetrieveImage(animeDoc)
                     .RetrieveType(animeDoc)
                     .RetrieveEpisodes(animeDoc)

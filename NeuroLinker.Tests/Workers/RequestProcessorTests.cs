@@ -207,6 +207,34 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.ErrorMessage.Should().Be("Cannot load");
         }
 
+        // Issue-16 Synopsis is not retrieved
+        [Test]
+        public void RetrievingAnimeCorrectlyRetrievesTheSynopsis()
+        {
+            // arrange
+            const int animeId = 11757;
+            var fixture = new RequestProcessorFixture(animeId);
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{animeId}LoggedIn.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(animeId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var result = sut.GetAnime(animeId).Result;
+
+            // assert
+            result.ResponseData.Synopsis.Should().NotBeNullOrEmpty();
+        }
+
         [Test]
         public void RetrievingAnimeWithUsernameAndPasswordDoesNotPopulateUserFields()
         {
