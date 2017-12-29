@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HtmlAgilityPack;
 using NeuroLinker.Extensions;
 using NeuroLinker.Models;
 using NUnit.Framework;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace NeuroLinker.Tests.Extensions
 {
@@ -75,6 +75,8 @@ namespace NeuroLinker.Tests.Extensions
 
         [TestCase("11757.html", SaoSynopsis)]
         [TestCase("34973.html", LoveLiveSynopsis)]
+        [TestCase("32901.html", EromangaSynopsis)]
+        [TestCase("3467.html", NogizakaSynopsis)]
         public void AnimeSynopsisIsRetrievedCorrectly(string page, string synopsis)
         {
             // arrange
@@ -312,9 +314,19 @@ namespace NeuroLinker.Tests.Extensions
         #region Variables
 
         private const string SaoSynopsis =
-                "In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of \"NerveGear\" technology, players can control their avatars within the game using nothing but their own thoughts.\r\n                                                    \r\n                                                    Kazuto Kirigaya, nicknamed \"Kirito,\" is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game's creator has trapped them in his new world until they complete all one hundred levels of the game.\r\n                                                    \r\n                                                    In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell.\r\n                                                    \r\n                                                    [Written by MAL Rewrite]";
+                "In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of \"NerveGear\" technology, players can control their avatars within the game using nothing but their own thoughts.\r\n                                                    \r\n                                                    Kazuto Kirigaya, nicknamed \"Kirito,\" is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game's creator has trapped them in his new world until they complete all one hundred levels of the game.\r\n                                                    \r\n                                                    In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell.\r\n                                                    \r\n                                                    [Written by MAL Rewrite]"
+            ;
 
-        private const string LoveLiveSynopsis = "The second season of the Love Live! spinoff series, Love Live! Sunshine!!";
+        private const string LoveLiveSynopsis =
+            "The second season of the Love Live! spinoff series, Love Live! Sunshine!!";
+
+        private const string EromangaSynopsis =
+                "One year ago, Sagiri Izumi became step-siblings with Masamune Izumi. But the sudden death of their parents tears their new family apart, resulting in Sagiri becoming a shut-in which cut her off from her brother and society.\r\n                                                    \r\n                                                    While caring for what's left of his family, Masamune earns a living as a published light novel author with one small problem: he's never actually met his acclaimed illustrator, Eromanga-sensei, infamous for drawing the most lewd erotica. Through an embarrassing chain of events, he learns that his very own little sister was his partner the whole time!\r\n                                                    \r\n                                                    As new characters and challenges appear, Masamune and Sagiri must now face the light novel industry together. Eromanga-Sensei follows the development of their relationship and their struggle to become successful; and as Sagiri slowly grows out of her shell, just how long will she be able to hide her true persona from the rest of the world?\r\n                                                    \r\n                                                    [Written by MAL Rewrite]"
+            ;
+
+        private const string NogizakaSynopsis =
+                "Hakujo Academy is a private high school with a student body filled with elite students. At the top of this list is the beautiful Haruka Nogizaka, an intelligent and wealthy girl who comes from a prestigious family, and is by far the most idolized girl at school. Her popularity is so great that her classmates occasionally give her French nicknames to further express their infatuation.\r\n                                                    \r\n                                                    Yuuto Ayase is a timid boy who has the unbelievable luck of sitting in class with Haruka every day. Like many others, he admires her from a distance, never even dreaming of approaching her. But with a sudden twist of fate, Yuuto's random visit to the school library brings Haruka's darkest secret to light, one which could potentially destroy her current reputation of elegance. As it turns out, the school's most beloved princess is actually a huge otaku. This revelation marks the beginning of a beautiful friendship between these two classmates."
+            ;
 
         #endregion
 
