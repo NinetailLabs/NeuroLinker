@@ -4,12 +4,744 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Configuration.HttpClientConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Configuration.HttpClientConfiguration.html",
+          "hash": "3n4ACPkSWubQzMmQOun7iA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Configuration.html",
+          "hash": "zXGKZ4YUjPFLm4FDR69CcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Enumerations.ConfigurationKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Enumerations.ConfigurationKeys.html",
+          "hash": "w0uNfz6ga91w7UoW1uUrZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Enumerations.Seasons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Enumerations.Seasons.html",
+          "hash": "usaT9lZUca20GeWPHoIaOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Enumerations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Enumerations.html",
+          "hash": "ZFsgnDRtMgx/ocGaRI0uaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.AnimeInformationScrapingExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.AnimeInformationScrapingExtensions.html",
+          "hash": "1/DUr53zmsMyadRb6nZgeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.CharacterInformationScrapingExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.CharacterInformationScrapingExtensions.html",
+          "hash": "jwnZNQaGusCGOJLCyDnXzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.CharacterPageScrapingExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.CharacterPageScrapingExtensions.html",
+          "hash": "K8+2+iiveodKC6PGBnLrmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.SeasonLookup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.SeasonLookup.html",
+          "hash": "6ypfKuUsKq1Dn39tVn7YwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.html",
+          "hash": "ydYfI7YnAmiaU3iDV42Bdw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.UserInformationScrapingExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.UserInformationScrapingExtensions.html",
+          "hash": "FEO6NuC6UfzAdvQrqLqvyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.html",
+          "hash": "KHa96tlKAm/4ysdHT1pYHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Factories.HttpClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Factories.HttpClientFactory.html",
+          "hash": "EtiZOp+nKevnd+49BzuYEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Factories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Factories.html",
+          "hash": "3od+EOZyoPAK3CVjvhouUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Helpers.MalRouteBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Helpers.MalRouteBuilder.html",
+          "hash": "GSzL4lTXZKtBd9u/ekCJrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Helpers.PageRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Helpers.PageRetriever.html",
+          "hash": "M10K0kLGrWKvY4pyTlxA6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Helpers.Utf8StringWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Helpers.Utf8StringWriter.html",
+          "hash": "zoVIknEN5RNqWi2eyxcryA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Helpers.XmlHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Helpers.XmlHelper.html",
+          "hash": "qa2XZoEuh7eVt28uKSliww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Helpers.html",
+          "hash": "j6XzNBVgG+sj/LwX9pdLWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration.html",
+          "hash": "Cs7iXTU9m/zan30yGt/t3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Configuration.html",
+          "hash": "HXi3gkb409Z5BpyiJz85tw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Factories.IHttpClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Factories.IHttpClientFactory.html",
+          "hash": "bY6QJ/vnDH1HM8S20qGOzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Factories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Factories.html",
+          "hash": "yDtRzdnyjUAX/YsxGk62Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Helpers.IPageRetriever.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Helpers.IPageRetriever.html",
+          "hash": "3TVWUdxdKr6BDz0YOwao+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Helpers.IXmlHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Helpers.IXmlHelper.html",
+          "hash": "ygVYmnEOc3zJ1njIja1yiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Helpers.html",
+          "hash": "47teI0tugjd6a6v+KxxLXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Models.IResponseData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Models.IResponseData.html",
+          "hash": "vFDKiMCB9xIp6KItdCax+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Models.html",
+          "hash": "VEubAggFIj2dEM5MhfAzVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Workers.IDataPushWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Workers.IDataPushWorker.html",
+          "hash": "YNLQDJWVYZsvp8Ljao/PeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Workers.IListRetrievalWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Workers.IListRetrievalWorker.html",
+          "hash": "8Udg/vjUE4CNcSWTvP5BZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Workers.IRequestProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Workers.IRequestProcessor.html",
+          "hash": "WtBP6oOAwiHUVh5HvwELNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Workers.ISeasonWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Workers.ISeasonWorker.html",
+          "hash": "ynNIJO49Gib23qcfCdpgNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Interfaces.Workers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Interfaces.Workers.html",
+          "hash": "NZ5v0don230FIM69TJkXyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Anime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Anime.html",
+          "hash": "D5iCH5YYgsHNFtY8NYU9MQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.AnimeUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.AnimeUpdate.html",
+          "hash": "+dT1EGQFwdI5aAuG6xsssg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Character.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Character.html",
+          "hash": "tItnFxiKk5bBEWcPniJNyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.CharacterInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.CharacterInformation.html",
+          "hash": "+aOxGNNNtb4DLShLkBY/LQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.InfoUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.InfoUrls.html",
+          "hash": "VQh7etS27Qk5dnj4dS2JNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Ography.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Ography.html",
+          "hash": "HhCV5Jt7pH0KuO0HSlLrWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Related.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Related.html",
+          "hash": "dr6YnDButWxqSSnxN/8Hyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Roles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Roles.html",
+          "hash": "nVnASSRbweAUlSh+Zexz0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.SeasonData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.SeasonData.html",
+          "hash": "c0CuphjBJT2QhX5U87WlRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.SeasonShowCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.SeasonShowCollection.html",
+          "hash": "UCypHuY9ydIy6/PIBDZrJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.Seiyuu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.Seiyuu.html",
+          "hash": "+u3NYoNo/xAaSdK0fORxUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.SeiyuuInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.SeiyuuInformation.html",
+          "hash": "ymb1LUAqhvCKENHUis2mBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.UserList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.UserList.html",
+          "hash": "GBEqYxZjV7LvFD3+5sSdRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.UserListAnime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.UserListAnime.html",
+          "hash": "GmHzfxXA0NIeazRVLm/VOQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.UserListInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.UserListInformation.html",
+          "hash": "XVYZXyInWq72b3VZud24hA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Models.html",
+          "hash": "ZM6/IwqgcIsSlu/oHuTWhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.DataPushResponseWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.DataPushResponseWrapper.html",
+          "hash": "ewtu+FXcasJATfU20bKp+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.html",
+          "hash": "ccgbwvdEh8zKZKToIcwk9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.ResponseWrapperBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.ResponseWrapperBase.html",
+          "hash": "egZs0QVNC9AiWk7SCllCWg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.RetrievalWrapper-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.RetrievalWrapper-1.html",
+          "hash": "JgjnKq8jnHHfhFczzPZpuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.StringRetrievalWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.StringRetrievalWrapper.html",
+          "hash": "LNLzXsBVMc40V4iDXiUu4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.ResponseWrappers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.ResponseWrappers.html",
+          "hash": "RuS+0/RYWpMxL6YJemA4zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Workers.DataPushWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Workers.DataPushWorker.html",
+          "hash": "4BmxThm85/UCkO/t4zm52g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Workers.ListRetrievalWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Workers.ListRetrievalWorker.html",
+          "hash": "Vmk8XMV7w+Nr/FUibyllgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Workers.RequestProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Workers.RequestProcessor.html",
+          "hash": "xIDFOurvWySIflkxFPPFIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Workers.SeasonWorker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Workers.SeasonWorker.html",
+          "hash": "aTgI9w4Qq28ZCiUcl2ZEzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Workers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Workers.html",
+          "hash": "KZQXNOMt2kPmgXmsehOBRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "aIUK0Mb7YA5TojBUQQcoYg=="
+          "hash": "r0Mapm2m//NyWFYAo3YFjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "+O+c/XW0oXN7DuG3jnjCGQ=="
         }
       },
       "is_incremental": false,
@@ -21,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "VC9TpNNXaAxz4Mn8Xp6rOg=="
+          "hash": "XhoQojDoQCqz4kZg/n+D0Q=="
         }
       },
       "is_incremental": false,
@@ -56,7 +788,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "ba3bOSyFd05opMk3XNhJ+g=="
+          "hash": "uW1XeAgChWC7f1dgbCMYBw=="
         }
       },
       "is_incremental": false,
@@ -68,7 +800,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "NLOXZMyvNXhLaAbXC82Ldg=="
+          "hash": "zUEcqxeC8MmPdFio0fKEQA=="
         }
       },
       "is_incremental": false,
@@ -83,11 +815,6 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "RestApiDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
