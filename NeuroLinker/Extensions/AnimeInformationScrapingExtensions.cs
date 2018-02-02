@@ -43,10 +43,12 @@ namespace NeuroLinker.Extensions
             {
                 DateTime.TryParse(dates[0], out startDate);
             }
+
             if (dates.Length > 1)
             {
                 DateTime.TryParse(dates[1], out endDate);
             }
+
             anime.StartDate = startDate;
             anime.EndDate = endDate;
 
@@ -268,6 +270,7 @@ namespace NeuroLinker.Extensions
             {
                 charactersAndStaff = doc.GetInfoUrlFor("Characters &amp; Staff");
             }
+
             anime.AdditionalInfoUrls.CharactersAndStaff = charactersAndStaff;
 
             return anime;
@@ -452,6 +455,7 @@ namespace NeuroLinker.Extensions
                     {
                         continue;
                     }
+
                     var synopsisData = row.ChildNodes
                         .Where(t => t.Name == "#text")
                         .Select(t => t.InnerText)
@@ -492,6 +496,17 @@ namespace NeuroLinker.Extensions
                         innerNode.Attributes["href"].Value.StartsWith("https://myanimelist.net/topanime.php?type="))?
                 .InnerText.Replace("\r\n", "")
                 .Trim();
+
+            if (string.IsNullOrEmpty(anime.Type))
+            {
+                anime.Type = doc
+                    .RetrieveNodesForInnerSpan("Type")
+                    .ChildNodes
+                    .LastOrDefault(x => x.Name == "#text")
+                    ?.InnerHtml
+                    .Replace("\r\n", "")
+                    .Trim();
+            }
 
             return anime;
         }
