@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Configuration.HttpClientConfiguration.html",
-          "hash": "3n4ACPkSWubQzMmQOun7iA=="
+          "hash": "ZNa1MPauLbAZgkGHVSNUHQ=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Configuration.html",
-          "hash": "zXGKZ4YUjPFLm4FDR69CcA=="
+          "hash": "auZSbL2pYvacpe2/6e154g=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Enumerations.ConfigurationKeys.html",
-          "hash": "w0uNfz6ga91w7UoW1uUrZA=="
+          "hash": "T2endDZ2t13Z36QKhcbwaw=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Enumerations.Seasons.html",
-          "hash": "usaT9lZUca20GeWPHoIaOA=="
+          "hash": "sGBDH1NbK9qknN+pWDOpqg=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Enumerations.html",
-          "hash": "ZFsgnDRtMgx/ocGaRI0uaA=="
+          "hash": "Y9J1XM/CUpmO3HtlEu+8PQ=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.AnimeInformationScrapingExtensions.html",
-          "hash": "1/DUr53zmsMyadRb6nZgeA=="
+          "hash": "KyNXJvx7B0hXsgMLbRQH4Q=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.CharacterInformationScrapingExtensions.html",
-          "hash": "jwnZNQaGusCGOJLCyDnXzQ=="
+          "hash": "CMEadXOUD1qfWMyvx/T69g=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.CharacterPageScrapingExtensions.html",
-          "hash": "K8+2+iiveodKC6PGBnLrmA=="
+          "hash": "Nat354/hRX5i63pb2fHekQ=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.SeasonLookup.html",
-          "hash": "6ypfKuUsKq1Dn39tVn7YwQ=="
+          "hash": "zbL71lR0bifykV6dnCRf7w=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.html",
-          "hash": "ydYfI7YnAmiaU3iDV42Bdw=="
+          "hash": "fkofkMmAu8r5angAa9Mgwg=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.UserInformationScrapingExtensions.html",
-          "hash": "FEO6NuC6UfzAdvQrqLqvyg=="
+          "hash": "yC5YdbKRJFW4xLUY/JKRGQ=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.html",
-          "hash": "KHa96tlKAm/4ysdHT1pYHw=="
+          "hash": "5WfC4idhlGxk0zGL8awEVg=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Factories.HttpClientFactory.html",
-          "hash": "EtiZOp+nKevnd+49BzuYEw=="
+          "hash": "q0l5l2pNtXMeUuykyLL32w=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Factories.html",
-          "hash": "3od+EOZyoPAK3CVjvhouUg=="
+          "hash": "7TT/+V3w0Pozo1b5VYzlKg=="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Helpers.MalRouteBuilder.html",
-          "hash": "GSzL4lTXZKtBd9u/ekCJrQ=="
+          "hash": "GzacqFRwT3GN77Iu8yj8Xw=="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Helpers.PageRetriever.html",
-          "hash": "M10K0kLGrWKvY4pyTlxA6Q=="
+          "hash": "T2k4VYf7MfsSmCJID+6law=="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Helpers.Utf8StringWriter.html",
-          "hash": "zoVIknEN5RNqWi2eyxcryA=="
+          "hash": "Hm5Yg1EZ1BKDqv2NOWILxw=="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Helpers.XmlHelper.html",
-          "hash": "qa2XZoEuh7eVt28uKSliww=="
+          "hash": "UpzPGF2t0Ph0NXbwY8tPww=="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Helpers.html",
-          "hash": "j6XzNBVgG+sj/LwX9pdLWw=="
+          "hash": "2c7hLtil0CORiq2kc4Tuyg=="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration.html",
-          "hash": "Cs7iXTU9m/zan30yGt/t3A=="
+          "hash": "dxH91Yg8ZKx/SBzGjAmYeQ=="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Configuration.html",
-          "hash": "HXi3gkb409Z5BpyiJz85tw=="
+          "hash": "AiwM5dcc5mG3/D+kTqpRCQ=="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Factories.IHttpClientFactory.html",
-          "hash": "bY6QJ/vnDH1HM8S20qGOzQ=="
+          "hash": "2KSHCBysy2nL5hK6A1VQGA=="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Factories.html",
-          "hash": "yDtRzdnyjUAX/YsxGk62Ow=="
+          "hash": "0wLYmdQApCdSJMOksJTjgA=="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Helpers.IPageRetriever.html",
-          "hash": "3TVWUdxdKr6BDz0YOwao+A=="
+          "hash": "hiKA5n7lNKaFuJhtNn8iSQ=="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Helpers.IXmlHelper.html",
-          "hash": "ygVYmnEOc3zJ1njIja1yiA=="
+          "hash": "tUmajx95YZDJmzA81VOY5A=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Helpers.html",
-          "hash": "47teI0tugjd6a6v+KxxLXA=="
+          "hash": "L926GFMRAuvJKl5LXwfl7Q=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Models.IResponseData.html",
-          "hash": "vFDKiMCB9xIp6KItdCax+A=="
+          "hash": "YwblDqB1Igp+NL6qY/zMUQ=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Models.html",
-          "hash": "VEubAggFIj2dEM5MhfAzVg=="
+          "hash": "5Guvm556IDoIIiPRwnJ7tQ=="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Workers.IDataPushWorker.html",
-          "hash": "YNLQDJWVYZsvp8Ljao/PeQ=="
+          "hash": "GzpNwCttOrGcz9xByBrY9g=="
         }
       },
       "is_incremental": false,
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Workers.IListRetrievalWorker.html",
-          "hash": "8Udg/vjUE4CNcSWTvP5BZw=="
+          "hash": "a8BtBYIvAHS1E9qQMlxCvA=="
         }
       },
       "is_incremental": false,
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Workers.IRequestProcessor.html",
-          "hash": "WtBP6oOAwiHUVh5HvwELNw=="
+          "hash": "soSNmVrUE6TJGOBQNCew0g=="
         }
       },
       "is_incremental": false,
@@ -381,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Workers.ISeasonWorker.html",
-          "hash": "ynNIJO49Gib23qcfCdpgNg=="
+          "hash": "q1zMOdVBe6nz89CckVyaAg=="
         }
       },
       "is_incremental": false,
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Interfaces.Workers.html",
-          "hash": "NZ5v0don230FIM69TJkXyg=="
+          "hash": "xgrTerzNl5bv2wIN6L/+MA=="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Anime.html",
-          "hash": "D5iCH5YYgsHNFtY8NYU9MQ=="
+          "hash": "c/PWUwS7kQXzJwj5jyjDKw=="
         }
       },
       "is_incremental": false,
@@ -417,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.AnimeUpdate.html",
-          "hash": "+dT1EGQFwdI5aAuG6xsssg=="
+          "hash": "y6afbK8QHJVnD7KN6oYqdA=="
         }
       },
       "is_incremental": false,
@@ -429,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Character.html",
-          "hash": "tItnFxiKk5bBEWcPniJNyA=="
+          "hash": "+yBXmUMa2V8GiD3ygHHl2g=="
         }
       },
       "is_incremental": false,
@@ -441,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.CharacterInformation.html",
-          "hash": "+aOxGNNNtb4DLShLkBY/LQ=="
+          "hash": "S3jGbzl2tbls9giNUkiTMA=="
         }
       },
       "is_incremental": false,
@@ -453,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.InfoUrls.html",
-          "hash": "VQh7etS27Qk5dnj4dS2JNw=="
+          "hash": "RXLvXQwd68+T1bUMuGoLXw=="
         }
       },
       "is_incremental": false,
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Ography.html",
-          "hash": "HhCV5Jt7pH0KuO0HSlLrWw=="
+          "hash": "VqQBGBChjnsQRwsQNq0nXA=="
         }
       },
       "is_incremental": false,
@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Related.html",
-          "hash": "dr6YnDButWxqSSnxN/8Hyg=="
+          "hash": "YfpvikCMmU7jnBw3qmBMVQ=="
         }
       },
       "is_incremental": false,
@@ -489,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Roles.html",
-          "hash": "nVnASSRbweAUlSh+Zexz0A=="
+          "hash": "eZayLWs4yxeBGPj71674pg=="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.SeasonData.html",
-          "hash": "c0CuphjBJT2QhX5U87WlRQ=="
+          "hash": "Uf8swneqHMN7oemIHjrTPw=="
         }
       },
       "is_incremental": false,
@@ -513,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.SeasonShowCollection.html",
-          "hash": "UCypHuY9ydIy6/PIBDZrJg=="
+          "hash": "cRWh3Myj62Nj8BdR1X8r6A=="
         }
       },
       "is_incremental": false,
@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.Seiyuu.html",
-          "hash": "+u3NYoNo/xAaSdK0fORxUw=="
+          "hash": "+2PAohSKPARAhZcx+s6yTw=="
         }
       },
       "is_incremental": false,
@@ -537,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.SeiyuuInformation.html",
-          "hash": "ymb1LUAqhvCKENHUis2mBw=="
+          "hash": "Jt4eWaqdCiMyR1rUvMdNNA=="
         }
       },
       "is_incremental": false,
@@ -549,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.UserList.html",
-          "hash": "GBEqYxZjV7LvFD3+5sSdRw=="
+          "hash": "WkOApgChryso0MjBtLTjwQ=="
         }
       },
       "is_incremental": false,
@@ -561,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.UserListAnime.html",
-          "hash": "GmHzfxXA0NIeazRVLm/VOQ=="
+          "hash": "PImgzwhTsZatokI+6u3dow=="
         }
       },
       "is_incremental": false,
@@ -573,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.UserListInformation.html",
-          "hash": "XVYZXyInWq72b3VZud24hA=="
+          "hash": "5y/WMKi8VXXIYzrX13sD4w=="
         }
       },
       "is_incremental": false,
@@ -585,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Models.html",
-          "hash": "ZM6/IwqgcIsSlu/oHuTWhw=="
+          "hash": "HgpROkN4BXkU77GhJLC/Iw=="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.DataPushResponseWrapper.html",
-          "hash": "ewtu+FXcasJATfU20bKp+A=="
+          "hash": "zjPVelVYm5hREAx+nagDlA=="
         }
       },
       "is_incremental": false,
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.html",
-          "hash": "ccgbwvdEh8zKZKToIcwk9Q=="
+          "hash": "tzOeCg9u6oSfYm/6M9HOsg=="
         }
       },
       "is_incremental": false,
@@ -621,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.ResponseWrapperBase.html",
-          "hash": "egZs0QVNC9AiWk7SCllCWg=="
+          "hash": "sJzOg5paQPM941tcQW40iw=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.RetrievalWrapper-1.html",
-          "hash": "JgjnKq8jnHHfhFczzPZpuQ=="
+          "hash": "2W/SrRjlV3Gt/1v6d6hnIg=="
         }
       },
       "is_incremental": false,
@@ -645,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.StringRetrievalWrapper.html",
-          "hash": "LNLzXsBVMc40V4iDXiUu4A=="
+          "hash": "5lrkkGmEuQAhtQCHQ7yS3w=="
         }
       },
       "is_incremental": false,
@@ -657,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.ResponseWrappers.html",
-          "hash": "RuS+0/RYWpMxL6YJemA4zg=="
+          "hash": "jwXb298x1QlpNeqI/bCP/Q=="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Workers.DataPushWorker.html",
-          "hash": "4BmxThm85/UCkO/t4zm52g=="
+          "hash": "pviDqfpqo2IUNt70PQO9IA=="
         }
       },
       "is_incremental": false,
@@ -681,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Workers.ListRetrievalWorker.html",
-          "hash": "Vmk8XMV7w+Nr/FUibyllgg=="
+          "hash": "gVWridoFNYp07/VqM2yHEA=="
         }
       },
       "is_incremental": false,
@@ -693,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Workers.RequestProcessor.html",
-          "hash": "xIDFOurvWySIflkxFPPFIA=="
+          "hash": "W1yV/K3DRajTp6dRHZ7i5w=="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Workers.SeasonWorker.html",
-          "hash": "aTgI9w4Qq28ZCiUcl2ZEzg=="
+          "hash": "i2OJVTYuAJm39C15u3H2cg=="
         }
       },
       "is_incremental": false,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Workers.html",
-          "hash": "KZQXNOMt2kPmgXmsehOBRQ=="
+          "hash": "4Uv4B/uIVos1uPzItis9hA=="
         }
       },
       "is_incremental": false,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "r0Mapm2m//NyWFYAo3YFjg=="
+          "hash": "YIzOXoZAYpSJjo/j0I6zLw=="
         }
       },
       "is_incremental": false,
@@ -753,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "XhoQojDoQCqz4kZg/n+D0Q=="
+          "hash": "izxwpvHd0El9MdJ08IsHgA=="
         }
       },
       "is_incremental": false,
@@ -788,7 +788,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "uW1XeAgChWC7f1dgbCMYBw=="
+          "hash": "zVDR8XeglSpNGq8U2qDe5A=="
         }
       },
       "is_incremental": false,
@@ -815,17 +815,17 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "TocDocumentProcessor": {
