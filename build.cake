@@ -187,7 +187,7 @@ Task ("Push")
 Task ("Documentation")
 	.Does (() => {
 		//DocFxBuild("docfx_project/docfx.json");
-		var tool = "./tools/docfx.console/docfx.console/tools/docfx.exe";
+		var tool = "./tools/docfx.console.2.30.0/tools/docfx.exe";
 		StartProcess(tool, new ProcessSettings{Arguments = "docfx_project/docfx.json"});
 
 
