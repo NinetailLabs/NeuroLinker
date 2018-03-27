@@ -119,18 +119,19 @@ namespace NeuroLinker.Tests.Extensions
             sut.Type.Should().Be(expectedType);
         }
 
-        [Test]
-        public void ClassificationIsRetrievedCorrectly()
+        [TestCase("11757.html", "PG-13 - Teens 13 or older")]
+        [TestCase("34599.html", "R - 17+ (violence & profanity)")]
+        public void ClassificationIsRetrievedCorrectly(string page, string expectedValue)
         {
             // arrange
-            var fixture = new PageScrapingLogicFixture();
+            var fixture = new PageScrapingLogicFixture(page);
             var sut = fixture.Instance;
 
             // act
             sut.RetrieveRating(fixture.Document);
 
             // assert
-            sut.Classification.Should().Be("PG-13 - Teens 13 or older");
+            sut.Classification.Should().Be(expectedValue);
         }
 
         [Test]

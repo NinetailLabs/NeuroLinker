@@ -360,14 +360,15 @@ namespace NeuroLinker.Extensions
                 .RetrieveNodesForInnerSpan("Rating")
                 .InnerText.Replace("\r\n", "");
 
-            anime.Classification = Regex
-                .Split(txt, ":")
-                .Last()
-                .Trim()
-                .Replace("Rating:", "")
-                .Replace("Rating:", "")
-                .Trim(Environment.NewLine.ToCharArray())
-                .Trim();
+            anime.Classification = HttpUtility.HtmlDecode(
+                Regex
+                    .Split(txt, ":")
+                    .Last()
+                    .Trim()
+                    .Replace("Rating:", "")
+                    .Replace("Rating:", "")
+                    .Trim(Environment.NewLine.ToCharArray())
+                    .Trim());
 
             return anime;
         }
