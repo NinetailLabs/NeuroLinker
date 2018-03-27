@@ -186,10 +186,9 @@ Task ("Push")
 
 Task ("Documentation")
 	.Does (() => {
-		//DocFxBuild("docfx_project/docfx.json");
-		var tool = "./tools/docfx.console.2.30.0/tools/docfx.exe";
+		GitReset(".", GitResetMode.Hard);
+		var tool = Context.Tools.Resolve("docfx.exe");
 		StartProcess(tool, new ProcessSettings{Arguments = "docfx_project/docfx.json"});
-
 
 		if(buildType != "master")
 		{
