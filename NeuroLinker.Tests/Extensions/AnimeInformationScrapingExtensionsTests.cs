@@ -159,7 +159,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveFavotireCount(fixture.Document);
 
             // assert
-            sut.FavoriteCount.Should().Be(47544);
+            sut.FavoriteCount.Should().Be(50373);
         }
 
         [Test]
@@ -214,7 +214,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveMemberCount(fixture.Document);
 
             // assert
-            sut.MemberCount.Should().Be(1178885);
+            sut.MemberCount.Should().Be(1318097);
         }
 
         [Test]
@@ -242,7 +242,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveRank(fixture.Document);
 
             // assert
-            sut.Rank.Should().Be(1112);
+            sut.Rank.Should().Be(1283);
         }
 
         [TestCase("11757.html")]
@@ -294,7 +294,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveScore(fixture.Document);
 
             // assert
-            sut.MemberScore.Should().Be(7.69);
+            sut.MemberScore.Should().Be(7.63);
         }
 
         [Test]

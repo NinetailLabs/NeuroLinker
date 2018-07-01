@@ -105,12 +105,11 @@ namespace NeuroLinker.Extensions
         public static Anime RetrieveAnimeId(this Anime anime, HtmlDocument doc)
         {
             var idString = doc.DocumentNode
-                .SelectSingleNode("//input[@type='hidden' and @name='aid']")
+                .SelectSingleNode("//input[@type='hidden' and @id='myinfo_anime_id']")
                 .Attributes["value"]
                 .Value;
 
-            int aid;
-            if (int.TryParse(idString, out aid))
+            if (int.TryParse(idString, out var aid))
             {
                 anime.Id = aid;
             }
