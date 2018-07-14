@@ -604,6 +604,12 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveWebsite
   nameWithType: SeiyuuPageScraperExtensions.RetrieveWebsite
+- uid: NeuroLinker.Extensions.StringExtensions
+  name: StringExtensions
+  href: api/NeuroLinker.Extensions.StringExtensions.html
+  commentId: T:NeuroLinker.Extensions.StringExtensions
+  fullName: NeuroLinker.Extensions.StringExtensions
+  nameWithType: StringExtensions
 - uid: NeuroLinker.Extensions.UserInformationScrapingExtensions
   name: UserInformationScrapingExtensions
   href: api/NeuroLinker.Extensions.UserInformationScrapingExtensions.html

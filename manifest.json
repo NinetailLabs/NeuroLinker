@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.AnimeInformationScrapingExtensions.html",
-          "hash": "RrC0oYmjlcbDdOK2sgTm9Q=="
+          "hash": "fi9SNn9q9cLdaut7wzQxKQ=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.CharacterPageScrapingExtensions.html",
-          "hash": "d1bywYO9SSUQaLeWSjrv9g=="
+          "hash": "3MCG23ig0fwmeBDOa8YuNw=="
         }
       },
       "is_incremental": false,
@@ -125,11 +125,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NeuroLinker.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NeuroLinker.Extensions.StringExtensions.html",
+          "hash": "A9606XPqT5SRjtEdhs7QaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NeuroLinker.Extensions.UserInformationScrapingExtensions.yml",
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.UserInformationScrapingExtensions.html",
-          "hash": "WH3tsw2yQKPE94WKq5ZWkw=="
+          "hash": "mOkv3hUrZEUA0QJPGd5ndQ=="
         }
       },
       "is_incremental": false,
@@ -141,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/NeuroLinker.Extensions.html",
-          "hash": "YCXQnVgsEZW/IeDqUWCLsw=="
+          "hash": "MRWA0uH46DHilNx9J3hfog=="
         }
       },
       "is_incremental": false,
@@ -741,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "+O+c/XW0oXN7DuG3jnjCGQ=="
+          "hash": "odjY7EWO3Y3ERHIx6YhEnA=="
         }
       },
       "is_incremental": false,
