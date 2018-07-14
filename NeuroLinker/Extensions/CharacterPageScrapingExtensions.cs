@@ -56,6 +56,7 @@ namespace NeuroLinker.Extensions
                 var tmpText = item.InnerText.Replace("\r\n", "").Trim();
                 sBuilder.Append($"{tmpText} ");
             }
+
             if (spoilerData.Count > 0)
             {
                 sBuilder.Append(" <SPOILER>");
@@ -63,9 +64,11 @@ namespace NeuroLinker.Extensions
                 {
                     sBuilder.Append($"{spoiler.InnerText.Replace("<!--spoiler-->", "")} ");
                 }
+
                 sBuilder.Append("</SPOILER>");
             }
-            character.Biography = sBuilder.ToString().Trim();
+
+            character.Biography = sBuilder.ToString().Trim().HtmlDecode();
 
             return character;
         }
@@ -101,7 +104,8 @@ namespace NeuroLinker.Extensions
             character.Name = doc.DocumentNode
                 .SelectNodes("//div[@class='normal_header']")
                 .ToList()[2]
-                .InnerText;
+                .InnerText
+                .HtmlDecode();
 
             return character;
         }
@@ -126,8 +130,7 @@ namespace NeuroLinker.Extensions
                 .Replace(",", "")
                 .Trim();
 
-            int memberCount;
-            if (int.TryParse(count, out memberCount))
+            if (int.TryParse(count, out var memberCount))
             {
                 character.FavoriteCount = memberCount;
             }
@@ -183,15 +186,15 @@ namespace NeuroLinker.Extensions
 
                 seiyuu.Name = info[1]
                     .ChildNodes["a"]
-                    .InnerText;
+                    .InnerText
+                    .HtmlDecode();
 
                 seiyuu.Url = MalRouteBuilder.MalCleanUrl(info[1]
                     .ChildNodes["a"]
                     .Attributes["href"]
                     .Value);
 
-                int id;
-                if (int.TryParse(seiyuu.Url.Split('/')[4], out id))
+                if (int.TryParse(seiyuu.Url.Split('/')[4], out var id))
                 {
                     seiyuu.Id = id;
                 }
@@ -252,12 +255,12 @@ namespace NeuroLinker.Extensions
                     .FirstChild;
 
                 tmpEntry.Url = MalRouteBuilder.MalCleanUrl(details.Attributes["href"].Value);
-                tmpEntry.Name = details.InnerText;
-                int id;
-                if (int.TryParse(tmpEntry.Url.Split('/')[4], out id))
+                tmpEntry.Name = details.InnerText.HtmlDecode();
+                if (int.TryParse(tmpEntry.Url.Split('/')[4], out var id))
                 {
                     tmpEntry.Id = id;
                 }
+
                 results.Add(tmpEntry);
             }
 

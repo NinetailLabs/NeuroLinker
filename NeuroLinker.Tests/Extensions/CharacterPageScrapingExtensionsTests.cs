@@ -26,7 +26,9 @@ namespace NeuroLinker.Tests.Extensions
             // assert
             var sao = sut.Animeography.First();
             sao.Id.Should().Be(11757);
-            sao.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/r/23x32/images/anime/11/39717.webp?s=9a77a024d5915d53e853920dd437c37b");
+            sao.ImageUrl.Should()
+                .Be(
+                    "https://myanimelist.cdn-dena.com/r/23x32/images/anime/11/39717.webp?s=9a77a024d5915d53e853920dd437c37b");
             sao.Name.Should().Be("Sword Art Online");
             sao.Url.Should().Be("https://myanimelist.net/anime/11757/Sword_Art_Online");
         }
@@ -42,7 +44,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveBiography(fixture.Document);
 
             // assert
-            sut.Biography.Should().Be(Biography);
+            sut.Biography.Should().Be(Biography.HtmlDecode());
         }
 
         [Test]
@@ -142,7 +144,9 @@ namespace NeuroLinker.Tests.Extensions
             // assert
             var sao = sut.Mangaography.First();
             sao.Id.Should().Be(21479);
-            sao.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/r/23x32/images/manga/1/34697.webp?s=96f6203aa05d6a2742fc7ea02107f9af");
+            sao.ImageUrl.Should()
+                .Be(
+                    "https://myanimelist.cdn-dena.com/r/23x32/images/manga/1/34697.webp?s=96f6203aa05d6a2742fc7ea02107f9af");
             sao.Name.Should().Be("Sword Art Online");
             sao.Url.Should().Be("https://myanimelist.net/manga/21479/Sword_Art_Online");
         }

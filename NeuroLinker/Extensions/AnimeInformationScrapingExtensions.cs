@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace NeuroLinker.Extensions
 {
@@ -87,7 +86,7 @@ namespace NeuroLinker.Extensions
                     titleNode.Select(title => title.InnerText.Replace("\r\n", "").Trim())
                         .Where(jTitle => !string.IsNullOrEmpty(jTitle)))
                 {
-                    titles.AddRange(title.Split(',').Select(t => t.Trim()));
+                    titles.AddRange(title.Split(',').Select(t => t.Trim().HtmlDecode()));
                 }
 
                 anime.OtherTitles[lang].AddRange(titles);
@@ -128,7 +127,8 @@ namespace NeuroLinker.Extensions
             anime.Title = doc.DocumentNode
                 .SelectSingleNode("//h1")
                 .SelectSingleNode("//span[@itemprop='name']")
-                .InnerText;
+                .InnerText
+                .HtmlDecode();
 
             return anime;
         }
@@ -155,8 +155,7 @@ namespace NeuroLinker.Extensions
                 return anime;
             }
 
-            int eps;
-            int.TryParse(epString, out eps);
+            int.TryParse(epString, out var eps);
             if (eps == 0)
             {
                 epString = node.ChildNodes[2].InnerText.Replace("\r\n", "").Trim();
@@ -183,8 +182,7 @@ namespace NeuroLinker.Extensions
                 .Select(x => x.InnerText.Replace("\r\n", "").Trim().Replace(",", ""))
                 .FirstOrDefault(x => !string.IsNullOrEmpty(x));
 
-            int favorites;
-            if (int.TryParse(favoriteString, out favorites))
+            if (int.TryParse(favoriteString, out var favorites))
             {
                 anime.FavoriteCount = favorites;
             }
@@ -205,7 +203,7 @@ namespace NeuroLinker.Extensions
                 .ChildNodes
                 .Where(t => t.Name == "a")
                 .ToList()
-                .ForEach(x => anime.Genres.Add(x.InnerText));
+                .ForEach(x => anime.Genres.Add(x.InnerText.HtmlDecode()));
 
             return anime;
         }
@@ -290,8 +288,7 @@ namespace NeuroLinker.Extensions
                 .Select(x => x.InnerText.Replace("\r\n", "").Trim().Replace(",", ""))
                 .FirstOrDefault(x => !string.IsNullOrEmpty(x));
 
-            int members;
-            if (int.TryParse(memberCountString, out members))
+            if (int.TryParse(memberCountString, out var members))
             {
                 anime.MemberCount = members;
             }
@@ -314,8 +311,7 @@ namespace NeuroLinker.Extensions
                 .Select(x => x.InnerText.Trim().TrimStart('#'))
                 .FirstOrDefault(x => !string.IsNullOrEmpty(x));
 
-            int popularity;
-            if (int.TryParse(popNodes, out popularity))
+            if (int.TryParse(popNodes, out var popularity))
             {
                 anime.Popularity = popularity;
             }
@@ -338,8 +334,7 @@ namespace NeuroLinker.Extensions
                 .Select(x => x.InnerText.Replace("\r\n", "").Trim().TrimStart('#'))
                 .FirstOrDefault(x => !string.IsNullOrEmpty(x));
 
-            int rank;
-            if (int.TryParse(rankString, out rank))
+            if (int.TryParse(rankString, out var rank))
             {
                 anime.Rank = rank;
             }
@@ -359,7 +354,7 @@ namespace NeuroLinker.Extensions
                 .RetrieveNodesForInnerSpan("Rating")
                 .InnerText.Replace("\r\n", "");
 
-            anime.Classification = HttpUtility.HtmlDecode(
+            anime.Classification =
                 Regex
                     .Split(txt, ":")
                     .Last()
@@ -367,7 +362,8 @@ namespace NeuroLinker.Extensions
                     .Replace("Rating:", "")
                     .Replace("Rating:", "")
                     .Trim(Environment.NewLine.ToCharArray())
-                    .Trim());
+                    .Trim()
+                    .HtmlDecode();
 
             return anime;
         }
@@ -405,8 +401,7 @@ namespace NeuroLinker.Extensions
                 ? scoreNode[0].InnerText
                 : node.ChildNodes["#text"].InnerText;
 
-            double scoreVal;
-            if (double.TryParse(scoreString, NumberStyles.Any, CultureInfo.InvariantCulture, out scoreVal))
+            if (double.TryParse(scoreString, NumberStyles.Any, CultureInfo.InvariantCulture, out var scoreVal))
             {
                 anime.MemberScore = scoreVal;
             }
@@ -427,7 +422,8 @@ namespace NeuroLinker.Extensions
                 .ChildNodes
                 .Where(t => t.Name == "#text")
                 .Select(t => t.InnerText.Replace("\r\n", "").Trim())
-                .FirstOrDefault(x => !string.IsNullOrEmpty(x));
+                .FirstOrDefault(x => !string.IsNullOrEmpty(x))
+                .HtmlDecode();
 
             return anime;
         }
@@ -467,8 +463,8 @@ namespace NeuroLinker.Extensions
 
             synopsis = synopsis
                 .TrimStart("\r\n".ToCharArray())
-                .Trim();
-            synopsis = HttpUtility.HtmlDecode(synopsis);
+                .Trim()
+                .HtmlDecode();
             if (!synopsis.Contains("\r\n") && synopsis.Contains("\n"))
             {
                 synopsis = synopsis.Replace("\n", "\r\n");
@@ -505,7 +501,8 @@ namespace NeuroLinker.Extensions
                     .LastOrDefault(x => x.Name == "#text")
                     ?.InnerHtml
                     .Replace("\r\n", "")
-                    .Trim();
+                    .Trim()
+                    .HtmlDecode();
             }
 
             return anime;
@@ -550,8 +547,7 @@ namespace NeuroLinker.Extensions
             foreach (var link in linkNodes)
             {
                 var url = MalRouteBuilder.MalCleanUrl(link.Attributes["href"].Value);
-                int id;
-                int.TryParse(url.Split('/')[4], out id);
+                int.TryParse(url.Split('/')[4], out var id);
 
                 relatedShows.Add(new Related
                 {
