@@ -49,6 +49,7 @@
     <Compile Include="Extensions\CharacterInformationScrapingExtensions.cs" />
     <Compile Include="Extensions\CharacterPageScrapingExtensions.cs" />
     <Compile Include="Extensions\SeiyuuPageScraperExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Factories\HttpClientFactory.cs" />
     <Compile Include="Interfaces\Configuration\IHttpClientConfiguration.cs" />
     <Compile Include="Interfaces\Helpers\IXmlHelper.cs" />

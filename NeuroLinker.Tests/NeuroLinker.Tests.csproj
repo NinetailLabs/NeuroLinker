@@ -46,6 +46,7 @@
     <Compile Include="Extensions\CharacterInformationScrapingExtensionsTests.cs" />
     <Compile Include="Extensions\CharacterPageScrapingExtensionsTests.cs" />
     <Compile Include="Extensions\SeiyuuPageScraperExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Factories\HttpClientFactoryTest.cs" />
     <Compile Include="TestHelpers\ApplicationConfigurationHelper.cs" />
     <Compile Include="Workers\DataPushWorkerTests.cs" />

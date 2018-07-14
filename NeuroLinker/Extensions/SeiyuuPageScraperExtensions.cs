@@ -57,8 +57,8 @@ namespace NeuroLinker.Extensions
                 {
                     sb.Append($"{entry},");
                 }
-
             }
+
             if (!string.IsNullOrEmpty(sb.ToString()))
             {
                 seiyuu.More.Add(sb.ToString().TrimEnd(','));
@@ -168,7 +168,7 @@ namespace NeuroLinker.Extensions
 
                 var role = CreateRoleAndPopulateWithAnimeInformation(cells)
                     .PopulateRoleWithCharacterInformation(cells);
-                
+
                 seiyuu.Roles.Add(role);
             }
 
@@ -183,7 +183,7 @@ namespace NeuroLinker.Extensions
         /// <returns>Seiyuu instance</returns>
         public static Seiyuu RetrieveWebsite(this Seiyuu seiyuu, HtmlDocument doc)
         {
-           seiyuu.Website = doc
+            seiyuu.Website = doc
                 .DocumentNode
                 .SelectNodes("//span")
                 .FirstOrDefault(x => x.InnerText == "Website:")
@@ -240,24 +240,25 @@ namespace NeuroLinker.Extensions
         private static Roles PopulateRoleWithCharacterInformation(this Roles role, IReadOnlyList<HtmlNode> roleNodes)
         {
             role.CharacterName = roleNodes[2]
-                    .ChildNodes["a"]
-                    .InnerText
-                    .Trim();
+                .ChildNodes["a"]
+                .InnerText
+                .Trim()
+                .HtmlDecode();
 
             role.CharacterUrl = MalRouteBuilder.MalCleanUrl(roleNodes[2]
                 .ChildNodes["a"]
                 .Attributes["href"]
                 .Value);
 
-            int id;
-            int.TryParse(role.CharacterUrl.Split('/')[4], out id);
+            int.TryParse(role.CharacterUrl.Split('/')[4], out var id);
             role.CharacterId = id;
 
             role.RoleType = roleNodes[2]
                 .ChildNodes["div"]
                 .InnerText
                 .Replace("&nbsp;", "")
-                .Trim();
+                .Trim()
+                .HtmlDecode();
 
             var charImage = roleNodes[3]
                 .ChildNodes["div"]

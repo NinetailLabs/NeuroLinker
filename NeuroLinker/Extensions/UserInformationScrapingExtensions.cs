@@ -23,11 +23,11 @@ namespace NeuroLinker.Extensions
                 .SelectSingleNode("//input[@type='text' and @name='myinfo_watchedeps']")
                 .Attributes["value"]
                 .Value;
-            int episodeWatched;
-            if (int.TryParse(episodeNode, out episodeWatched))
+            if (int.TryParse(episodeNode, out var episodeWatched))
             {
                 anime.UserWatchedEpisodes = episodeWatched;
             }
+
             return anime;
         }
 
@@ -46,8 +46,7 @@ namespace NeuroLinker.Extensions
                 ?.Attributes["value"]
                 .Value;
 
-            int userScore;
-            if (int.TryParse(scoreNode, out userScore))
+            if (int.TryParse(scoreNode, out var userScore))
             {
                 anime.UserScore = userScore;
             }
