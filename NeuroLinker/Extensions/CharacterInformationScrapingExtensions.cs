@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 using NeuroLinker.Helpers;
@@ -68,7 +69,12 @@ namespace NeuroLinker.Extensions
                 CharacterPicture = (picLocation.Attributes["data-src"] ?? picLocation.Attributes["src"])?.Value,
                 CharacterName = nodes[1].ChildNodes["a"].InnerText.HtmlDecode(),
                 CharacterUrl = url,
-                CharacterType = nodes[1].ChildNodes["div"].InnerText.Replace("\r\n", "").Replace(" ", "").HtmlDecode(),
+                CharacterType = nodes[1]
+                    .ChildNodes["div"]
+                    .InnerText
+                    .Replace(Environment.NewLine, "")
+                    .Replace(" ", "")
+                    .HtmlDecode(),
                 Id = id
             };
         }
