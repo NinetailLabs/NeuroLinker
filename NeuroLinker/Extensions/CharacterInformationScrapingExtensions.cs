@@ -72,7 +72,8 @@ namespace NeuroLinker.Extensions
                 CharacterType = nodes[1]
                     .ChildNodes["div"]
                     .InnerText
-                    .Replace(Environment.NewLine, "")
+                    .Replace("\r\n", "")
+                    .Replace("\n", "")
                     .Replace(" ", "")
                     .HtmlDecode(),
                 Id = id
