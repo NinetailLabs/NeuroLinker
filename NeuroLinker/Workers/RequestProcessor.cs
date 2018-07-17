@@ -53,6 +53,7 @@ namespace NeuroLinker.Workers
                 {
                     throw characterResponse.Exception;
                 }
+
                 var characterDoc = characterResponse.Document;
 
                 character
@@ -94,6 +95,7 @@ namespace NeuroLinker.Workers
                 {
                     throw seiyuuResponse.Exception;
                 }
+
                 var seiyuuDoc = seiyuuResponse.Document;
 
                 seiyuu

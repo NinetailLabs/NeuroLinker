@@ -44,7 +44,8 @@ Task ("Default")
 	.IsDependentOn ("GenerateReleaseNotes")
 	.IsDependentOn ("NugetPack")
 	.IsDependentOn ("NugetPush")
-	.IsDependentOn ("Documentation");
+	.IsDependentOn ("Documentation")
+	.IsDependentOn ("FailBuildIfTestFailed");
 
 #endregion
 
