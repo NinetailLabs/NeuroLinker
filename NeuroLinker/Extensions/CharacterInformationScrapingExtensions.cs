@@ -60,7 +60,7 @@ namespace NeuroLinker.Extensions
                 .ChildNodes["a"]
                 .ChildNodes["img"];
 
-            var url = MalRouteBuilder.MalCleanUrl(nodes[1].ChildNodes["a"].Attributes["href"].Value);
+            var url = nodes[1].ChildNodes["a"].Attributes["href"].Value;
             int.TryParse(url.Split('/')[4], out var id);
 
             return new CharacterInformation
@@ -68,7 +68,7 @@ namespace NeuroLinker.Extensions
                 CharacterPicture = (picLocation.Attributes["data-src"] ?? picLocation.Attributes["src"])?.Value,
                 CharacterName = nodes[1].ChildNodes["a"].InnerText.HtmlDecode(),
                 CharacterUrl = url,
-                CharacterType = nodes[1].ChildNodes["div"].InnerText.HtmlDecode(),
+                CharacterType = nodes[1].ChildNodes["div"].InnerText.Replace("\r\n", "").Replace(" ", "").HtmlDecode(),
                 Id = id
             };
         }
@@ -93,7 +93,7 @@ namespace NeuroLinker.Extensions
                 {
                     Language = detail.ChildNodes["td"].ChildNodes["small"].InnerText,
                     Name = detail.ChildNodes["td"].ChildNodes["a"].InnerText.HtmlDecode(),
-                    Url = MalRouteBuilder.MalCleanUrl(detail.ChildNodes["td"].ChildNodes["a"].Attributes["href"].Value),
+                    Url = detail.ChildNodes["td"].ChildNodes["a"].Attributes["href"].Value,
                     PictureUrl = (picNode.Attributes["data-src"] ?? picNode.Attributes["src"])?.Value
                 };
 
