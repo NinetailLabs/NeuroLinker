@@ -1085,6 +1085,19 @@ references:
   commentId: T:NeuroLinker.Interfaces.Models.IResponseData
   fullName: NeuroLinker.Interfaces.Models.IResponseData
   nameWithType: IResponseData
+- uid: NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured
+  name: ErrorOccured
+  href: api/NeuroLinker.Interfaces.Models.IResponseData.html#NeuroLinker_Interfaces_Models_IResponseData_ErrorOccured
+  commentId: P:NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured
+  fullName: NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured
+  nameWithType: IResponseData.ErrorOccured
+- uid: NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured*
+  name: ErrorOccured
+  href: api/NeuroLinker.Interfaces.Models.IResponseData.html#NeuroLinker_Interfaces_Models_IResponseData_ErrorOccured_
+  commentId: Overload:NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured
+  isSpec: "True"
+  fullName: NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured
+  nameWithType: IResponseData.ErrorOccured
 - uid: NeuroLinker.Interfaces.Workers
   name: NeuroLinker.Interfaces.Workers
   href: api/NeuroLinker.Interfaces.Workers.html
@@ -2643,6 +2656,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Models.SeasonShowCollection.SeasonShowCollection
   nameWithType: SeasonShowCollection.SeasonShowCollection
+- uid: NeuroLinker.Models.SeasonShowCollection.ErrorOccured
+  name: ErrorOccured
+  href: api/NeuroLinker.Models.SeasonShowCollection.html#NeuroLinker_Models_SeasonShowCollection_ErrorOccured
+  commentId: P:NeuroLinker.Models.SeasonShowCollection.ErrorOccured
+  fullName: NeuroLinker.Models.SeasonShowCollection.ErrorOccured
+  nameWithType: SeasonShowCollection.ErrorOccured
+- uid: NeuroLinker.Models.SeasonShowCollection.ErrorOccured*
+  name: ErrorOccured
+  href: api/NeuroLinker.Models.SeasonShowCollection.html#NeuroLinker_Models_SeasonShowCollection_ErrorOccured_
+  commentId: Overload:NeuroLinker.Models.SeasonShowCollection.ErrorOccured
+  isSpec: "True"
+  fullName: NeuroLinker.Models.SeasonShowCollection.ErrorOccured
+  nameWithType: SeasonShowCollection.ErrorOccured
 - uid: NeuroLinker.Models.SeasonShowCollection.SeasonShows
   name: SeasonShows
   href: api/NeuroLinker.Models.SeasonShowCollection.html#NeuroLinker_Models_SeasonShowCollection_SeasonShows
