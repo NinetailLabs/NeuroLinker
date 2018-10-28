@@ -15,12 +15,16 @@ namespace NeuroLinker.Models
         /// </summary>
         public SeasonShowCollection()
         {
+            ErrorOccured = false;
             SeasonShows = new List<SeasonData>();
         }
 
         #endregion
 
         #region Properties
+
+        /// <inheritdoc />
+        public bool ErrorOccured { get; set; }
 
         /// <summary>
         /// Collection of shows for season
