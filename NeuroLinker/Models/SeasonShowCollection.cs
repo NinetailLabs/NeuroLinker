@@ -15,7 +15,7 @@ namespace NeuroLinker.Models
         /// </summary>
         public SeasonShowCollection()
         {
-            ErrorOccured = false,
+            ErrorOccured = false;
             SeasonShows = new List<SeasonData>();
         }
 
