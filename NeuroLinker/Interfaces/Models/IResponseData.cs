@@ -5,5 +5,13 @@
     /// </summary>
     public interface IResponseData
     {
+        #region Properties
+
+        /// <summary>
+        /// Indicates if an error occured during the data retrieval of the entry
+        /// </summary>
+        bool ErrorOccured { get; set; }
+
+        #endregion
     }
 }
