@@ -86,7 +86,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveAnimeography(fixture.Document);
 
             // assert
-            sut.Animeography.Count.Should().Be(8);
+            sut.Animeography.Count.Should().Be(10);
         }
 
         [Test]
@@ -114,7 +114,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveSeiyuu(fixture.Document);
 
             // assert
-            sut.Seiyuu.Count.Should().Be(9);
+            sut.Seiyuu.Count.Should().Be(10);
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveFavoriteCount(fixture.Document);
 
             // assert
-            sut.FavoriteCount.Should().Be(14152);
+            sut.FavoriteCount.Should().Be(18885);
         }
 
         [Test]

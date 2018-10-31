@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
-using NeuroLinker.Helpers;
 using NeuroLinker.Models;
 
 namespace NeuroLinker.Extensions
@@ -189,10 +188,10 @@ namespace NeuroLinker.Extensions
                     .InnerText
                     .HtmlDecode();
 
-                seiyuu.Url = MalRouteBuilder.MalCleanUrl(info[1]
+                seiyuu.Url = info[1]
                     .ChildNodes["a"]
                     .Attributes["href"]
-                    .Value);
+                    .Value;
 
                 if (int.TryParse(seiyuu.Url.Split('/')[4], out var id))
                 {
@@ -210,7 +209,7 @@ namespace NeuroLinker.Extensions
         #region Private Methods
 
         /// <summary>
-        /// Return tables that contain anime and manga ography
+        /// Return tables that contain anime- and mangaography
         /// </summary>
         /// <param name="doc">Html document from which data should be pulled</param>
         /// <returns>Tables that contain Ography data</returns>
@@ -251,10 +250,11 @@ namespace NeuroLinker.Extensions
                     .Value;
 
                 var details = cells
-                    .First(x => x.FirstChild.Name == "a")
-                    .FirstChild;
+                    .First(x => x.Name == "td" && x.FirstChild.Name == "#text")
+                    .ChildNodes
+                    .First(x => x.Name == "a");
 
-                tmpEntry.Url = MalRouteBuilder.MalCleanUrl(details.Attributes["href"].Value);
+                tmpEntry.Url = details.Attributes["href"].Value;
                 tmpEntry.Name = details.InnerText.HtmlDecode();
                 if (int.TryParse(tmpEntry.Url.Split('/')[4], out var id))
                 {
