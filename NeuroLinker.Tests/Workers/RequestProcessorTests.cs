@@ -259,7 +259,7 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.GetAnime(animeId).Result;
 
             // assert
-            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)),
+            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(animeId)),
                 Times.Once);
             result.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
             result.Success.Should().BeTrue();
@@ -294,7 +294,7 @@ namespace NeuroLinker.Tests.Workers
             var result = sut.GetAnime(animeId, user, pass).Result;
 
             // assert
-            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(animeId)),
+            fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(animeId)),
                 Times.Once);
             result.ResponseData.UserScore.Should().Be(10);
             result.ResponseData.UserWatchedEpisodes.Should().Be(25);
@@ -351,7 +351,7 @@ namespace NeuroLinker.Tests.Workers
                 }
 
                 PageRetrieverMock
-                    .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(malId)))
+                    .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(malId)))
                     .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, characterDocument));
             }
 

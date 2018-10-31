@@ -178,7 +178,7 @@ namespace NeuroLinker.Workers
                     ? _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id))
                     : _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(id), loginDetails.Item1,
                         loginDetails.Item2);
-                var characterTask = _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(id));
+                var characterTask = _pageRetriever.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(id));
 
                 var animeResponse = await animePageTask;
                 if (animeResponse.ResponseStatusCode == null)
