@@ -737,6 +737,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Helpers.MalRouteBuilder.AdjustRoot
   nameWithType: MalRouteBuilder.AdjustRoot
+- uid: NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl(System.Int32)
+  name: AnimeCastUrl(Int32)
+  href: api/NeuroLinker.Helpers.MalRouteBuilder.html#NeuroLinker_Helpers_MalRouteBuilder_AnimeCastUrl_System_Int32_
+  commentId: M:NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl(System.Int32)
+  fullName: NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl(System.Int32)
+  nameWithType: MalRouteBuilder.AnimeCastUrl(Int32)
+- uid: NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl*
+  name: AnimeCastUrl
+  href: api/NeuroLinker.Helpers.MalRouteBuilder.html#NeuroLinker_Helpers_MalRouteBuilder_AnimeCastUrl_
+  commentId: Overload:NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl
+  isSpec: "True"
+  fullName: NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl
+  nameWithType: MalRouteBuilder.AnimeCastUrl
 - uid: NeuroLinker.Helpers.MalRouteBuilder.AnimeCharacterUrl(System.Int32)
   name: AnimeCharacterUrl(Int32)
   href: api/NeuroLinker.Helpers.MalRouteBuilder.html#NeuroLinker_Helpers_MalRouteBuilder_AnimeCharacterUrl_System_Int32_
