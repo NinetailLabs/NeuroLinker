@@ -56,7 +56,7 @@ namespace NeuroLinker.Extensions
                 sBuilder.Append($"{tmpText} ");
             }
 
-            if (spoilerData.Count > 0)
+            if (spoilerData?.Count > 0)
             {
                 sBuilder.Append(" <SPOILER>");
                 foreach (var spoiler in spoilerData)
@@ -250,7 +250,7 @@ namespace NeuroLinker.Extensions
                     .Value;
 
                 var details = cells
-                    .First(x => x.Name == "td" && x.FirstChild.Name == "#text")
+                    .First(x => x.Name == "td" && (x.FirstChild.Name == "#text" || x.FirstChild.Name == "a"))
                     .ChildNodes
                     .First(x => x.Name == "a");
 

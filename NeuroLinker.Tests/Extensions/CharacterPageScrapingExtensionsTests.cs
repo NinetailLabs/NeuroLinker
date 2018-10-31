@@ -187,10 +187,11 @@ namespace NeuroLinker.Tests.Extensions
                 Document = new HtmlDocument();
                 var path = AppDomain.CurrentDomain.BaseDirectory;
                 var examplePath = Path.Combine(path, "PageExamples", "36828.html");
-                using (var htmlFile = File.Open(examplePath, FileMode.Open))
-                {
-                    Document.Load(htmlFile);
-                }
+                Document.Load(examplePath);
+                //using (var htmlFile = File.Open(examplePath, FileMode.Open))
+                //{
+                //    Document.Load();
+                //}
 
                 Instance = new Character();
             }
