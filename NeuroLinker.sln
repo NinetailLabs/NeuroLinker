@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLinker", "NeuroLinker\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLinker.Tests", "NeuroLinker.Tests\NeuroLinker.Tests.csproj", "{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuroLinker.Runner", "NeuroLinker.Runner\NeuroLinker.Runner.csproj", "{26981975-757C-41E5-9D1A-EEE8B548084F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,15 @@ Global
 		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{800EEDCA-CFC6-44DF-951C-6F09D4F6D9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26981975-757C-41E5-9D1A-EEE8B548084F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26981975-757C-41E5-9D1A-EEE8B548084F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26981975-757C-41E5-9D1A-EEE8B548084F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26981975-757C-41E5-9D1A-EEE8B548084F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC6D4424-1B50-474C-A01F-1C358D762294}
 	EndGlobalSection
 EndGlobal
