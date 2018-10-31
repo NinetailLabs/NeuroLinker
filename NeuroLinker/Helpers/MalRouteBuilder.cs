@@ -31,8 +31,15 @@ namespace NeuroLinker.Helpers
         /// Get url for retrieving an Anime's cast
         /// </summary>
         /// <param name="id">MAL Id</param>
+        /// <returns>Anime cast URL</returns>
+        public static string AnimeCastUrl(int id) => $"{Parts.Root}/{Parts.Anime}/{id}/{Parts.Characters}";
+
+        /// <summary>
+        /// Get url for retrieving a character's page
+        /// </summary>
+        /// <param name="id">Character's Mal Id</param>
         /// <returns>Character url</returns>
-        public static string AnimeCharacterUrl(int id) => $"{Parts.Root}/{Parts.Anime}/{id}/{Parts.Characters}";
+        public static string AnimeCharacterUrl(int id) => $"{Parts.Root}/{Parts.Character}/{id}";
 
         /// <summary>
         /// Get the url for retrieve an anime
@@ -120,6 +127,11 @@ namespace NeuroLinker.Helpers
             /// Characters route part
             /// </summary>
             public const string Characters = "characters";
+
+            /// <summary>
+            /// Character route part
+            /// </summary>
+            public const string Character = "character";
 
             /// <summary>
             /// API route part
