@@ -26,7 +26,7 @@ namespace NeuroLinker.Models
         #region Properties
 
         /// <summary>
-        /// Seiyuu's birthday
+        /// Seiyuu`s birthday
         /// </summary>
         public DateTime BirthDay { get; set; }
 
@@ -41,17 +41,17 @@ namespace NeuroLinker.Models
         public bool ErrorOccured { get; set; }
 
         /// <summary>
-        /// Seiyuu's family name
+        /// Seiyuu`s family name
         /// </summary>
         public string FamilyName { get; set; }
 
         /// <summary>
-        /// Seiyuu's favorite stuff
+        /// Seiyuu`s favorite stuff
         /// </summary>
         public string Favorites { get; set; }
 
         /// <summary>
-        /// Seiyuu's given name
+        /// Seiyuu`s given name
         /// </summary>
         public string GivenName { get; set; }
 
@@ -61,12 +61,17 @@ namespace NeuroLinker.Models
         public int Id { get; set; }
 
         /// <summary>
+        /// Seiyuu`s Mal image URL
+        /// </summary>
+        public string ImageUrl { get; set; }
+
+        /// <summary>
         /// Other information
         /// </summary>
         public List<string> More { get; set; }
 
         /// <summary>
-        /// Seiyuu's name
+        /// Seiyuu`s name
         /// </summary>
         public string Name { get; set; }
 
@@ -76,7 +81,12 @@ namespace NeuroLinker.Models
         public List<Roles> Roles { get; set; }
 
         /// <summary>
-        /// Seiyuu's website
+        /// Mal URL where the Seiyuu can be accessed
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
+        /// Seiyuu`s website
         /// </summary>
         public string Website { get; set; }
 
