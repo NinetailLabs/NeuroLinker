@@ -85,7 +85,8 @@ namespace NeuroLinker.Workers
         {
             var seiyuu = new Seiyuu
             {
-                Id = seiyuuId
+                Id = seiyuuId,
+                Url = MalRouteBuilder.SeiyuuUrl(seiyuuId)
             };
 
             try
@@ -105,7 +106,8 @@ namespace NeuroLinker.Workers
                     .RetrieveBirthday(seiyuuDoc)
                     .RetrieveAdditionalInformation(seiyuuDoc)
                     .RetrieveWebsite(seiyuuDoc)
-                    .RetrieveRoles(seiyuuDoc);
+                    .RetrieveRoles(seiyuuDoc)
+                    .RetrieveSeiyuuImage(seiyuuDoc);
                 return new RetrievalWrapper<Seiyuu>(seiyuuResponse.ResponseStatusCode.Value, seiyuuResponse.Success,
                     seiyuu);
             }
