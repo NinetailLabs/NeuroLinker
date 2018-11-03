@@ -193,6 +193,11 @@ namespace NeuroLinker.Extensions
                     .Attributes["href"]
                     .Value;
 
+                seiyuu.Language = info[1]
+                    .ChildNodes["div"]
+                    .ChildNodes["small"]
+                    .InnerText;
+
                 if (int.TryParse(seiyuu.Url.Split('/')[4], out var id))
                 {
                     seiyuu.Id = id;
