@@ -68,7 +68,7 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve Seiyuu's birthday
+        /// Retrieve Seiyuu`s birthday
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -83,17 +83,16 @@ namespace NeuroLinker.Extensions
                 ?.InnerText
                 .Trim();
 
-            DateTime bday;
-            if (DateTime.TryParse(stringBirthday, out bday))
+            if (DateTime.TryParse(stringBirthday, out var birthday))
             {
-                seiyuu.BirthDay = bday;
+                seiyuu.BirthDay = birthday;
             }
 
             return seiyuu;
         }
 
         /// <summary>
-        /// Retrieve Seiyuu's family name
+        /// Retrieve Seiyuu`s family name
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -112,7 +111,7 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve Seiyuu's given name
+        /// Retrieve Seiyuu`s given name
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -131,7 +130,7 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve Seiyuu's name
+        /// Retrieve Seiyuu`s name
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -148,7 +147,7 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve the Seiyuu's roles
+        /// Retrieve the Seiyuu`s roles
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -176,7 +175,27 @@ namespace NeuroLinker.Extensions
         }
 
         /// <summary>
-        /// Retrieve Seiyuu's website
+        /// Retrieve Seiyuu`s image URL
+        /// </summary>
+        /// <param name="seiyuu">Seiyuu instance to populate</param>
+        /// <param name="doc">Html document from which the data should be pulled</param>
+        /// <returns>Seiyuu instance</returns>
+        public static Seiyuu RetrieveSeiyuuImage(this Seiyuu seiyuu, HtmlDocument doc)
+        {
+            var image = doc.DocumentNode
+                .SelectNodes("//table")[0]
+                .ChildNodes["tr"]
+                .ChildNodes["td"]
+                .ChildNodes["div"]
+                .ChildNodes["a"]
+                .ChildNodes["img"];
+
+            seiyuu.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            return seiyuu;
+        }
+
+        /// <summary>
+        /// Retrieve Seiyuu`s website
         /// </summary>
         /// <param name="seiyuu">Seiyuu instance to populate</param>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -215,8 +234,7 @@ namespace NeuroLinker.Extensions
                     .Value)
             };
 
-            int id;
-            int.TryParse(role.AnimeUrl.Split('/')[4], out id);
+            int.TryParse(role.AnimeUrl.Split('/')[4], out var id);
             role.AnimeId = id;
 
             var animeImg = roleNodes[0]

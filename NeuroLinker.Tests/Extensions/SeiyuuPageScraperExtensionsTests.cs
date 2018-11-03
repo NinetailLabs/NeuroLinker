@@ -140,6 +140,21 @@ namespace NeuroLinker.Tests.Extensions
             sut.Website.Should().Be("http://osawa-inc.co.jp/blocks/index/talent00130.html");
         }
 
+        [Test]
+        public void SeiyuuImageIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveSeiyuuImage(fixture.Document);
+
+            // assert
+            sut.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/images/voiceactors/2/18819.jpg");
+        }
+
         #endregion
 
         private class SeiyuuPageScraperExtensionsFixture
