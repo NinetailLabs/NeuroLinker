@@ -167,6 +167,7 @@ namespace NeuroLinker.Tests.Extensions
             seiyuu.Name.Should().Be("Tomatsu, Haruka");
             seiyuu.Url.Should().Be("https://myanimelist.net/people/890/Haruka_Tomatsu");
             seiyuu.PictureUrl.Should().Be("https://myanimelist.cdn-dena.com/images/voiceactors/3/44285v.jpg");
+            seiyuu.Language.Should().Be("Japanese");
         }
 
         #endregion
