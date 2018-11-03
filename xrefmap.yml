@@ -591,6 +591,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveRoles
   nameWithType: SeiyuuPageScraperExtensions.RetrieveRoles
+- uid: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)
+  name: RetrieveSeiyuuImage(Seiyuu, HtmlDocument)
+  href: api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.html#NeuroLinker_Extensions_SeiyuuPageScraperExtensions_RetrieveSeiyuuImage_NeuroLinker_Models_Seiyuu_HtmlAgilityPack_HtmlDocument_
+  commentId: M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)
+  fullName: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage(NeuroLinker.Models.Seiyuu, HtmlAgilityPack.HtmlDocument)
+  nameWithType: SeiyuuPageScraperExtensions.RetrieveSeiyuuImage(Seiyuu, HtmlDocument)
+- uid: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage*
+  name: RetrieveSeiyuuImage
+  href: api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.html#NeuroLinker_Extensions_SeiyuuPageScraperExtensions_RetrieveSeiyuuImage_
+  commentId: Overload:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage
+  isSpec: "True"
+  fullName: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage
+  nameWithType: SeiyuuPageScraperExtensions.RetrieveSeiyuuImage
 - uid: NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveWebsite(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)
   name: RetrieveWebsite(Seiyuu, HtmlDocument)
   href: api/NeuroLinker.Extensions.SeiyuuPageScraperExtensions.html#NeuroLinker_Extensions_SeiyuuPageScraperExtensions_RetrieveWebsite_NeuroLinker_Models_Seiyuu_HtmlAgilityPack_HtmlDocument_
@@ -2805,6 +2818,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Models.Seiyuu.Id
   nameWithType: Seiyuu.Id
+- uid: NeuroLinker.Models.Seiyuu.ImageUrl
+  name: ImageUrl
+  href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_ImageUrl
+  commentId: P:NeuroLinker.Models.Seiyuu.ImageUrl
+  fullName: NeuroLinker.Models.Seiyuu.ImageUrl
+  nameWithType: Seiyuu.ImageUrl
+- uid: NeuroLinker.Models.Seiyuu.ImageUrl*
+  name: ImageUrl
+  href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_ImageUrl_
+  commentId: Overload:NeuroLinker.Models.Seiyuu.ImageUrl
+  isSpec: "True"
+  fullName: NeuroLinker.Models.Seiyuu.ImageUrl
+  nameWithType: Seiyuu.ImageUrl
 - uid: NeuroLinker.Models.Seiyuu.More
   name: More
   href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_More
@@ -2844,6 +2870,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Models.Seiyuu.Roles
   nameWithType: Seiyuu.Roles
+- uid: NeuroLinker.Models.Seiyuu.Url
+  name: Url
+  href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_Url
+  commentId: P:NeuroLinker.Models.Seiyuu.Url
+  fullName: NeuroLinker.Models.Seiyuu.Url
+  nameWithType: Seiyuu.Url
+- uid: NeuroLinker.Models.Seiyuu.Url*
+  name: Url
+  href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_Url_
+  commentId: Overload:NeuroLinker.Models.Seiyuu.Url
+  isSpec: "True"
+  fullName: NeuroLinker.Models.Seiyuu.Url
+  nameWithType: Seiyuu.Url
 - uid: NeuroLinker.Models.Seiyuu.Website
   name: Website
   href: api/NeuroLinker.Models.Seiyuu.html#NeuroLinker_Models_Seiyuu_Website
