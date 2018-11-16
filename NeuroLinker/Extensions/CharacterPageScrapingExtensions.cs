@@ -88,7 +88,11 @@ namespace NeuroLinker.Extensions
                 .ChildNodes["a"]
                 .ChildNodes["img"];
 
-            character.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            if (image != null)
+            {
+                character.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            }
+
             return character;
         }
 

@@ -161,11 +161,11 @@ namespace NeuroLinker.Tests.Extensions
         {
             #region Constructor
 
-            public SeiyuuPageScraperExtensionsFixture()
+            public SeiyuuPageScraperExtensionsFixture(int pageNumber = 40)
             {
                 Document = new HtmlDocument();
                 var path = AppDomain.CurrentDomain.BaseDirectory;
-                var examplePath = Path.Combine(path, "PageExamples", "40.html");
+                var examplePath = Path.Combine(path, "PageExamples", $"{pageNumber}.html");
                 using (var htmlFile = File.Open(examplePath, FileMode.Open))
                 {
                     Document.Load(htmlFile);
