@@ -51,7 +51,7 @@ namespace NeuroLinker.Extensions
                 }
                 else if (entry.Contains(":"))
                 {
-                    seiyuu.More.Add(entry);
+                    seiyuu.More.Add(entry.Trim());
                 }
                 else
                 {
@@ -202,7 +202,7 @@ namespace NeuroLinker.Extensions
         /// <returns>Seiyuu instance</returns>
         public static Seiyuu RetrieveWebsite(this Seiyuu seiyuu, HtmlDocument doc)
         {
-            seiyuu.Website = doc
+            var site = doc
                 .DocumentNode
                 .SelectNodes("//span")
                 .FirstOrDefault(x => x.InnerText == "Website:")
@@ -210,6 +210,8 @@ namespace NeuroLinker.Extensions
                 ?.NextSibling
                 ?.Attributes["href"]
                 .Value;
+
+            seiyuu.Website = site == "http://" || site == "https://" ? string.Empty : site;
 
             return seiyuu;
         }
@@ -227,11 +229,12 @@ namespace NeuroLinker.Extensions
         {
             var role = new Roles
             {
-                AnimeUrl = MalRouteBuilder.MalCleanUrl(roleNodes[0]
+                AnimeUrl = roleNodes[0]
                     .ChildNodes["div"]
                     .ChildNodes["a"]
                     ?.Attributes["href"]
-                    .Value)
+                    .Value
+                           ?? string.Empty
             };
 
             int.TryParse(role.AnimeUrl.Split('/')[4], out var id);
@@ -263,10 +266,10 @@ namespace NeuroLinker.Extensions
                 .Trim()
                 .HtmlDecode();
 
-            role.CharacterUrl = MalRouteBuilder.MalCleanUrl(roleNodes[2]
+            role.CharacterUrl = roleNodes[2]
                 .ChildNodes["a"]
                 .Attributes["href"]
-                .Value);
+                .Value;
 
             int.TryParse(role.CharacterUrl.Split('/')[4], out var id);
             role.CharacterId = id;
