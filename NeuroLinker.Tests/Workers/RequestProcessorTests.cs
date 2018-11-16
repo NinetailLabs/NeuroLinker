@@ -17,6 +17,35 @@ namespace NeuroLinker.Tests.Workers
     {
         #region Public Methods
 
+        // Test for issue #33
+        [Test]
+        public async Task CharacterWithoutAnImageIsCorrectlyRetrieved()
+        {
+            // arrange
+            const int characterId = 938;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{characterId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCharacterUrl(characterId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var result = await sut.DoCharacterRetrieval(characterId);
+
+            // assert
+            result.Exception.Should().BeNull();
+        }
+
         [TestCase(true, HttpStatusCode.OK)]
         [TestCase(false, HttpStatusCode.Unauthorized)]
         public void CredentialVerificationRespondsCorrectly(bool validResult, HttpStatusCode statusCode)
@@ -269,7 +298,7 @@ namespace NeuroLinker.Tests.Workers
         }
 
         [Test]
-        public void RetrievingAnimeWithUsernameAndPasswordPopulatesTheUserFields()
+        public async Task RetrievingAnimeWithUsernameAndPasswordPopulatesTheUserFields()
         {
             // arrange
             const int animeId = 11757;
@@ -291,7 +320,7 @@ namespace NeuroLinker.Tests.Workers
             var sut = fixture.Instance;
 
             // act
-            var result = sut.GetAnime(animeId, user, pass).Result;
+            var result = await sut.GetAnime(animeId, user, pass);
 
             // assert
             fixture.PageRetrieverMock.Verify(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(animeId)),
@@ -302,7 +331,7 @@ namespace NeuroLinker.Tests.Workers
         }
 
         [Test]
-        public void RetrievingSeiyuuInformationWorksCorrectly()
+        public async Task RetrievingSeiyuuInformationWorksCorrectly()
         {
             // arrange
             const int seiyuuId = 40;
@@ -323,7 +352,7 @@ namespace NeuroLinker.Tests.Workers
             var sut = fixture.Instance;
 
             // act
-            var retrievalWrapper = sut.DoSeiyuuRetrieval(seiyuuId).Result;
+            var retrievalWrapper = await sut.DoSeiyuuRetrieval(seiyuuId);
 
             // assert
             retrievalWrapper.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
@@ -331,6 +360,36 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.Id.Should().Be(seiyuuId);
             retrievalWrapper.ResponseData.Name.Should().Be("Mamiko Noto");
             retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
+        }
+
+        // Issue #34
+        [Test]
+        public async Task RetrievingSeiyuuWithoutAPictureDoesNotCauseAnError()
+        {
+            // arrange
+            const int seiyuuId = 26601;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{seiyuuId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var retrievalWrapper = await sut.DoSeiyuuRetrieval(seiyuuId);
+
+            // assert
+            retrievalWrapper.Success.Should().BeTrue();
+            retrievalWrapper.Exception.Should().BeNull();
         }
 
         #endregion

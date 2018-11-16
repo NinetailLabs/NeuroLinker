@@ -24,7 +24,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveRoles(fixture.Document);
 
             // assert
-            sut.Roles.Count.Should().Be(395);
+            sut.Roles.Count.Should().Be(430);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace NeuroLinker.Tests.Extensions
             clannad.AnimeId.Should().Be(2167);
             clannad.AnimePicUrl.Should()
                 .Be(
-                    "https://myanimelist.cdn-dena.com/r/46x64/images/anime/13/8498.webp?s=ee2b5d30dcdbfe036064ba4d67abcaf3");
+                    "https://myanimelist.cdn-dena.com/r/46x64/images/anime/1804/95033.webp?s=76a99a68702cf1785cc8f227745d333b");
             clannad.AnimeTitle.Should().Be("Clannad");
             clannad.CharacterName.Should().Be("Ichinose, Kotomi");
             clannad.CharacterPic.Should()
@@ -66,8 +66,8 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveAdditionalInformation(fixture.Document);
 
             // assert
-            sut.More.Count.Should().Be(6);
-            sut.More.First().Should().Be("Birth place: Kanazawa, Ishikawa Prefecture, Japan");
+            sut.More.Count.Should().Be(7);
+            sut.More.First().Should().Be("Birthplace: Kanazawa, Ishikawa Prefecture, Japan");
         }
 
         [Test]
@@ -113,6 +113,21 @@ namespace NeuroLinker.Tests.Extensions
         }
 
         [Test]
+        public void SeiyuuImageIsCorrectlyRetrieved()
+        {
+            // arrange
+            var fixture = new SeiyuuPageScraperExtensionsFixture();
+
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveSeiyuuImage(fixture.Document);
+
+            // assert
+            sut.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/images/voiceactors/2/44269.jpg");
+        }
+
+        [Test]
         public void SeiyuuNameIsCorrectlyRetrieved()
         {
             // arrange
@@ -137,22 +152,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveWebsite(fixture.Document);
 
             // assert
-            sut.Website.Should().Be("http://osawa-inc.co.jp/blocks/index/talent00130.html");
-        }
-
-        [Test]
-        public void SeiyuuImageIsCorrectlyRetrieved()
-        {
-            // arrange
-            var fixture = new SeiyuuPageScraperExtensionsFixture();
-
-            var sut = fixture.Instance;
-
-            // act
-            sut.RetrieveSeiyuuImage(fixture.Document);
-
-            // assert
-            sut.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/images/voiceactors/2/18819.jpg");
+            sut.Website.Should().BeEmpty();
         }
 
         #endregion
@@ -161,11 +161,11 @@ namespace NeuroLinker.Tests.Extensions
         {
             #region Constructor
 
-            public SeiyuuPageScraperExtensionsFixture()
+            public SeiyuuPageScraperExtensionsFixture(int pageNumber = 40)
             {
                 Document = new HtmlDocument();
                 var path = AppDomain.CurrentDomain.BaseDirectory;
-                var examplePath = Path.Combine(path, "PageExamples", "40.html");
+                var examplePath = Path.Combine(path, "PageExamples", $"{pageNumber}.html");
                 using (var htmlFile = File.Open(examplePath, FileMode.Open))
                 {
                     Document.Load(htmlFile);
