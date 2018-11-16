@@ -190,7 +190,11 @@ namespace NeuroLinker.Extensions
                 .ChildNodes["a"]
                 .ChildNodes["img"];
 
-            seiyuu.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            if (image != null)
+            {
+                seiyuu.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+            }
+
             return seiyuu;
         }
 
@@ -230,10 +234,10 @@ namespace NeuroLinker.Extensions
             var role = new Roles
             {
                 AnimeUrl = roleNodes[0]
-                    .ChildNodes["div"]
-                    .ChildNodes["a"]
-                    ?.Attributes["href"]
-                    .Value
+                               .ChildNodes["div"]
+                               .ChildNodes["a"]
+                               ?.Attributes["href"]
+                               .Value
                            ?? string.Empty
             };
 

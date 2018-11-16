@@ -331,7 +331,7 @@ namespace NeuroLinker.Tests.Workers
         }
 
         [Test]
-        public void RetrievingSeiyuuInformationWorksCorrectly()
+        public async Task RetrievingSeiyuuInformationWorksCorrectly()
         {
             // arrange
             const int seiyuuId = 40;
@@ -352,7 +352,7 @@ namespace NeuroLinker.Tests.Workers
             var sut = fixture.Instance;
 
             // act
-            var retrievalWrapper = sut.DoSeiyuuRetrieval(seiyuuId).Result;
+            var retrievalWrapper = await sut.DoSeiyuuRetrieval(seiyuuId);
 
             // assert
             retrievalWrapper.ResponseStatusCode.Should().Be(HttpStatusCode.OK);
@@ -360,6 +360,36 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.Id.Should().Be(seiyuuId);
             retrievalWrapper.ResponseData.Name.Should().Be("Mamiko Noto");
             retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
+        }
+
+        // Issue #34
+        [Test]
+        public async Task RetrievingSeiyuuWithoutAPictureDoesNotCauseAnError()
+        {
+            // arrange
+            const int seiyuuId = 26601;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{seiyuuId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var retrievalWrapper = await sut.DoSeiyuuRetrieval(seiyuuId);
+
+            // assert
+            retrievalWrapper.Success.Should().BeTrue();
+            retrievalWrapper.Exception.Should().BeNull();
         }
 
         #endregion
