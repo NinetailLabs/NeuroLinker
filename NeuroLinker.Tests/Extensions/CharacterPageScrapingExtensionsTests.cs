@@ -152,6 +152,23 @@ namespace NeuroLinker.Tests.Extensions
         }
 
         [Test]
+        public void ScrapingAnimeographyCorrectlyRetrievesCharacterRoleType()
+        {
+            // arrange
+            var fixture = new CharacterPageScrapingExtensionFixture();
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveAnimeography(fixture.Document);
+
+            // assert
+            var sao = sut.Animeography.First();
+            var debrief = sut.Animeography.First(x => x.Id == 27891);
+            sao.RoleType.Should().Be("Main");
+            debrief.RoleType.Should().Be("Supporting");
+        }
+
+        [Test]
         public void SeiyuuInformationIsRetrievedCorrectly()
         {
             // arrange
@@ -189,10 +206,6 @@ namespace NeuroLinker.Tests.Extensions
                 var path = AppDomain.CurrentDomain.BaseDirectory;
                 var examplePath = Path.Combine(path, "PageExamples", "36828.html");
                 Document.Load(examplePath);
-                //using (var htmlFile = File.Open(examplePath, FileMode.Open))
-                //{
-                //    Document.Load();
-                //}
 
                 Instance = new Character();
             }

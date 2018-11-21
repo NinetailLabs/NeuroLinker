@@ -270,6 +270,12 @@ namespace NeuroLinker.Extensions
                     tmpEntry.Id = id;
                 }
 
+                tmpEntry.RoleType = cells
+                    .Last()
+                    .ChildNodes["div"]
+                    .ChildNodes["small"]
+                    .InnerText;
+
                 results.Add(tmpEntry);
             }
 
