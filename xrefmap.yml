@@ -2450,6 +2450,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Models.Ography.Name
   nameWithType: Ography.Name
+- uid: NeuroLinker.Models.Ography.RoleType
+  name: RoleType
+  href: api/NeuroLinker.Models.Ography.html#NeuroLinker_Models_Ography_RoleType
+  commentId: P:NeuroLinker.Models.Ography.RoleType
+  fullName: NeuroLinker.Models.Ography.RoleType
+  nameWithType: Ography.RoleType
+- uid: NeuroLinker.Models.Ography.RoleType*
+  name: RoleType
+  href: api/NeuroLinker.Models.Ography.html#NeuroLinker_Models_Ography_RoleType_
+  commentId: Overload:NeuroLinker.Models.Ography.RoleType
+  isSpec: "True"
+  fullName: NeuroLinker.Models.Ography.RoleType
+  nameWithType: Ography.RoleType
 - uid: NeuroLinker.Models.Ography.Url
   name: Url
   href: api/NeuroLinker.Models.Ography.html#NeuroLinker_Models_Ography_Url
