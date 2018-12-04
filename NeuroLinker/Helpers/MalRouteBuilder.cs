@@ -28,11 +28,15 @@ namespace NeuroLinker.Helpers
         }
 
         /// <summary>
-        /// Get url for retrieving an Anime's cast
+        /// Get url for retrieving an Anime`s cast
+        /// /// <remarks>
+        /// The placeholder is required because of the way Mal does routing. Thank to Raven for pointing out that the actual value does not matter
+        /// </remarks>
         /// </summary>
         /// <param name="id">MAL Id</param>
         /// <returns>Anime cast URL</returns>
-        public static string AnimeCastUrl(int id) => $"{Parts.Root}/{Parts.Anime}/{id}/{Parts.Characters}";
+        public static string AnimeCastUrl(int id) =>
+            $"{Parts.Root}/{Parts.Anime}/{id}/{Parts.Placeholder}/{Parts.Characters}";
 
         /// <summary>
         /// Get url for retrieving a character's page
@@ -177,6 +181,11 @@ namespace NeuroLinker.Helpers
             /// People route part
             /// </summary>
             public const string People = "people";
+
+            /// <summary>
+            /// Just a placeholder
+            /// </summary>
+            public const string Placeholder = "x";
 
             #endregion
         }
