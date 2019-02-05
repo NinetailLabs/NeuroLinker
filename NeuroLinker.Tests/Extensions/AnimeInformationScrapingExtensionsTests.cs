@@ -26,6 +26,23 @@ namespace NeuroLinker.Tests.Extensions
             // assert
             sut.StartDate.Should().Be(new DateTime(2012, 07, 08));
             sut.EndDate.Should().Be(new DateTime(2012, 12, 23));
+            sut.YearOnlyDate.Should().BeFalse();
+        }
+
+        [Test]
+        public void YearOnlyAirDateIsRetrievedCorrectly()
+        {
+            // arrange
+            var fixture = new PageScrapingLogicFixture("1190.html");
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveAirDates(fixture.Document);
+
+            // assert
+            sut.StartDate.Should().Be(new DateTime(2003, 01, 01));
+            sut.EndDate.Should().Be(new DateTime(2003, 01, 01));
+            sut.YearOnlyDate.Should().BeTrue();
         }
 
         [Test]

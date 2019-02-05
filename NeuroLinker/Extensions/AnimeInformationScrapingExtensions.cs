@@ -38,6 +38,7 @@ namespace NeuroLinker.Extensions
             var dates = Regex.Split(dateString, " to ");
             var startDate = DateTime.MinValue;
             var endDate = DateTime.MinValue;
+            var yearOnlyStart = false;
             if (dates.Any())
             {
                 DateTime.TryParse(dates[0], out startDate);
@@ -48,8 +49,16 @@ namespace NeuroLinker.Extensions
                 DateTime.TryParse(dates[1], out endDate);
             }
 
+            if (dates.Any() && int.TryParse(dates.First(), out var yearOnly))
+            {
+                startDate = new DateTime(yearOnly, 1, 1);
+                endDate = new DateTime(yearOnly, 1, 1);
+                yearOnlyStart = true;
+            }
+
             anime.StartDate = startDate;
             anime.EndDate = endDate;
+            anime.YearOnlyDate = yearOnlyStart;
 
             return anime;
         }

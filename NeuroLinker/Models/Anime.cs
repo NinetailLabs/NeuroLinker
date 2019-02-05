@@ -42,6 +42,7 @@ namespace NeuroLinker.Models
             AlternativeSetting = new List<Related>();
             Others = new List<Related>();
             ErrorOccured = false;
+            YearOnlyDate = false;
         }
 
         #endregion
@@ -167,6 +168,11 @@ namespace NeuroLinker.Models
 
         [JsonProperty(PropertyName = "watched_status")]
         public string UserWatchedStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the start date is a year only date
+        /// </summary>
+        public bool YearOnlyDate { get; set; }
 
         #endregion
     }
