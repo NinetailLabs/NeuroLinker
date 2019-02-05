@@ -1809,6 +1809,19 @@ references:
   isSpec: "True"
   fullName: NeuroLinker.Models.Anime.UserWatchedStatus
   nameWithType: Anime.UserWatchedStatus
+- uid: NeuroLinker.Models.Anime.YearOnlyDate
+  name: YearOnlyDate
+  href: api/NeuroLinker.Models.Anime.html#NeuroLinker_Models_Anime_YearOnlyDate
+  commentId: P:NeuroLinker.Models.Anime.YearOnlyDate
+  fullName: NeuroLinker.Models.Anime.YearOnlyDate
+  nameWithType: Anime.YearOnlyDate
+- uid: NeuroLinker.Models.Anime.YearOnlyDate*
+  name: YearOnlyDate
+  href: api/NeuroLinker.Models.Anime.html#NeuroLinker_Models_Anime_YearOnlyDate_
+  commentId: Overload:NeuroLinker.Models.Anime.YearOnlyDate
+  isSpec: "True"
+  fullName: NeuroLinker.Models.Anime.YearOnlyDate
+  nameWithType: Anime.YearOnlyDate
 - uid: NeuroLinker.Models.AnimeUpdate
   name: AnimeUpdate
   href: api/NeuroLinker.Models.AnimeUpdate.html
