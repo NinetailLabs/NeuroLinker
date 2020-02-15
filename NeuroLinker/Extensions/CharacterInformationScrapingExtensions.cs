@@ -64,6 +64,7 @@ namespace NeuroLinker.Extensions
             var url = nodes[1].ChildNodes["a"].Attributes["href"].Value;
             int.TryParse(url.Split('/')[4], out var id);
 
+            var name = nodes[1].ChildNodes["a"].InnerHtml.HtmlDecode();
             return new CharacterInformation
             {
                 CharacterPicture = (picLocation.Attributes["data-src"] ?? picLocation.Attributes["src"])?.Value,
