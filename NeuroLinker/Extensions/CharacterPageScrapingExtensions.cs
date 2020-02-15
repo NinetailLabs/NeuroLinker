@@ -180,12 +180,16 @@ namespace NeuroLinker.Extensions
                     .Where(x => x.Name == "td")
                     .ToList();
 
-                seiyuu.PictureUrl = info[0]
+                var seiyuuImageNodes = info[0]
                     .ChildNodes["div"]
                     .ChildNodes["a"]
-                    .ChildNodes["img"]
-                    .Attributes["src"]
-                    .Value;
+                    .ChildNodes["img"];
+
+                if (seiyuuImageNodes != null)
+                {
+                    seiyuu.PictureUrl = (seiyuuImageNodes.Attributes["data-src"] ?? seiyuuImageNodes.Attributes["src"]).Value;
+                }
+
 
                 seiyuu.Name = info[1]
                     .ChildNodes["a"]
@@ -250,13 +254,16 @@ namespace NeuroLinker.Extensions
                     .Where(x => x.Name == "td")
                     .ToList();
 
-                tmpEntry.ImageUrl = cells
+                var image = cells
                     .First(x => x.FirstChild.Name == "div")
                     .FirstChild
                     .ChildNodes["a"]
-                    .ChildNodes["img"]
-                    .Attributes["src"]
-                    .Value;
+                    .ChildNodes["img"];
+
+                if (image != null)
+                {
+                    tmpEntry.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
+                }
 
                 var details = cells
                     .First(x => x.Name == "td" && (x.FirstChild.Name == "#text" || x.FirstChild.Name == "a"))
