@@ -14,6 +14,20 @@ namespace NeuroLinker.Tests.Extensions
         #region Public Methods
 
         [Test]
+        public void ScrapingCharactersCorrectlyCleansCharacterNames()
+        {
+            // arrange
+            var fixture = new CharacterInformationScrapingExtensionsFixture("35790CharacterInfo.html");
+            var sut = fixture.Instance;
+
+            // act
+            sut.PopulateCharacterAndSeiyuuInformation(fixture.Document);
+
+            // assert
+            sut.CharacterInformation.Last().CharacterName.Should().Be("Village Doctor's Assistant");
+        }
+
+        [Test]
         public void ScrapingCharacterInformationReturnsTheCorrectNumberOfCharacters()
         {
             // arrange
@@ -76,11 +90,11 @@ namespace NeuroLinker.Tests.Extensions
         {
             #region Constructor
 
-            public CharacterInformationScrapingExtensionsFixture()
+            public CharacterInformationScrapingExtensionsFixture(string pageName = "11757CharacterInfo.html")
             {
                 Document = new HtmlDocument();
                 var path = AppDomain.CurrentDomain.BaseDirectory;
-                var examplePath = Path.Combine(path, "PageExamples", "11757CharacterInfo.html");
+                var examplePath = Path.Combine(path, "PageExamples", pageName);
                 using (var htmlFile = File.Open(examplePath, FileMode.Open))
                 {
                     Document.Load(htmlFile);
