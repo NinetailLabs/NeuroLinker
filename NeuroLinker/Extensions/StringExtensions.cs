@@ -19,7 +19,9 @@ namespace NeuroLinker.Extensions
         /// <returns>Decoded html string</returns>
         internal static string HtmlDecode(this string self)
         {
-            return HttpUtility.HtmlDecode(self);
+            var decodedText = HttpUtility.HtmlDecode(self);
+            return decodedText?.Replace("&#039;", "'")
+                ?? string.Empty;
         }
 
         #endregion
