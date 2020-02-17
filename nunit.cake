@@ -85,9 +85,10 @@ private void ExecuteUnitTests()
             // See https://awesomeopensource.com/project/tonerdo/coverlet
             var coverletSettings = new CoverletSettings {
                 CollectCoverage = true,
-                CoverletOutputFormat = CoverletOutputFormat.cobertura,
+                CoverletOutputFormat = CoverletOutputFormat.opencover,
                 CoverletOutputName = coverPath,
-                Include = new List<string> { "[NeuroLinker]*" }
+                Include = new List<string> { "[NeuroLinker]*" },
+                ExcludeByAttribute = new List<string> { "GeneratedCodeAttribute" }
             };
 
             Information(assembly);
