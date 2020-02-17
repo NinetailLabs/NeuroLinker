@@ -3,7 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.18" />
@@ -16,9 +19,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\NeuroLinker\NeuroLinker.csproj" />
   </ItemGroup>
+  
   <ItemGroup>
     <None Update="PageExamples\116.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

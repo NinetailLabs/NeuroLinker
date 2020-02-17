@@ -13,16 +13,29 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>myanimelist scraper csharp ninetaillabs</PackageTags>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Development\AnimeCollectionManager\NeuroLinker\NeuroLinker\NeuroLinker.xml</DocumentationFile>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>C:\Development\AnimeCollectionManager\NeuroLinker\NeuroLinker\NeuroLinker.xml</DocumentationFile>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Content Include="NeuroLinker.nuspec" />
+    <Content Include="SemVer.MSBuild.props" />
+  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.18" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SemVer.Git.MSBuild" Version="2.1.2">
+    <PackageReference Include="SemVer.Git.MSBuild" Version="1.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
