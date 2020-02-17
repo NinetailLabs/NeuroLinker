@@ -21,7 +21,7 @@
 Task ("VariableSetup")
 	.Does(() => {
 		projectName = "NeuroLinker";
-		releaseFolderString = "./{0}/bin/{1}";
+		releaseFolderString = "./{0}/bin/{1}/netstandard2.0";
 		releaseBinaryType = "dll";
 		repoOwner = "NinetailLabs";
 		botName = "NinetailLabsBot";
