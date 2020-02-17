@@ -297,7 +297,7 @@ namespace NeuroLinker.Tests.Extensions
 
             // act
             // assert
-            act.ShouldNotThrow<NullReferenceException>();
+            act.Should().NotThrow<NullReferenceException>();
         }
 
         [Test]

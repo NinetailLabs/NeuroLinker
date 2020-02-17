@@ -107,7 +107,7 @@ namespace NeuroLinker.Tests.Workers
 
             // act
             // assert
-            act.ShouldNotThrow<Exception>();
+            act.Should().NotThrow<Exception>();
         }
 
         [Test]

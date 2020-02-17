@@ -1,141 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F3C03A0-6873-4E94-A2A2-5A749DA21B5E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NeuroLinker</RootNamespace>
-    <AssemblyName>NeuroLinker</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Authors>NineTail Labs</Authors>
+    <Company>NineTail Labs</Company>
+    <Description>NeuroLinker is a scraping library for MyAnimeList.</Description>
+    <Copyright>Copyright (c) NineTail Labs 2020</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/NinetailLabs/NeuroLinker</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NinetailLabs/NeuroLinker</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>myanimelist scraper csharp ninetaillabs</PackageTags>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\NeuroLinker.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Development\AnimeCollectionManager\NeuroLinker\NeuroLinker\NeuroLinker.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\NeuroLinker.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Development\AnimeCollectionManager\NeuroLinker\NeuroLinker\NeuroLinker.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="SemVer.Git.MSBuild" Version="2.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="VaraniumSharp" Version="3.5.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Configuration\HttpClientConfiguration.cs" />
-    <Compile Include="Enumerations\ConfigurationKeys.cs" />
-    <Compile Include="Enumerations\Seasons.cs" />
-    <Compile Include="Extensions\CharacterInformationScrapingExtensions.cs" />
-    <Compile Include="Extensions\CharacterPageScrapingExtensions.cs" />
-    <Compile Include="Extensions\SeiyuuPageScraperExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Factories\HttpClientFactory.cs" />
-    <Compile Include="Interfaces\Configuration\IHttpClientConfiguration.cs" />
-    <Compile Include="Interfaces\Helpers\IXmlHelper.cs" />
-    <Compile Include="Helpers\Utf8StringWriter.cs" />
-    <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="Interfaces\Factories\IHttpClientFactory.cs" />
-    <Compile Include="Interfaces\Helpers\IPageRetriever.cs" />
-    <Compile Include="Interfaces\Models\IResponseData.cs" />
-    <Compile Include="Interfaces\Workers\IListRetrievalWorker.cs" />
-    <Compile Include="Models\Ography.cs" />
-    <Compile Include="Models\Character.cs" />
-    <Compile Include="Models\SeasonShowCollection.cs" />
-    <Compile Include="ResponseWrappers\HtmlDocumentRetrievalWrapper.cs" />
-    <Compile Include="ResponseWrappers\RetrievalWrapper.cs" />
-    <Compile Include="ResponseWrappers\DataPushResponseWrapper.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\SeasonData.cs" />
-    <Compile Include="Interfaces\Workers\ISeasonWorker.cs" />
-    <Compile Include="Models\Seiyuu.cs" />
-    <Compile Include="ResponseWrappers\ResponseWrapperBase.cs" />
-    <Compile Include="ResponseWrappers\StringRetrievalWrapper.cs" />
-    <Compile Include="Workers\DataPushWorker.cs" />
-    <Compile Include="Interfaces\Workers\IRequestProcessor.cs" />
-    <Compile Include="Interfaces\Workers\IDataPushWorker.cs" />
-    <Compile Include="Workers\ListRetrievalWorker.cs" />
-    <Compile Include="Helpers\MalRouteBuilder.cs" />
-    <Compile Include="Extensions\AnimeInformationScrapingExtensions.cs" />
-    <Compile Include="Extensions\SeasonLookup.cs" />
-    <Compile Include="Workers\SeasonWorker.cs" />
-    <Compile Include="Models\Anime.cs" />
-    <Compile Include="Models\AnimeUpdate.cs" />
-    <Compile Include="Models\CharacterInformation.cs" />
-    <Compile Include="Models\InfoUrls .cs" />
-    <Compile Include="Models\Related.cs" />
-    <Compile Include="Models\SeiyuuInformation.cs" />
-    <Compile Include="Helpers\PageRetriever.cs" />
-    <Compile Include="Models\UserList.cs" />
-    <Compile Include="Models\UserListAnime.cs" />
-    <Compile Include="Models\UserListInformation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\UserInformationScrapingExtensions.cs" />
-    <Compile Include="Workers\RequestProcessor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="paket.references" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1' Or $(TargetFrameworkVersion) == 'v4.7.2' Or $(TargetFrameworkVersion) == 'v4.8')">
-      <PropertyGroup>
-        <__paket__GitVersionTask_targets>portable-net+sl+win+wpa+wp\GitVersionTask</__paket__GitVersionTask_targets>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1' Or $(TargetFrameworkVersion) == 'v4.7.2' Or $(TargetFrameworkVersion) == 'v4.8')">
-      <ItemGroup>
-        <Reference Include="HtmlAgilityPack">
-          <HintPath>..\packages\HtmlAgilityPack\lib\Net45\HtmlAgilityPack.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1' Or $(TargetFrameworkVersion) == 'v4.7.2' Or $(TargetFrameworkVersion) == 'v4.8')">
-      <ItemGroup>
-        <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1' Or $(TargetFrameworkVersion) == 'v4.7.2' Or $(TargetFrameworkVersion) == 'v4.8')">
-      <ItemGroup>
-        <Reference Include="VaraniumSharp">
-          <HintPath>..\packages\VaraniumSharp\lib\net462\VaraniumSharp.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Import Project="..\packages\GitVersionTask\build\$(__paket__GitVersionTask_targets).targets" Condition="Exists('..\packages\GitVersionTask\build\$(__paket__GitVersionTask_targets).targets')" Label="Paket" />
 </Project>
