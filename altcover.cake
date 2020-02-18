@@ -5,12 +5,6 @@
  * The test output is geared entirely towards AppVeyor, however there are packages available that can also output NUnit3 xml
  */
 
-#region Tools
-
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.10.0
-
-#endregion
-
 #region Variables
 
 // Indicate if the unit tests passed
