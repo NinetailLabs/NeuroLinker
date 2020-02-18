@@ -79,7 +79,7 @@ private void ExecuteUnitTests()
         {
             var coverOutput = MakeAbsolute(File(coverPath));
 
-            Information("Storing coverage results in: " + coverOutput);
+            Information($"Testing: {assembly}");
 
             var testSettings = new DotNetCoreTestSettings {
 			Configuration = buildConfiguration,
