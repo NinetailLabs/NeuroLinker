@@ -89,7 +89,7 @@ private void ExecuteUnitTests()
                 .Append("/p:AltCover=true")
                 .Append($"/p:AltCoverXmlReport={coverOutput}")
                 .Append("--test-adapter-path:.")
-                .Append($"--logger:\"nunit;LogFilePath={testResultOutput}\"")
+                .Append("--logger:Appveyor")
 		};
 
             DotNetCoreTest(assembly.ToString(), testSettings);
