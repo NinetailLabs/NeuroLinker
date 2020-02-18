@@ -59,10 +59,11 @@ Task ("FailBuildIfTestFailed")
 // Delete the coverage results if it already exists
 private void RemoveCoverageResults()
 {
-    if(FileExists(coverPath))
+    var outputPath = MakeAbsolute(File(coverPath));
+    if(FileExists(outputPath))
     {
         Information("Clearing existing coverage results");
-        DeleteFile(coverPath);
+        DeleteFile(outputPath);
     }
 }
 
@@ -77,7 +78,7 @@ private void ExecuteUnitTests()
     {
         try
         {
-            //var coverOutput = MakeAbsolute(File(coverPath));
+            var coverOutput = MakeAbsolute(File(coverPath));
             var testResultOutput = MakeAbsolute(File(testResultFile));
 
             Information($"Testing: {assembly}");
@@ -87,7 +88,8 @@ private void ExecuteUnitTests()
 			NoBuild = true,
             ArgumentCustomization = args=> args
                 .Append("/p:AltCover=true")
-                .Append($"/p:AltCoverXmlReport={coverPath}")
+                .Append($"/p:AltCoverXmlReport={coverOutput}")
+                .Append("/p:AltCoverAssemblyFilter=NeuroLinker")
                 .Append("--test-adapter-path:.")
                 .Append("--logger:Appveyor")
 		};
