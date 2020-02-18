@@ -77,7 +77,7 @@ private void ExecuteUnitTests()
     {
         try
         {
-            var coverOutput = MakeAbsolute(File(coverPath));
+            //var coverOutput = MakeAbsolute(File(coverPath));
             var testResultOutput = MakeAbsolute(File(testResultFile));
 
             Information($"Testing: {assembly}");
@@ -87,7 +87,7 @@ private void ExecuteUnitTests()
 			NoBuild = true,
             ArgumentCustomization = args=> args
                 .Append("/p:AltCover=true")
-                .Append($"/p:AltCoverXmlReport={coverOutput}")
+                .Append($"/p:AltCoverXmlReport={coverPath}")
                 .Append("--test-adapter-path:.")
                 .Append("--logger:Appveyor")
 		};
