@@ -35,7 +35,6 @@ Task ("UnitTests")
 
         RemoveCoverageResults();
         ExecuteUnitTests();
-        PushTestResults(testResultFile);
 
         EndBlock(blockText);
     });
