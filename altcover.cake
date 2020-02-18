@@ -1,7 +1,8 @@
 /*
  * Execute NUnit tests.
  * Script uses AltCover to calculate test coverage.
- * To work correctly the AltCover and NunitXml.TestLogger nuget packages must be added to the test project
+ * To work correctly the AltCover and Appveyor.TestLogger nuget packages must be added to the test project.
+ * The test output is geared entirely towards AppVeyor, however there are packages available that can also output NUnit3 xml
  */
 
 #region Tools
