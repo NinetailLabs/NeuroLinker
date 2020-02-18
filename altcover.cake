@@ -1,11 +1,11 @@
 /*
  * Execute NUnit tests.
- * Script uses OpenCover to calculate coverage results
+ * Script uses AltCover to calculate test coverage.
+ * To work correctly the AltCover and NunitXml.TestLogger nuget packages must be added to the test project
  */
 
 #region Tools
 
-#addin nuget:?package=Cake.Coverlet&version=2.4.2
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.10.0
 
 #endregion
@@ -78,6 +78,7 @@ private void ExecuteUnitTests()
         try
         {
             var coverOutput = MakeAbsolute(File(coverPath));
+            var testResultOutput = MakeAbsolute(File(testResultFile));
 
             Information($"Testing: {assembly}");
 
@@ -87,6 +88,8 @@ private void ExecuteUnitTests()
             ArgumentCustomization = args=> args
                 .Append("/p:AltCover=true")
                 .Append($"/p:AltCoverXmlReport={coverOutput}")
+                .Append("--test-adapter-path:.")
+                .Append($"--logger:\"nunit;LogFilePath={testResultOutput}\"")
 		};
 
             DotNetCoreTest(assembly.ToString(), testSettings);
