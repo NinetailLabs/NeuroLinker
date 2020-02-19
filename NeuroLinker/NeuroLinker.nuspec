@@ -8,24 +8,29 @@
       <title>NeuroLinker</title>
       <description>NeuroLinker is a scraping library for MyAnimeList.</description>
       <summary>NeuroLinker is a scraping library for MyAnimeList.</summary>
-      <licenseUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/master/LICENSE</licenseUrl>
+      <license type="expression">MIT</license>
       <projectUrl>https://github.com/NinetailLabs/NeuroLinker</projectUrl>
-      <iconUrl>https://raw.githubusercontent.com/NinetailLabs/NeuroLinker/develop/icon.png</iconUrl>
+      <repository type="git" url="https://github.com/NinetailLabs/NeuroLinker.git" branch="master" commit="GitHashHere" />
+      <icon>images\nugetIcon.png</icon>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2017</copyright>
       <releaseNotes>Fixed more NullReference exception that occurs when anime an anime is created</releaseNotes>
       <tags>C# NeuroLinker MyAnimeList Scraper</tags>
 
-       <dependencies>
-        <dependency id="HtmlAgilityPack" version="1.4.9.5"/>
-        <dependency id="Newtonsoft.Json" version="10.0.1"/>
-        <dependency id="VaraniumSharp" version="1.14.0"/>
-      </dependencies>
+     <dependencies>
+       <group targetFramework="netstandard2.0">
+         <dependency id="HtmlAgilityPack" version="1.11.19"/>
+         <dependency id="Newtonsoft.Json" version="12.0.3"/>
+         <dependency id="VaraniumSharp" version="3.5.0"/>
+       </group>
+     </dependencies>
 
    </metadata>
 
    <files>
-      <file src="./bin/Release/NeuroLinker.dll" target="lib\net462" />
-      <file src="./bin/Release/NeuroLinker.xml" target="lib\net462" />      
+     <file src="../nugetIcon.png" target="\images" />
+     <file src="./bin/Release/netstandard2.0/NeuroLinker.dll" target="lib\netstandard2.0" />
+      <file src="./bin/Release/netstandard2.0/NeuroLinker.xml" target="lib\netstandard2.0" />
+     <file src="./bin/Release/netstandard2.0/NeuroLinker.pdb" target="lib\netstandard2.0" />
    </files>
 </package>

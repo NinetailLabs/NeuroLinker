@@ -1,0 +1,1429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NeuroLinker</name>
+    </assembly>
+    <members>
+        <member name="T:NeuroLinker.Configuration.HttpClientConfiguration">
+            <summary>
+            Configuration for <see cref="T:System.Net.Http.HttpClient"/>
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Configuration.HttpClientConfiguration.UserAgent">
+            <summary>
+            The UserAgent string that should be used by the HttpClient when contacting the MAL API
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Enumerations.ConfigurationKeys">
+            <summary>
+            Contains keys for reading configurations from App.config
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Enumerations.ConfigurationKeys.UserAgent">
+            <summary>
+            User agent string provided by MyAnimeList
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Enumerations.Seasons">
+            <summary>
+            Season for shows
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Enumerations.Seasons.Winter">
+            <summary>
+            Winter season
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Enumerations.Seasons.Fall">
+            <summary>
+            Fall season
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Enumerations.Seasons.Spring">
+            <summary>
+            Spring season
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Enumerations.Seasons.Summer">
+            <summary>
+            Summer season
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Extensions.AnimeInformationScrapingExtensions">
+            <summary>
+            Process scraped Mal anime pages
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveAirDates(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the air dates for an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveAlternativeTitles(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve all other titles for an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveAnimeId(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Mal Id for the anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveAnimeTitle(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Anime's title
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveEpisodes(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the number of episode for the Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveFavotireCount(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the favorite count for Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveGenres(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve genres for the Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveImage(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrive poster image for an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveInfoUrls(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve information urls for Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveMemberCount(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve member count for an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrievePopularity(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Popularity of an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveRank(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Rank of an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveRating(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Anime's rating
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveRelatedAnime(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve related Anime and Manga for the Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveScore(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the community score for an anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveStatus(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Anime's current status
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveSynopsis(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve synopsis information for an Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveType(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Mal Type of the Anime
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.GetInfoUrlFor(HtmlAgilityPack.HtmlDocument,System.String)">
+            <summary>
+            Retrieve info url
+            </summary>
+            <param name="doc">Html document from which data should be pulled</param>
+            <param name="infoUrlName">Name of the info url to retrieve</param>
+            <returns>Info url</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.ParseRelatedNodeData(HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Parse the node data for Related items into a list of <see cref="T:NeuroLinker.Models.Related"/> items
+            </summary>
+            <param name="node">Node that should be processed</param>
+            <returns>List of related anime</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.ParseRelatedTableCells(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Parses the cell data in related table's rows
+            </summary>
+            <param name="node">Node containing the first row</param>
+            <param name="anime">Anime instance to populate</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.ParseRelatedTableRows(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlNode)">
+            <summary>
+            If the related items is a proper table with multiple ```tr``` rows instead of one ```tr``` row with another embedded ```tr``` then the direct parsing method fails,
+            instead this method should be called to parse each individual ```tr```
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="rowsToParse">Node containing the rows</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.RetrieveNodesForInnerSpan(HtmlAgilityPack.HtmlDocument,System.String)">
+            <summary>
+            Retrieve a node collection for a specific inner span
+            </summary>
+            <param name="doc">Html document from which data should be pulled</param>
+            <param name="spanText">String to look for in the inner text</param>
+            <returns>Node that contains the requested text</returns>
+        </member>
+        <member name="T:NeuroLinker.Extensions.CharacterInformationScrapingExtensions">
+            <summary>
+            Scrapes character information from the Information page in the anime.
+            This information is not for individual characters but rather basic information for all characters in a show
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterInformationScrapingExtensions.CreateCharacter(System.Collections.Generic.IList{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Create a new Character instance from HtmlNodes
+            </summary>
+            <param name="nodes">HtmlNodes containing the character information</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterInformationScrapingExtensions.PopulateSeiyuu(NeuroLinker.Models.CharacterInformation,System.Collections.Generic.IEnumerable{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Populate Seiyuu information for a character
+            </summary>
+            <param name="character">Character to which the Seiyuu information should be added</param>
+            <param name="seiyuuInfoNodes">HtmlNodes containing the Seiyuu information</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="T:NeuroLinker.Extensions.CharacterPageScrapingExtensions">
+            <summary>
+            Scrape information from Character's page
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveAnimeography(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve character's Animeography
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveBiography(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieves a character's biography
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveCharacterImage(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Get the Character's image URL
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveCharacterName(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Get the Character's name
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveFavoriteCount(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Get the Character's favorite count
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveMangaograhy(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve character's Mangaography
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.RetrieveSeiyuu(NeuroLinker.Models.Character,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve character's seiyuu
+            </summary>
+            <param name="character">Character instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Character instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.GetOgraphyTables(HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Return tables that contain anime- and mangaography
+            </summary>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Tables that contain Ography data</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.CharacterPageScrapingExtensions.ParseOgraphy(System.Collections.Generic.IEnumerable{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Parse rows containing Ography
+            </summary>
+            <param name="ographyNodes">Nodes that should be parsed for ography details</param>
+            <returns>List of ography items</returns>
+        </member>
+        <member name="T:NeuroLinker.Extensions.SeasonLookup">
+            <summary>
+            Season information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeasonLookup.CalculateCurrentSeason(System.DateTime)">
+            <summary>
+            Convert a date to a season
+            </summary>
+            <param name="date">The Date to convert</param>
+            <returns>The season as a SeasonEnum</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeasonLookup.GetNextSeason(NeuroLinker.Enumerations.Seasons)">
+            <summary>
+            Get the season following the one provided
+            </summary>
+            <param name="currentSeason">One of the seasons</param>
+            <returns>The next season</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeasonLookup.NextSeasonYear(NeuroLinker.Enumerations.Seasons,System.Int32)">
+            <summary>
+            Given the current season and its year get the year for the following season
+            </summary>
+            <param name="currentSeason">One of the seasons</param>
+            <param name="year">The year of the season</param>
+            <returns>Year for the next season</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeasonLookup.SeasonEnd(System.DateTime)">
+            <summary>
+            Get the end date of the season for a spesific date
+            </summary>
+            <param name="date">The date to lookup</param>
+            <returns>The date on which the season ended</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeasonLookup.SeasonStart(System.DateTime)">
+            <summary>
+            Get the start date of the season for a spesific date
+            </summary>
+            <param name="date">The date to lookup</param>
+            <returns>The date on which the season started</returns>
+        </member>
+        <member name="T:NeuroLinker.Extensions.SeiyuuPageScraperExtensions">
+            <summary>
+            Scrape Seiyuu pages
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveAdditionalInformation(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu information under the more heading
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveBirthday(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s birthday
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveFamilyName(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s family name
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveGivenName(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s given name
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveName(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s name
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveRoles(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the Seiyuu`s roles
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveSeiyuuImage(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s image URL
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which the data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.RetrieveWebsite(NeuroLinker.Models.Seiyuu,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve Seiyuu`s website
+            </summary>
+            <param name="seiyuu">Seiyuu instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Seiyuu instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.CreateRoleAndPopulateWithAnimeInformation(System.Collections.Generic.IReadOnlyList{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Create a <see cref="T:NeuroLinker.Models.Roles"/> instance and populate it with anime data
+            </summary>
+            <param name="roleNodes">Nodes containing role information</param>
+            <returns>Role instance with populated anime data</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.SeiyuuPageScraperExtensions.PopulateRoleWithCharacterInformation(NeuroLinker.Models.Roles,System.Collections.Generic.IReadOnlyList{HtmlAgilityPack.HtmlNode})">
+            <summary>
+            Populate a <see cref="T:NeuroLinker.Models.Roles"/> with character information
+            </summary>
+            <param name="role">Role instance that should be populated</param>
+            <param name="roleNodes">Nodes containing role information</param>
+        </member>
+        <member name="T:NeuroLinker.Extensions.StringExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.StringExtensions.HtmlDecode(System.String)">
+            <summary>
+            HtmlDecode a string
+            </summary>
+            <param name="self">The string to decode</param>
+            <returns>Decoded html string</returns>
+        </member>
+        <member name="T:NeuroLinker.Extensions.UserInformationScrapingExtensions">
+            <summary>
+            Scrape user information from an Anime page
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Extensions.UserInformationScrapingExtensions.RetrieveUserEpisode(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the user's current watched episode
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.UserInformationScrapingExtensions.RetrieveUserScore(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieves the user's Score
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Extensions.UserInformationScrapingExtensions.RetrieveUserStatus(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the user's Watch status
+            </summary>
+            <param name="anime">Anime instance to populate</param>
+            <param name="doc">Html document from which data should be pulled</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="T:NeuroLinker.Factories.HttpClientFactory">
+            <summary>
+            Creates instance of HttpClient
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Factories.HttpClientFactory.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Factories.HttpClientFactory.#ctor(NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="configuration">Http Client Configuration instance</param>
+        </member>
+        <member name="M:NeuroLinker.Factories.HttpClientFactory.GetHttpClient(System.String,System.String)">
+            <summary>
+            Get an instance of the HttpClient
+            </summary>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>HttpClient instance</returns>
+        </member>
+        <member name="F:NeuroLinker.Factories.HttpClientFactory.UserAgent">
+            <summary>
+            User-Agent header key
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Factories.HttpClientFactory._configuration">
+            <summary>
+            Configuration instance
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Helpers.MalRouteBuilder">
+            <summary>
+            Assist with creation of MAL urls
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.AddAnime(System.Int32)">
+            <summary>
+            Url for adding an anime to a user's list
+            </summary>
+            <param name="id">Id of anime to add</param>
+            <returns>Anime add url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.AdjustRoot(System.String)">
+            <summary>
+            Adjust the Root url user by the Route Builder.
+            The default root value is `https://myanimelist.net`
+            </summary>
+            <param name="newRoot">New value to set</param>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.AnimeCastUrl(System.Int32)">
+            <summary>
+            Get url for retrieving an Anime`s cast
+            /// <remarks>
+            The placeholder is required because of the way Mal does routing. Thank to Raven for pointing out that the actual value does not matter
+            </remarks>
+            </summary>
+            <param name="id">MAL Id</param>
+            <returns>Anime cast URL</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.AnimeCharacterUrl(System.Int32)">
+            <summary>
+            Get url for retrieving a character's page
+            </summary>
+            <param name="id">Character's Mal Id</param>
+            <returns>Character url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.AnimeUrl(System.Int32)">
+            <summary>
+            Get the url for retrieve an anime
+            </summary>
+            <param name="id">MAL Id</param>
+            <returns>Anime Url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.MalCleanUrl(System.String)">
+            <summary>
+            Append a route onto the MAL root
+            </summary>
+            <param name="route">Route to append</param>
+            <returns>Full MAL url for the route</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.SeasonUrl(System.Int32,NeuroLinker.Enumerations.Seasons)">
+            <summary>
+            Url for retrieving season information
+            </summary>
+            <param name="year">Year for which data should be retrieved</param>
+            <param name="season">Season for which data should be retrieved</param>
+            <returns>Season lookup url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.SeiyuuUrl(System.Int32)">
+            <summary>
+            Url for retrieving Seiyuu
+            </summary>
+            <param name="id">Seiyuu Id</param>
+            <returns>Seiyuu page url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.UpdateAnime(System.Int32)">
+            <summary>
+            Url for updating a user's anime
+            </summary>
+            <param name="id">Id of anime to update</param>
+            <returns>Anime update url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.UserListUrl(System.String)">
+            <summary>
+            Url for retrieving a user's list
+            </summary>
+            <param name="username">Username for which list should be retrieved</param>
+            <returns>User list url</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.MalRouteBuilder.VerifyCredentialsUrl">
+            <summary>
+            Url for verifying account credentials
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Helpers.MalRouteBuilder.Parts">
+            <summary>
+            Contains parts that can be used to construct Urls
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Helpers.MalRouteBuilder.Parts.Root">
+            <summary>
+            MAL root url
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Anime">
+            <summary>
+            Anime route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Characters">
+            <summary>
+            Characters route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Character">
+            <summary>
+            Character route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Api">
+            <summary>
+            API route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Account">
+            <summary>
+            Account route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.VerifyCredentialsPage">
+            <summary>
+            Verify credentials route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.AppInfo">
+            <summary>
+            App info route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Season">
+            <summary>
+            Season route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.AnimeList">
+            <summary>
+            Anime list route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Add">
+            <summary>
+            Add route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Update">
+            <summary>
+            Update route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.People">
+            <summary>
+            People route part
+            </summary>
+        </member>
+        <member name="F:NeuroLinker.Helpers.MalRouteBuilder.Parts.Placeholder">
+            <summary>
+            Just a placeholder
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Helpers.PageRetriever">
+            <summary>
+            Retrieves a web page from a URL and load it into an <see cref="T:HtmlAgilityPack.HtmlDocument"/>
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.#ctor(NeuroLinker.Interfaces.Factories.IHttpClientFactory)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="httpClientFactory">HttpClient Factory instance</param>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.RetrieveDocumentAsStringAsync(System.String)">
+            <summary>
+            Retrieve a web document as a string
+            </summary>
+            <param name="url">Url from which data should be retrieved</param>
+            <returns>Document at the Url as a string</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.RetrieveDocumentAsStringAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve a web document as a string
+            </summary>
+            <param name="url">Url from which data should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>Document at the Url as a string</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.RetrieveHtmlPageAsync(System.String)">
+            <summary>
+            Retrieve web page from the specified URL without authentication.
+            Assume the page is encoded as UTF-8
+            </summary>
+            <param name="url">URL from which page should be retrieved</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.RetrieveHtmlPageAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve web page from the specified URL with basic authentication.
+            Assume the page is encoded as UTF-8
+            </summary>
+            <param name="url">URL from which the page should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="M:NeuroLinker.Helpers.PageRetriever.RetrieveHtmlPageAsync(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Retrieve web page from spesified URL.
+            If authentication is not required leave the username and password empty
+            </summary>
+            <param name="url">URL from which the page should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <param name="pageEncoding">Encoding format of the page</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="T:NeuroLinker.Helpers.Utf8StringWriter">
+            <summary>
+            <see cref="T:System.IO.StringWriter"/> that uses UTF8
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Helpers.XmlHelper">
+            <summary>
+            Assist in manipulating XML
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Helpers.XmlHelper.SerializeData``1(``0)">
+            <summary>
+            Serialize an object to XML
+            </summary>
+            <typeparam name="T">Type of object to serialize</typeparam>
+            <param name="data">Data that should be serialized</param>
+            <returns>Serialized object</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration">
+            <summary>
+            Configuration for HttpClient
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Interfaces.Configuration.IHttpClientConfiguration.UserAgent">
+            <summary>
+            The UserAgent string that should be used by the HttpClient when contacting the MAL API
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Factories.IHttpClientFactory">
+            <summary>
+            Creates instance of HttpClient
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Factories.IHttpClientFactory.GetHttpClient(System.String,System.String)">
+            <summary>
+            Get an instance of the HttpClient
+            </summary>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>HttpClient instance</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Helpers.IPageRetriever">
+            <summary>
+            Retrieves a web page from a URL and load it into an <see cref="T:HtmlAgilityPack.HtmlDocument"/>
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IPageRetriever.RetrieveDocumentAsStringAsync(System.String)">
+            <summary>
+            Retrieve a web document as a string
+            </summary>
+            <param name="url">Url from which data should be retrieved</param>
+            <returns>Document at the Url as a string</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IPageRetriever.RetrieveDocumentAsStringAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve a web document as a string
+            </summary>
+            <param name="url">Url from which data should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>Document at the Url as a string</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IPageRetriever.RetrieveHtmlPageAsync(System.String)">
+            <summary>
+            Retrieve web page from the specified URL without authentication.
+            Assume the page is encoded as UTF-8
+            </summary>
+            <param name="url">URL from which page should be retrieved</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IPageRetriever.RetrieveHtmlPageAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve web page from the specified URL with basic authentication.
+            Assume the page is encoded as UTF-8
+            </summary>
+            <param name="url">URL from which the page should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IPageRetriever.RetrieveHtmlPageAsync(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            Retrieve web page from spesified URL.
+            If authentication is not required leave the username and password empty
+            </summary>
+            <param name="url">URL from which the page should be retrieved</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <param name="pageEncoding">Encoding format of the page</param>
+            <returns>Retrieved page</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Helpers.IXmlHelper">
+            <summary>
+            Assist in manipulating XML
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Helpers.IXmlHelper.SerializeData``1(``0)">
+            <summary>
+            Serialize an object to XML
+            </summary>
+            <typeparam name="T">Type of object to serialize</typeparam>
+            <param name="data">Data that should be serialized</param>
+            <returns>Serialized object</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Models.IResponseData">
+            <summary>
+            Identify class as MAL response data
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Interfaces.Models.IResponseData.ErrorOccured">
+            <summary>
+            Indicates if an error occured during the data retrieval of the entry
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Workers.IDataPushWorker">
+            <summary>
+            Push user updates to MAL
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IDataPushWorker.PushAnimeDetailsToMal(NeuroLinker.Models.AnimeUpdate,System.String,System.String)">
+            <summary>
+            Push user details to MAL.
+            This method automatically figures out if the anime should be added to the user's list or if it should simply be updated
+            </summary>
+            <param name="details">Update details</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>True - Update succeeded, otherwise false</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Workers.IListRetrievalWorker">
+            <summary>
+            Retrieve user list
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IListRetrievalWorker.RetrieveUserListAsync(System.String)">
+            <summary>
+            Retrieve a user's MAL list
+            </summary>
+            <param name="username">User's username</param>
+            <returns>Mal list</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Workers.IRequestProcessor">
+            <summary>
+            Manage data requests
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IRequestProcessor.DoCharacterRetrieval(System.Int32)">
+            <summary>
+            Retrieve a Character from MAL
+            </summary>
+            <param name="characterId">Character Id</param>
+            <returns>Populated Character</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IRequestProcessor.DoSeiyuuRetrieval(System.Int32)">
+            <summary>
+            Retrieve a Seiyuu from MAL
+            </summary>
+            <param name="seiyuuId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IRequestProcessor.GetAnime(System.Int32)">
+            <summary>
+            Retrieve an anime from MAL
+            </summary>
+            <param name="id">MAL Id</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IRequestProcessor.GetAnime(System.Int32,System.String,System.String)">
+            <summary>
+            Retrieve an anime from MAL
+            </summary>
+            <param name="id">MAL Id</param>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.IRequestProcessor.VerifyCredentials(System.String,System.String)">
+            <summary>
+            Verify user credentials
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>True - Credentials are valid, otherwise false</returns>
+        </member>
+        <member name="T:NeuroLinker.Interfaces.Workers.ISeasonWorker">
+            <summary>
+            Retreive season information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.ISeasonWorker.GetSeasonData(System.Int32,NeuroLinker.Enumerations.Seasons)">
+            <summary>
+            Retrieve information about shows in a specific season
+            </summary>
+            <param name="year">Year for which season data should be retrieved</param>
+            <param name="season">Season for which data should be retrieved</param>
+            <returns>Collection of show for the selected season</returns>
+        </member>
+        <member name="M:NeuroLinker.Interfaces.Workers.ISeasonWorker.RetrieveCurrentSeason">
+            <summary>
+            Retrieve information for the current season.
+            This information also includes data for the next two seasons
+            </summary>
+            <returns>Collection containing season data for the next three seasons</returns>
+        </member>
+        <member name="T:NeuroLinker.Models.Anime">
+            <summary>
+            Anime information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.Anime.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.YearOnlyDate">
+            <summary>
+            Gets or sets whether the start date is a year only date
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.Character">
+            <summary>
+            Character information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.Character.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Animeography">
+            <summary>
+            Anime that the character has appeared int
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Biography">
+            <summary>
+            Character biography
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.ErrorMessage">
+            <summary>
+            Message indicating what went wrong while retrieving the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.ErrorOccured">
+            <summary>
+            Did an error occur during data parsing
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.FavoriteCount">
+            <summary>
+            Number of users that have favorited the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Id">
+            <summary>
+            Character Id
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.ImageUrl">
+            <summary>
+            Image Url for the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Mangaography">
+            <summary>
+            Manga that the character has appeared in
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Name">
+            <summary>
+            The characters name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Seiyuu">
+            <summary>
+            Seiyuu for the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Character.Url">
+            <summary>
+            Url where the character can be accessed
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.Ography">
+            <summary>
+            Model to store information about media that a character stars in
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Ography.Id">
+            <summary>
+            Id of the entry (eg a Mal anime Id)
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Ography.ImageUrl">
+            <summary>
+            Poster URL of the content
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Ography.Name">
+            <summary>
+            Name of the media
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Ography.RoleType">
+            <summary>
+            The type of role the character fulfills in the media
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Ography.Url">
+            <summary>
+            URL where the entry is located
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.SeasonShowCollection">
+            <summary>
+            Wrapper for collection of season entries
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.SeasonShowCollection.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeasonShowCollection.ErrorOccured">
+            <inheritdoc />
+        </member>
+        <member name="P:NeuroLinker.Models.SeasonShowCollection.SeasonShows">
+            <summary>
+            Collection of shows for season
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.Seiyuu">
+            <summary>
+            Seiyuu information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.Seiyuu.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.BirthDay">
+            <summary>
+            Seiyuu`s birthday
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.ErrorMessage">
+            <summary>
+            Information about errors that occured during Seiyuu data retrieval
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.ErrorOccured">
+            <summary>
+            Indicate if an error occured during retrieval or parsing
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.FamilyName">
+            <summary>
+            Seiyuu`s family name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Favorites">
+            <summary>
+            Seiyuu`s favorite stuff
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.GivenName">
+            <summary>
+            Seiyuu`s given name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Id">
+            <summary>
+            Mal Id
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.ImageUrl">
+            <summary>
+            Seiyuu`s Mal image URL
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.More">
+            <summary>
+            Other information
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Name">
+            <summary>
+            Seiyuu`s name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Roles">
+            <summary>
+            Character that the Seiyuu has played
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Url">
+            <summary>
+            Mal URL where the Seiyuu can be accessed
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Seiyuu.Website">
+            <summary>
+            Seiyuu`s website
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.UserList.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.ResponseWrappers.DataPushResponseWrapper">
+            <summary>
+            Contains result of a data push
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.DataPushResponseWrapper.#ctor(System.Net.HttpStatusCode,System.Boolean)">
+            <summary>
+            Construct with a Status code and indicate if the push was a success
+            </summary>
+            <param name="responseStatusCode">HttpStatus code received from the remote server</param>
+            <param name="success">Was the request successful or not</param>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.DataPushResponseWrapper.#ctor(System.Exception)">
+            <summary>
+            Construct with an exception
+            </summary>
+            <param name="exception">Exception that occured during retrieval</param>
+        </member>
+        <member name="T:NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper">
+            <summary>
+            Wraps retrieval of <see cref="T:HtmlAgilityPack.HtmlDocument"/>
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.#ctor(System.Net.HttpStatusCode,System.Boolean,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Construct with response code, status and the Html document
+            </summary>
+            <param name="responseStatusCode">The status code received by the client</param>
+            <param name="success">Was the retrieval successful</param>
+            <param name="document">The received document</param>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.#ctor(System.Exception)">
+            <summary>
+            Construct with an exception
+            </summary>
+            <param name="exception">Exception that occured</param>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.HtmlDocumentRetrievalWrapper.Document">
+            <summary>
+            The retrieved document
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.ResponseWrappers.ResponseWrapperBase">
+            <summary>
+            Wrapper for retrieved data, it includes whether the retrieval was a success as well as the actual staus code received
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.ResponseWrapperBase.#ctor(System.Net.HttpStatusCode,System.Boolean)">
+            <summary>
+            Construct with a Status code and indicate if the push was a success
+            </summary>
+            <param name="responseStatusCode">HttpStatus code received from the remote server</param>
+            <param name="success">Was the request successful or not</param>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.ResponseWrapperBase.#ctor(System.Exception)">
+            <summary>
+            Construct with an exception
+            </summary>
+            <param name="exception">Exception that occured during retrieval</param>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.ResponseWrapperBase.Exception">
+            <summary>
+            Indicate if an exception has occured during the data retrieval
+            <remarks>
+                If this value is null no error occured.
+                If this value is populate an exception occured during data retrieval
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.ResponseWrapperBase.ResponseStatusCode">
+            <summary>
+            Status code received from the Mal server.
+            <remarks>
+            If this value is null it means some error occured and the <see cref="P:NeuroLinker.ResponseWrappers.ResponseWrapperBase.Exception"/> should be inspected for the problem
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.ResponseWrapperBase.Success">
+            <summary>
+            Indicate if the retrieval was a success
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.ResponseWrappers.RetrievalWrapper`1">
+            <summary>
+            Wraps Mal response data with status information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.RetrievalWrapper`1.#ctor(System.Net.HttpStatusCode,System.Boolean,`0)">
+            <summary>
+            Construct with response code, success status and the response data
+            </summary>
+            <param name="responseStatusCode">Http status code</param>
+            <param name="success">Was the retrieval a success</param>
+            <param name="response">Character information</param>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.RetrievalWrapper`1.#ctor(System.Exception,`0)">
+            <summary>
+            Construct with an exception and the (broken) response data
+            </summary>
+            <param name="exception">Exception information</param>
+            <param name="response">Broken response information</param>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.RetrievalWrapper`1.ResponseData">
+            <summary>
+            MAL response data
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.ResponseWrappers.StringRetrievalWrapper">
+            <summary>
+            Response provided by HttpClient when retrieving page content as a string
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.StringRetrievalWrapper.#ctor(System.Net.HttpStatusCode,System.Boolean,System.String)">
+            <summary>
+            Construct with data retrieved as well as the Http status information
+            </summary>
+            <param name="responseStatusCode">Response code received while retrieving the data</param>
+            <param name="success">Was the retrieval a success</param>
+            <param name="retrievedBody">Page body</param>
+        </member>
+        <member name="M:NeuroLinker.ResponseWrappers.StringRetrievalWrapper.#ctor(System.Exception)">
+            <summary>
+            Construct with exception
+            </summary>
+            <param name="exception">Exception that occured during data retrieval</param>
+        </member>
+        <member name="P:NeuroLinker.ResponseWrappers.StringRetrievalWrapper.RetrievedBody">
+            <summary>
+            Body that was retrieved from the endpoint
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Workers.DataPushWorker">
+            <summary>
+            Push user updates to MAL
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Workers.DataPushWorker.#ctor(NeuroLinker.Interfaces.Factories.IHttpClientFactory,NeuroLinker.Interfaces.Workers.IListRetrievalWorker,NeuroLinker.Interfaces.Helpers.IXmlHelper)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="httpClientFactory">HttpClientFactory instance</param>
+            <param name="listRetrievalWorker">List retrieval worker instance</param>
+            <param name="xmlHelper">XML Helper instance</param>
+        </member>
+        <member name="M:NeuroLinker.Workers.DataPushWorker.PushAnimeDetailsToMal(NeuroLinker.Models.AnimeUpdate,System.String,System.String)">
+            <summary>
+            Push user details to MAL.
+            This method automatically figures out if the anime should be added to the user's list or if it should simply be updated
+            </summary>
+            <param name="details">Update details</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <returns>True - Update succeeded, otherwise false</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.DataPushWorker.UpdateAnimeDetails(NeuroLinker.Models.AnimeUpdate,System.String,System.String,System.Boolean)">
+            <summary>
+            Push update/add details to MAL
+            </summary>
+            <param name="details">Update details</param>
+            <param name="username">Username for authentication</param>
+            <param name="password">Password for authentication</param>
+            <param name="isupdate">Indicate if this is an update or an add</param>
+            <returns>True - Update succeeded, otherwise false</returns>
+        </member>
+        <member name="T:NeuroLinker.Workers.ListRetrievalWorker">
+            <summary>
+            Retrieve a user list from MAL
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Workers.ListRetrievalWorker.#ctor(NeuroLinker.Interfaces.Helpers.IPageRetriever)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="pageRetriever">PageRetriever instance</param>
+        </member>
+        <member name="M:NeuroLinker.Workers.ListRetrievalWorker.RetrieveUserListAsync(System.String)">
+            <summary>
+            Retrieve a user's MAL list
+            </summary>
+            <param name="username">User's username</param>
+            <returns>Mal list</returns>
+        </member>
+        <member name="T:NeuroLinker.Workers.RequestProcessor">
+            <summary>
+            Wrapper class for request processing
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.#ctor(NeuroLinker.Interfaces.Helpers.IPageRetriever)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="pageRetriever">Page retriever instance</param>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.DoCharacterRetrieval(System.Int32)">
+            <summary>
+            Retrieve a Character from MAL
+            </summary>
+            <param name="characterId">Character Id</param>
+            <returns>Populated Character</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.DoSeiyuuRetrieval(System.Int32)">
+            <summary>
+            Retrieve a Seiyuu from MAL
+            </summary>
+            <param name="seiyuuId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.GetAnime(System.Int32)">
+            <summary>
+            Retrieve an anime from MAL
+            </summary>
+            <param name="id">MAL Id</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.GetAnime(System.Int32,System.String,System.String)">
+            <summary>
+            Retrieve an anime from MAL
+            </summary>
+            <param name="id">MAL Id</param>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.VerifyCredentials(System.String,System.String)">
+            <summary>
+            Verify user credentials
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns>True - Credentials are valid, otherwise false</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.RequestProcessor.DoAnimeRetrieval(System.Int32,System.Tuple{System.String,System.String})">
+            <summary>
+            Retrieve an anime from MAL
+            </summary>
+            <param name="id">MAL Id</param>
+            <param name="loginDetails">Username and password for retrieving user information. Pass null to retrieve pulbic page</param>
+            <returns>Anime instance</returns>
+        </member>
+        <member name="T:NeuroLinker.Workers.SeasonWorker">
+            <summary>
+            Retrieve season information
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Workers.SeasonWorker.#ctor(NeuroLinker.Interfaces.Helpers.IPageRetriever)">
+            <summary>
+            DI Constructor
+            </summary>
+            <param name="pageRetriever">PageRetriever instance</param>
+        </member>
+        <member name="M:NeuroLinker.Workers.SeasonWorker.GetSeasonData(System.Int32,NeuroLinker.Enumerations.Seasons)">
+            <summary>
+            Retrieve information about shows in a specific season
+            </summary>
+            <param name="year">Year for which season data should be retrieved</param>
+            <param name="season">Season for which data should be retrieved</param>
+            <returns>Collection of show for the selected season</returns>
+        </member>
+        <member name="M:NeuroLinker.Workers.SeasonWorker.RetrieveCurrentSeason">
+            <summary>
+            Retrieve information for the current season.
+            This information also includes data for the next two seasons
+            </summary>
+            <returns>Collection containing season data for the next three seasons</returns>
+        </member>
+    </members>
+</doc>

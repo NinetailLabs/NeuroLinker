@@ -5,9 +5,8 @@
 #load "CakeScripts/base/base.variables.cake"
 #load "CakeScripts/base/base.setup.cake"
 #load "CakeScripts/base/base.nuget.restore.cake"
-#load "CakeScripts/base/base.paket.restore.cake"
 #load "CakeScripts/base/base.msbuild.cake"
-#load "CakeScripts/base/base.nunit.cake"
+#load "CakeScripts/base/base.altcover.cake"
 #load "CakeScripts/base/base.coveralls.upload.cake"
 #load "CakeScripts/base/base.gitreleasenotes.cake"
 #load "CakeScripts/base/base.nuget.pack.cake"
@@ -22,7 +21,7 @@
 Task ("VariableSetup")
 	.Does(() => {
 		projectName = "NeuroLinker";
-		releaseFolderString = "./{0}/bin/{1}";
+		releaseFolderString = "./{0}/bin/{1}/netstandard2.0";
 		releaseBinaryType = "dll";
 		repoOwner = "NinetailLabs";
 		botName = "NinetailLabsBot";
@@ -37,7 +36,6 @@ Task ("Default")
 	.IsDependentOn ("LocateFiles")
 	.IsDependentOn ("VariableSetup")
 	.IsDependentOn ("NugetRestore")
-	.IsDependentOn ("PaketRestore")
 	.IsDependentOn ("Build")
 	.IsDependentOn ("UnitTests")
 	.IsDependentOn ("CoverageUpload")

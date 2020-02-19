@@ -67,7 +67,7 @@ namespace NeuroLinker.Extensions
                 .ChildNodes
                 .FirstOrDefault(x => x.GetAttributeValue("selected", "") == "selected");
 
-            anime.UserWatchedStatus = statusNode?.NextSibling.InnerText;
+            anime.UserWatchedStatus = statusNode?.InnerText;
 
             return anime;
         }
