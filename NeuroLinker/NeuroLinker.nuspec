@@ -10,6 +10,7 @@
       <summary>NeuroLinker is a scraping library for MyAnimeList.</summary>
       <license type="expression">MIT</license>
       <projectUrl>https://github.com/NinetailLabs/NeuroLinker</projectUrl>
+      <repository type="git" url="https://github.com/NinetailLabs/NeuroLinker.git" branch="master" commit="GitHashHere" />
       <icon>images\nugetIcon.png</icon>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) NineTail Labs 2017</copyright>
