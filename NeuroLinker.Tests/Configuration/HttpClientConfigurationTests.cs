@@ -1,8 +1,10 @@
-﻿using FluentAssertions;
+﻿using System.Reflection;
+using FluentAssertions;
 using NeuroLinker.Configuration;
 using NeuroLinker.Enumerations;
 using NeuroLinker.Tests.TestHelpers;
 using NUnit.Framework;
+using VaraniumSharp.Extensions;
 
 namespace NeuroLinker.Tests.Configuration
 {
@@ -14,6 +16,7 @@ namespace NeuroLinker.Tests.Configuration
         public void ConfigurationIsLoadedCorrectly()
         {
             // arrange
+            StringExtensions.ConfigurationLocation = Assembly.GetExecutingAssembly().Location;
             const string agentString = "Kuroyukihime";
 
             ApplicationConfigurationHelper.AdjustKeys(ConfigurationKeys.UserAgent, agentString);
@@ -22,7 +25,7 @@ namespace NeuroLinker.Tests.Configuration
             var sut = new HttpClientConfiguration();
 
             // assert
-            //sut.UserAgent.Should().Be(agentString);
+            sut.UserAgent.Should().Be(agentString);
         }
 
         #endregion
