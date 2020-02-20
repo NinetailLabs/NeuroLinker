@@ -30,11 +30,18 @@ Task ("VariableSetup")
 		gitRepo = string.Format("https://github.com/{0}/{1}.git", repoOwner, projectName);
 	});
 
+Task ("GrabMsdnPackage")
+	.Does(() => {
+		DownloadFile("https://www.nuget.org/api/v2/package/msdn.4.5.2/0.1.0-alpha-1611021200", $"./tools/MsdnDocs.nupkg");
+		Unzip("./tools/MsdnDocs.nupkg", "./tools/MsdnDocs");
+	});
+
 Task ("Default")
 	.IsDependentOn ("DiscoverBuildDetails")
 	.IsDependentOn ("OutputVariables")
 	.IsDependentOn ("LocateFiles")
 	.IsDependentOn ("VariableSetup")
+	.IsDependentOn ("GrabMsdnPackage")
 	.IsDependentOn ("NugetRestore")
 	.IsDependentOn ("Build")
 	.IsDependentOn ("UnitTests")
