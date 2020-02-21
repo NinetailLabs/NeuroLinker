@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
-using NeuroLinker.Helpers;
 using NeuroLinker.Models;
 
 namespace NeuroLinker.Extensions
@@ -15,6 +13,12 @@ namespace NeuroLinker.Extensions
     {
         #region Public Methods
 
+        /// <summary>
+        /// Populates the Character and Seiyuu information for an anime
+        /// </summary>
+        /// <param name="anime">Anime for which the Seiyuu and Characters should be populated</param>
+        /// <param name="doc">HtmlDocument from which information should be retrieved</param>
+        /// <returns>Anime populated with the Seiyuu and characters</returns>
         public static Anime PopulateCharacterAndSeiyuuInformation(this Anime anime, HtmlDocument doc)
         {
             var rows = doc.DocumentNode
@@ -64,7 +68,6 @@ namespace NeuroLinker.Extensions
             var url = nodes[1].ChildNodes["a"].Attributes["href"].Value;
             int.TryParse(url.Split('/')[4], out var id);
 
-            var name = nodes[1].ChildNodes["a"].InnerHtml.HtmlDecode();
             return new CharacterInformation
             {
                 CharacterPicture = (picLocation.Attributes["data-src"] ?? picLocation.Attributes["src"])?.Value,

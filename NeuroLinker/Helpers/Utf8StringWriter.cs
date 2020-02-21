@@ -10,6 +10,9 @@ namespace NeuroLinker.Helpers
     {
         #region Properties
 
+        /// <summary>
+        /// The encoding to use for writing out the strings.
+        /// </summary>
         public override Encoding Encoding => Encoding.UTF8;
 
         #endregion
