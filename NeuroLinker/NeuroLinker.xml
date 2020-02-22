@@ -244,6 +244,14 @@
             This information is not for individual characters but rather basic information for all characters in a show
             </summary>
         </member>
+        <member name="M:NeuroLinker.Extensions.CharacterInformationScrapingExtensions.PopulateCharacterAndSeiyuuInformation(NeuroLinker.Models.Anime,HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Populates the Character and Seiyuu information for an anime
+            </summary>
+            <param name="anime">Anime for which the Seiyuu and Characters should be populated</param>
+            <param name="doc">HtmlDocument from which information should be retrieved</param>
+            <returns>Anime populated with the Seiyuu and characters</returns>
+        </member>
         <member name="M:NeuroLinker.Extensions.CharacterInformationScrapingExtensions.CreateCharacter(System.Collections.Generic.IList{HtmlAgilityPack.HtmlNode})">
             <summary>
             Create a new Character instance from HtmlNodes
@@ -753,6 +761,11 @@
             <see cref="T:System.IO.StringWriter"/> that uses UTF8
             </summary>
         </member>
+        <member name="P:NeuroLinker.Helpers.Utf8StringWriter.Encoding">
+            <summary>
+            The encoding to use for writing out the strings.
+            </summary>
+        </member>
         <member name="T:NeuroLinker.Helpers.XmlHelper">
             <summary>
             Assist in manipulating XML
@@ -960,6 +973,210 @@
         <member name="M:NeuroLinker.Models.Anime.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.AdditionalInfoUrls">
+            <summary>
+            Urls that contain additional information about the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.AlternativeSetting">
+            <summary>
+            Anime that are related to this show but in an alternative setting
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.AlternativeVersion">
+            <summary>
+            Anime that are related to this show and are an alternative version of the events
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.CharacterAnime">
+            <summary>
+            Anime that are related to this show that stars some of the same characters
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.CharacterInformation">
+            <summary>
+            Information about the characters that star in the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Classification">
+            <summary>
+            Age rating for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.EndDate">
+            <summary>
+            Date when the anime finished airing
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Episodes">
+            <summary>
+            The number of episodes that are in the show.
+            If the value is unknown it will be null.
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.ErrorMessage">
+            <summary>
+            Error message indicating what went wrong during the anime`s retrieval and parsing
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.ErrorOccured">
+            <summary>
+            Indicate if an error occured during retrieval or parsing
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.FavoriteCount">
+            <summary>
+            The number of Mal users that have marked the show as a favorite
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.FullStories">
+            <summary>
+            Anime that relate to the show that contains the full story rather than an abridged version
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Genres">
+            <summary>
+            Genres that the anime fall in
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.HighResImageUrl">
+            <summary>
+            URL to the high quality poster for the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Id">
+            <summary>
+            Mal Id for the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.ImageUrl">
+            <summary>
+            URL to the low quality poster for the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.MangaAdaptation">
+            <summary>
+            Manga that the anime was adapted from/to
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.MemberCount">
+            <summary>
+            Number of Mal members that have watched the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.MemberScore">
+            <summary>
+            Average score of all Mal members that rated the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Others">
+            <summary>
+            Anime that related to this show in some way besides the more general ones
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.OtherTitles">
+            <summary>
+            Alternative titles for the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.ParentStory">
+            <summary>
+            Anime that is the parent story for this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Popularity">
+            <summary>
+            Popularity rank on Mal
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Prequels">
+            <summary>
+            Anime that are prequels to this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Rank">
+            <summary>
+            Rank on Mal
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.ScoreStats">
+            <summary>
+            Score statistics from Mal
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Sequels">
+            <summary>
+            Anime that are sequels of this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.SideStories">
+            <summary>
+            Anime that are side stories to this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.SpinOffs">
+            <summary>
+            Anime that are spin-offs from this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.StartDate">
+            <summary>
+            The date when the anime started screening
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Status">
+            <summary>
+            Current Mal status for the show (eg Screening)
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Summaries">
+            <summary>
+            Anime that provides a summary of this show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.SummaryStats">
+            <summary>
+            Summary statistics for Mal
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Synopsis">
+            <summary>
+            Synopsis for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Tags">
+            <summary>
+            Mal tags assigned to the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Title">
+            <summary>
+            The shows primary title
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.Type">
+            <summary>
+            The type of the Anime (eg TV or Movie)
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.UserScore">
+            <summary>
+            Score that the user assigned the show.
+            This value is only retrieved when logged in retrieval is used.
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.UserWatchedEpisodes">
+            <summary>
+            Number of episodes the user has watched of the show.
+            This value is only retrieved when logged in retrieval is used.
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Anime.UserWatchedStatus">
+            <summary>
+            The user`s current watch status for the show.
+            This value is only retrieved when logged in retrieval is used.
             </summary>
         </member>
         <member name="P:NeuroLinker.Models.Anime.YearOnlyDate">
