@@ -136,6 +136,7 @@ namespace NeuroLinker.Extensions
             anime.Title = doc.DocumentNode
                 .SelectSingleNode("//h1")
                 .SelectSingleNode("//span[@itemprop='name']")
+                .ChildNodes["#text"]
                 .InnerText
                 .HtmlDecode();
 
