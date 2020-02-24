@@ -121,6 +121,20 @@ namespace NeuroLinker.Tests.Extensions
             sut.Title.Should().Be("Sword Art Online");
         }
 
+        [Test]
+        public void AnimeTitleFieldIsCorrectlyRetrievedWithDualTitleDisplay()
+        {
+            // arrange
+            var fixture = new PageScrapingLogicFixture("38481.html");
+            var sut = fixture.Instance;
+
+            // act
+            sut.RetrieveAnimeTitle(fixture.Document);
+
+            // assert
+            sut.Title.Should().Be("Toaru Kagaku no Railgun T");
+        }
+
         [TestCase("11757.html", "TV")]
         [TestCase("23365.html", "Music")]
         public void AnimeTypeIsRetrievedCorrectly(string page, string expectedType)

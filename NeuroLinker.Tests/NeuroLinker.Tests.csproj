@@ -75,6 +75,9 @@
     <None Update="PageExamples\36828.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="PageExamples\38481.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="PageExamples\40.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1184,6 +1184,86 @@
             Gets or sets whether the start date is a year only date
             </summary>
         </member>
+        <member name="T:NeuroLinker.Models.AnimeUpdate">
+            <summary>
+            Model used to update a Mal anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.AnimeId">
+            <summary>
+            Mal Id of the anime to udpate
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.EnableDiscussion">
+            <summary>
+            Indicate if discussion should be enabled or not
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.EnableRewatching">
+            <summary>
+            Indicate if the user is rewatching the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Comments">
+            <summary>
+            Comments the user wants to add about the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Rewatched">
+            <summary>
+            The number of times the user has rewatched the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.RewatchValue">
+            <summary>
+            The rewatch value for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.DateStart">
+            <summary>
+            The date when the user started watching the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.DateFinish">
+            <summary>
+            The date when the user finished watching the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Priority">
+            <summary>
+            The priority the user has assigned to the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Episodes">
+            <summary>
+            The latest episode the user has watched
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.StorageType">
+            <summary>
+            The type of storage that the user is storing the episodes on
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.StorageValue">
+            <summary>
+            The size of the files the user stores for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Status">
+            <summary>
+            The user`s status for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Score">
+            <summary>
+            The score the user has assigned to the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.AnimeUpdate.Tags">
+            <summary>
+            Tags the user has assigned to the show
+            </summary>
+        </member>
         <member name="T:NeuroLinker.Models.Character">
             <summary>
             Character information
@@ -1249,6 +1329,101 @@
             Url where the character can be accessed
             </summary>
         </member>
+        <member name="T:NeuroLinker.Models.CharacterInformation">
+            <summary>
+            Information about a character
+            </summary>
+        </member>
+        <member name="M:NeuroLinker.Models.CharacterInformation.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.CharacterName">
+            <summary>
+            The name of the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.CharacterPicture">
+            <summary>
+            The url where the character`s poster image can be accessed
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.CharacterType">
+            <summary>
+            The type of role the character has in the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.CharacterUrl">
+            <summary>
+            Mal URL where the character can be accessed
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.Id">
+            <summary>
+            Mal Id for the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.CharacterInformation.Seiyuu">
+            <summary>
+            Information about the Seiyuu that voice the character
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.InfoUrls">
+            <summary>
+            Urls that contain more information about 
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.CharactersAndStaff">
+            <summary>
+            URL that link to character and staff information page
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Clubs">
+            <summary>
+            URL that link to clubs related to the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Episodes">
+            <summary>
+            URL that link to episode information for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Featured">
+            <summary>
+            URL that link to featured shows
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Forum">
+            <summary>
+            URL that links to the forums
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.News">
+            <summary>
+            URL that links to the news page
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Pictures">
+            <summary>
+            URL that links to the picture page for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Recommendation">
+            <summary>
+            URL that links to the recommendation page for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Reviews">
+            <summary>
+            URL that links to the reviews page for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.InfoUrls.Stats">
+            <summary>
+            URL that links to the stats page for the show
+            </summary>
+        </member>
         <member name="T:NeuroLinker.Models.Ography">
             <summary>
             Model to store information about media that a character stars in
@@ -1277,6 +1452,91 @@
         <member name="P:NeuroLinker.Models.Ography.Url">
             <summary>
             URL where the entry is located
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.Related">
+            <summary>
+            Information about other anime that relate to an anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Related.Id">
+            <summary>
+            MAL Id for the related show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Related.Title">
+            <summary>
+            Title of the related show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Related.Url">
+            <summary>
+            Mal URL for the related show
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.Roles">
+            <summary>
+            Role information for a character for a specific anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.AnimeId">
+            <summary>
+            Mal Id that the role information is for
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.AnimePicUrl">
+            <summary>
+            URL that links to the anime`s poster
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.AnimeTitle">
+            <summary>
+            Anime`s title
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.AnimeUrl">
+            <summary>
+            Mal URL for the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.CharacterId">
+            <summary>
+            Mal Id for the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.CharacterName">
+            <summary>
+            The character`s name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.CharacterPic">
+            <summary>
+            URL linking to the character`s poster image
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.CharacterUrl">
+            <summary>
+            MAL URL for the character
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.Roles.RoleType">
+            <summary>
+            The type of role the character has in the anime
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.SeasonData">
+            <summary>
+            Anime information that is used to link to a season
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeasonData.Id">
+            <summary>
+            Mal Id of the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeasonData.Title">
+            <summary>
+            Anime`s title
             </summary>
         </member>
         <member name="T:NeuroLinker.Models.SeasonShowCollection">
@@ -1372,9 +1632,210 @@
             Seiyuu`s website
             </summary>
         </member>
+        <member name="T:NeuroLinker.Models.SeiyuuInformation">
+            <summary>
+            Seiyuu information
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeiyuuInformation.Id">
+            <summary>
+            Mal Id for the Seiyuu
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeiyuuInformation.Language">
+            <summary>
+            The seiyuu`s language
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeiyuuInformation.Name">
+            <summary>
+            The seiyuu`s full name
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeiyuuInformation.PictureUrl">
+            <summary>
+            URL linking to a picture of the seiyuu
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.SeiyuuInformation.Url">
+            <summary>
+            Mal URL where the seiyuu`s information can be found
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.UserList">
+            <summary>
+            User list information
+            </summary>
+        </member>
         <member name="M:NeuroLinker.Models.UserList.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserList.Anime">
+            <summary>
+            List of anime that is on the user`s list
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserList.ErrorMessage">
+            <summary>
+            Error message containing details about the error that occured during the retrieval of the user`s list information.
+            Will be empty if no error occured
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserList.ErrorOccured">
+            <summary>
+            Indicate if an error occured during the user list retrieval
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserList.Info">
+            <summary>
+            Additional information about the user`s list
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.UserListAnime">
+            <summary>
+            Anime information entry for the user`s anime list
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyRewatching">
+            <summary>
+            Indicate if the user is rewatching the show or not
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.RewatchingEpisode">
+            <summary>
+            The current rewatch episode
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.LastUpdated">
+            <summary>
+            The last time the user list entry was updated
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyId">
+            <summary>
+            The user`s Id
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.WatchedEpisodes">
+            <summary>
+            The number of episodes the user has watched
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyStartDate">
+            <summary>
+            The date when the user started watching the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyFinishDate">
+            <summary>
+            The date when the user finished watching the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesEnd">
+            <summary>
+            The date when the series finished screening
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesImage">
+            <summary>
+            URL to the anime`s poster
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyScore">
+            <summary>
+            Score the user assigned to the anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyStatus">
+            <summary>
+            The user`s watch status for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.MyTags">
+            <summary>
+            Tags the user has assigned to the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesEpisodes">
+            <summary>
+            Number of episodes the series has
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesSynonyms">
+            <summary>
+            Synonyms for the series
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesType">
+            <summary>
+            The type of the series (eg TV)
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesId">
+            <summary>
+            The Mal Id for the show
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesStatus">
+            <summary>
+            The series screening status
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesStart">
+            <summary>
+            Date when the series started screening
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListAnime.SeriesTitle">
+            <summary>
+            The series title
+            </summary>
+        </member>
+        <member name="T:NeuroLinker.Models.UserListInformation">
+            <summary>
+            Additional user list information
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.Username">
+            <summary>
+            The username of the user the list belongs to
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.Watching">
+            <summary>
+            The number of shows the user is watching
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.Completed">
+            <summary>
+            The number of episodes the user has finished watching
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.Dropped">
+            <summary>
+            The number of shows the user has dropped
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.PlanToWatch">
+            <summary>
+            The number of shows the user plan to watch
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.DaysWatching">
+            <summary>
+            The number of days the user has watched anime
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.OnHold">
+            <summary>
+            The number of shows the user has placed on hold
+            </summary>
+        </member>
+        <member name="P:NeuroLinker.Models.UserListInformation.UserId">
+            <summary>
+            The user`s Mal Id
             </summary>
         </member>
         <member name="T:NeuroLinker.ResponseWrappers.DataPushResponseWrapper">
