@@ -134,8 +134,7 @@ namespace NeuroLinker.Extensions
         public static Anime RetrieveAnimeTitle(this Anime anime, HtmlDocument doc)
         {
             anime.Title = doc.DocumentNode
-                .SelectSingleNode("//h1")
-                .SelectSingleNode("//span[@itemprop='name']")
+                .SelectSingleNode("//h1[@class='title-name']")
                 .ChildNodes["#text"]
                 .InnerText
                 .HtmlDecode();
@@ -447,7 +446,7 @@ namespace NeuroLinker.Extensions
         public static Anime RetrieveSynopsis(this Anime anime, HtmlDocument doc)
         {
             var synopsis = doc.DocumentNode
-                               .SelectSingleNode("//span[@itemprop='description']")
+                               .SelectSingleNode("//p[@itemprop='description']")
                                ?.InnerText
                            ?? string.Empty;
 
