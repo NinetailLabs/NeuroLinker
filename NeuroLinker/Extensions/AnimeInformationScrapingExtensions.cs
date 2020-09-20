@@ -133,11 +133,19 @@ namespace NeuroLinker.Extensions
         /// <returns>Anime instance</returns>
         public static Anime RetrieveAnimeTitle(this Anime anime, HtmlDocument doc)
         {
-            anime.Title = doc.DocumentNode
-                .SelectSingleNode("//h1[@class='title-name']")
-                .ChildNodes["#text"]
-                .InnerText
+            var newTitle = doc.DocumentNode
+                .SelectSingleNode("//h1[@class='title-name h1_bold_none']")
+                .ChildNodes["strong"]
+                ?.InnerText
                 .HtmlDecode();
+
+           var oldTitle = doc.DocumentNode
+                .SelectSingleNode("//h1[@class='title-name']")
+                ?.ChildNodes["#text"]
+                ?.InnerText
+                .HtmlDecode();
+
+           anime.Title = newTitle ?? oldTitle;
 
             return anime;
         }
