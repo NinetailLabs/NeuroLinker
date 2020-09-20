@@ -105,8 +105,8 @@ namespace NeuroLinker.Extensions
         public static Character RetrieveCharacterName(this Character character, HtmlDocument doc)
         {
             character.Name = doc.DocumentNode
-                .SelectNodes("//div[@class='normal_header']")
-                .ToList()[2]
+                .SelectNodes("//h2[@class='normal_header']")
+                .ToList()[0]
                 .InnerText
                 .HtmlDecode();
 

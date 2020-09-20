@@ -28,7 +28,7 @@ namespace NeuroLinker.Tests.Workers
             var document = new HtmlDocument();
             var path = AppDomain.CurrentDomain.BaseDirectory;
             var examplePath = Path.Combine(path, "PageExamples", $"{characterId}.html");
-            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            await using (var htmlFile = File.Open(examplePath, FileMode.Open))
             {
                 document.Load(htmlFile);
             }
