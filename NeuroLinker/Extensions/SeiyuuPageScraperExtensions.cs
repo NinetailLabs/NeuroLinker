@@ -264,12 +264,13 @@ namespace NeuroLinker.Extensions
         private static Roles PopulateRoleWithCharacterInformation(this Roles role, IReadOnlyList<HtmlNode> roleNodes)
         {
             role.CharacterName = roleNodes[2]
-                .ChildNodes["a"]
+                .ChildNodes["h3"]
                 .InnerText
                 .Trim()
                 .HtmlDecode();
 
             role.CharacterUrl = roleNodes[2]
+                .ChildNodes["h3"]
                 .ChildNodes["a"]
                 .Attributes["href"]
                 .Value;

@@ -24,7 +24,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveRoles(fixture.Document);
 
             // assert
-            sut.Roles.Count.Should().Be(430);
+            sut.Roles.Count.Should().Be(450);
         }
 
         [Test]
@@ -43,14 +43,10 @@ namespace NeuroLinker.Tests.Extensions
 
             var clannad = ichinose.First();
             clannad.AnimeId.Should().Be(2167);
-            clannad.AnimePicUrl.Should()
-                .Be(
-                    "https://myanimelist.cdn-dena.com/r/46x64/images/anime/1804/95033.webp?s=76a99a68702cf1785cc8f227745d333b");
+            clannad.AnimePicUrl.Should().Be("https://cdn.myanimelist.net/r/84x124/images/anime/1804/95033.webp?s=741d65eab94ad48a3bb48807a6cbfec2");
             clannad.AnimeTitle.Should().Be("Clannad");
             clannad.CharacterName.Should().Be("Ichinose, Kotomi");
-            clannad.CharacterPic.Should()
-                .Be(
-                    "https://myanimelist.cdn-dena.com/r/46x64/images/characters/15/33494.webp?s=1f9e52d93a5b3ef542e5d48e74afe787");
+            clannad.CharacterPic.Should().Be("https://cdn.myanimelist.net/r/84x124/images/characters/15/33494.webp?s=47aa679cbd6514ce4fcede99cf9835c6");
             clannad.CharacterUrl.Should().Be("https://myanimelist.net/character/4602/Kotomi_Ichinose");
             clannad.RoleType.Should().Be("Main");
         }
@@ -124,7 +120,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveSeiyuuImage(fixture.Document);
 
             // assert
-            sut.ImageUrl.Should().Be("https://myanimelist.cdn-dena.com/images/voiceactors/2/44269.jpg");
+            sut.ImageUrl.Should().Be("https://cdn.myanimelist.net/images/voiceactors/2/44269.jpg");
         }
 
         [Test]
