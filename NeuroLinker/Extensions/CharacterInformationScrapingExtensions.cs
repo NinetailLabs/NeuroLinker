@@ -65,23 +65,40 @@ namespace NeuroLinker.Extensions
                 .ChildNodes["a"]
                 .ChildNodes["img"];
 
-            var url = nodes[1].ChildNodes["a"].Attributes["href"].Value;
+            var url = nodes[0]
+                .ChildNodes["div"]
+                .ChildNodes["a"]
+                .Attributes["href"]
+                .Value;
             int.TryParse(url.Split('/')[4], out var id);
 
-            return new CharacterInformation
+            var name = nodes[1].ChildNodes
+                .First(x => x.Name == "div" && x.ChildNodes.Any(z => z.Name == "a"))
+                .ChildNodes["a"]
+                .ChildNodes["h3"]
+                .InnerText
+                .HtmlDecode();
+
+            var charType = nodes[1].ChildNodes
+                .Where(x => x.Name == "div")
+                .ToList()[3]
+                .InnerText
+                .Replace("\r\n", "")
+                .Replace("\n", "")
+                .Replace(" ", "")
+                .HtmlDecode()
+                .Trim();
+
+            var newChar = new CharacterInformation
             {
                 CharacterPicture = (picLocation.Attributes["data-src"] ?? picLocation.Attributes["src"])?.Value,
-                CharacterName = nodes[1].ChildNodes["a"].InnerText.HtmlDecode(),
+                CharacterName = name,
                 CharacterUrl = url,
-                CharacterType = nodes[1]
-                    .ChildNodes["div"]
-                    .InnerText
-                    .Replace("\r\n", "")
-                    .Replace("\n", "")
-                    .Replace(" ", "")
-                    .HtmlDecode(),
+                CharacterType = charType,
                 Id = id
             };
+
+            return newChar;
         }
 
         /// <summary>
@@ -100,11 +117,18 @@ namespace NeuroLinker.Extensions
                     .ChildNodes["a"]
                     .ChildNodes["img"];
 
+                var language = detail.ChildNodes["td"].ChildNodes
+                    .First(x => x.Attributes.Any(z => z.Value == "spaceit_pad js-anime-character-language"))
+                    .InnerText
+                    .Replace("\r\n", "")
+                    .Replace("\n", "")
+                    .Replace(" ", "");
+
                 var tmpSeiyuu = new SeiyuuInformation
                 {
-                    Language = detail.ChildNodes["td"].ChildNodes["small"].InnerText,
-                    Name = detail.ChildNodes["td"].ChildNodes["a"].InnerText.HtmlDecode(),
-                    Url = detail.ChildNodes["td"].ChildNodes["a"].Attributes["href"].Value,
+                    Language = language,
+                    Name = detail.ChildNodes["td"].ChildNodes["div"].ChildNodes["a"].InnerText.HtmlDecode(),
+                    Url = detail.ChildNodes["td"].ChildNodes["div"].ChildNodes["a"].Attributes["href"].Value,
                     PictureUrl = (picNode.Attributes["data-src"] ?? picNode.Attributes["src"])?.Value
                 };
 

@@ -99,7 +99,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveMangaograhy(fixture.Document);
 
             // assert
-            sut.Mangaography.Count.Should().Be(17);
+            sut.Mangaography.Count.Should().Be(20);
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveFavoriteCount(fixture.Document);
 
             // assert
-            sut.FavoriteCount.Should().Be(25419);
+            sut.FavoriteCount.Should().Be(26525);
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace NeuroLinker.Tests.Extensions
             seiyuu.Id.Should().Be(890);
             seiyuu.Name.Should().Be("Tomatsu, Haruka");
             seiyuu.Url.Should().Be("https://myanimelist.net/people/890/Haruka_Tomatsu");
-            seiyuu.PictureUrl.Should().Be("https://cdn.myanimelist.net/images/voiceactors/2/54591.jpg");
+            seiyuu.PictureUrl.Should().Be("https://cdn.myanimelist.net/images/voiceactors/2/63378.jpg");
             seiyuu.Language.Should().Be("Japanese");
         }
 
