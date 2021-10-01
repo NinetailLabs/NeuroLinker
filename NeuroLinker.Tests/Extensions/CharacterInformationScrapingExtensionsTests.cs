@@ -56,9 +56,7 @@ namespace NeuroLinker.Tests.Extensions
             seiyuu.Id.Should().Be(732);
             seiyuu.Language.Should().Be("English");
             seiyuu.Name.Should().Be("Papenbrook, Bryce");
-            seiyuu.PictureUrl.Should()
-                .Be(
-                    "https://myanimelist.cdn-dena.com/r/23x32/images/voiceactors/3/29853.jpg?s=098228f9fb4c103fe80205f679e6168b");
+            seiyuu.PictureUrl.Should().Be("https://cdn.myanimelist.net/r/42x62/images/voiceactors/3/29853.jpg?s=c0dded60545804ead1a1300c69236bce");
             seiyuu.Url.Should().Be("https://myanimelist.net/people/732/Bryce_Papenbrook");
         }
 
@@ -76,9 +74,7 @@ namespace NeuroLinker.Tests.Extensions
             var character = sut.CharacterInformation.First();
             character.Id.Should().Be(36765);
             character.CharacterName.Should().Be("Kirigaya, Kazuto");
-            character.CharacterPicture.Should()
-                .Be(
-                    "https://myanimelist.cdn-dena.com/r/23x32/images/characters/7/204821.webp?s=f6697fff6b11d4967304cc91a9f79b35");
+            character.CharacterPicture.Should().Be("https://cdn.myanimelist.net/r/42x62/images/characters/7/204821.webp?s=dba48aec3bbfb248505160925c39a655");
             character.CharacterType.Should().Be("Main");
             character.CharacterUrl.Should().Be("https://myanimelist.net/character/36765/Kazuto_Kirigaya");
             character.Seiyuu.Count.Should().Be(8);
