@@ -400,6 +400,36 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
         }
 
+        [Test]
+        public async Task RetrievingSeiyuuInformationWorksCorrectlyFor7495()
+        {
+            // arrange
+            const int seiyuuId = 7495;
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{seiyuuId}.html");
+            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(seiyuuId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            var act = new Func<Task>(async () => await sut.DoSeiyuuRetrieval(seiyuuId));
+
+            // act
+            var result = await sut.DoSeiyuuRetrieval(seiyuuId);
+
+            // assert
+            result.Success.Should().BeTrue();
+        }
+
         // Issue #34
         [Test]
         public async Task RetrievingSeiyuuWithoutAPictureDoesNotCauseAnError()

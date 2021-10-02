@@ -263,6 +263,11 @@ namespace NeuroLinker.Extensions
         /// <param name="roleNodes">Nodes containing role information</param>
         private static Roles PopulateRoleWithCharacterInformation(this Roles role, IReadOnlyList<HtmlNode> roleNodes)
         {
+            if (roleNodes.Count < 3)
+            {
+                return null;
+            }
+            
             role.CharacterName = roleNodes[2]
                 .ChildNodes["h3"]
                 .InnerText
