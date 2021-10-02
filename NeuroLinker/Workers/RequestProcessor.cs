@@ -107,8 +107,7 @@ namespace NeuroLinker.Workers
                     .RetrieveAdditionalInformation(seiyuuDoc)
                     .RetrieveWebsite(seiyuuDoc)
                     .RetrieveRoles(seiyuuDoc)
-                    //.RetrieveSeiyuuImage(seiyuuDoc);
-                    ;
+                    .RetrieveSeiyuuImage(seiyuuDoc);
                 return new RetrievalWrapper<Seiyuu>(seiyuuResponse.ResponseStatusCode.Value, seiyuuResponse.Success,
                     seiyuu);
             }

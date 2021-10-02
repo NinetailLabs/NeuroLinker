@@ -153,6 +153,11 @@ namespace NeuroLinker.Extensions
         /// <returns>Seiyuu instance</returns>
         public static Seiyuu RetrieveRoles(this Seiyuu seiyuu, HtmlDocument doc)
         {
+            if (doc.DocumentNode.SelectNodes("//table").Count < 2)
+            {
+                return seiyuu;
+            }
+
             var rows = doc.DocumentNode
                 .SelectNodes("//table")[1]
                 .ChildNodes
@@ -189,7 +194,7 @@ namespace NeuroLinker.Extensions
                 .ChildNodes["a"]
                 .ChildNodes["img"];
 
-            if (image != null)
+            if (image != null && seiyuu != null)
             {
                 seiyuu.ImageUrl = (image.Attributes["data-src"] ?? image.Attributes["src"]).Value;
             }
@@ -265,7 +270,7 @@ namespace NeuroLinker.Extensions
         {
             if (roleNodes.Count < 3)
             {
-                return null;
+                return role;
             }
             
             role.CharacterName = roleNodes[2]
