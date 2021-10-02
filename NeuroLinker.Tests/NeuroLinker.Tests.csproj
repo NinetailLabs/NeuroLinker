@@ -82,6 +82,12 @@
     <None Update="PageExamples\40.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="PageExamples\43568.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="PageExamples\43568CharacterInfo.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="PageExamples\83.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

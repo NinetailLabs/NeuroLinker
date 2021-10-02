@@ -139,13 +139,13 @@ namespace NeuroLinker.Extensions
                 ?.InnerText
                 .HtmlDecode();
 
-           var oldTitle = doc.DocumentNode
+            var oldTitle = doc.DocumentNode
                 .SelectSingleNode("//h1[@class='title-name']")
                 ?.ChildNodes["#text"]
                 ?.InnerText
                 .HtmlDecode();
 
-           anime.Title = newTitle ?? oldTitle;
+            anime.Title = newTitle ?? oldTitle;
 
             return anime;
         }
@@ -215,12 +215,7 @@ namespace NeuroLinker.Extensions
         /// <returns>Anime instance</returns>
         public static Anime RetrieveGenres(this Anime anime, HtmlDocument doc)
         {
-            doc
-                .RetrieveNodesForInnerSpan("Genres")
-                .ChildNodes
-                .Where(t => t.Name == "a")
-                .ToList()
-                .ForEach(x => anime.Genres.Add(x.InnerText.HtmlDecode()));
+            GetGenres(doc).ForEach(x => anime.Genres.Add(x.InnerText.HtmlDecode()));
 
             return anime;
         }
@@ -530,6 +525,27 @@ namespace NeuroLinker.Extensions
         #region Private Methods
 
         /// <summary>
+        /// Retrieve the genre.
+        /// This method will test both "Genres" and "Genre"
+        /// </summary>
+        /// <param name="doc">HTML document from which genres should be retrieved</param>
+        /// <returns>List of genres</returns>
+        private static List<HtmlNode> GetGenres(HtmlDocument doc)
+        {
+            var nodes = doc.RetrieveNodesForInnerSpan("Genres")
+                        ?? doc.RetrieveNodesForInnerSpan("Genre");
+
+            if (nodes != null)
+            {
+                return nodes.ChildNodes
+                    .Where(t => t.Name == "a")
+                    .ToList();
+            }
+
+            return new List<HtmlNode>();
+        }
+
+        /// <summary>
         /// Retrieve info url
         /// </summary>
         /// <param name="doc">Html document from which data should be pulled</param>
@@ -682,8 +698,8 @@ namespace NeuroLinker.Extensions
             var nodeCollection = doc.DocumentNode
                 .SelectNodes("//div")
                 .FirstOrDefault(node => node.ChildNodes.Descendants()
-                                            .FirstOrDefault()
-                                            ?.InnerText.Trim(':') == spanText);
+                    .FirstOrDefault()
+                    ?.InnerText.Trim(':') == spanText);
 
             return nodeCollection;
         }

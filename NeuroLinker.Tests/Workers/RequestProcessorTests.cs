@@ -17,6 +17,44 @@ namespace NeuroLinker.Tests.Workers
     {
         #region Public Methods
 
+        [TestCase(43568)]
+        [TestCase(11757)]
+        public async Task AnimeRetrievalWorksCorrectly(int malId)
+        {
+            // arrange
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var charDocument = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", $"{malId}.html");
+            var charPath = Path.Combine(path, "PageExamples", $"{malId}CharacterInfo.html");
+            await using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            await using (var charFile = File.Open(charPath, FileMode.Open))
+            {
+                document.Load(charFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeUrl(malId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.AnimeCastUrl(malId)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, charDocument));
+
+            var sut = fixture.Instance;
+
+            var act = new Func<Task>(async () => await sut.GetAnime(malId));
+
+            // act
+            // assert
+            await act.Should().NotThrowAsync<Exception>();
+        }
+
         // Test for issue #33
         [Test]
         public async Task CharacterWithoutAnImageIsCorrectlyRetrieved()
