@@ -378,7 +378,7 @@ namespace NeuroLinker.Tests.Workers
             var document = new HtmlDocument();
             var path = AppDomain.CurrentDomain.BaseDirectory;
             var examplePath = Path.Combine(path, "PageExamples", $"{seiyuuId}.html");
-            using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            await using (var htmlFile = File.Open(examplePath, FileMode.Open))
             {
                 document.Load(htmlFile);
             }
@@ -400,11 +400,11 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
         }
 
-        [Test]
-        public async Task RetrievingSeiyuuInformationWorksCorrectlyFor7495()
+        [TestCase(7495)]
+        [TestCase(15811)]
+        public async Task RetrievingSeiyuuInformationWorksCorrectly(int seiyuuId)
         {
             // arrange
-            const int seiyuuId = 7495;
             var fixture = new RequestProcessorFixture();
 
             var document = new HtmlDocument();
