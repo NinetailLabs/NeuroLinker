@@ -24,7 +24,7 @@ namespace NeuroLinker.Tests.Extensions
             sut.RetrieveRoles(fixture.Document);
 
             // assert
-            sut.Roles.Count.Should().Be(450);
+            sut.Roles.Count.Should().Be(464);
         }
 
         [Test]
@@ -39,16 +39,16 @@ namespace NeuroLinker.Tests.Extensions
 
             // assert
             var ichinose = sut.Roles.Where(x => x.CharacterId == 4602).ToList();
-            ichinose.Count.Should().Be(3);
+            ichinose.Count.Should().Be(4);
 
-            var clannad = ichinose.First();
-            clannad.AnimeId.Should().Be(2167);
-            clannad.AnimePicUrl.Should().Be("https://cdn.myanimelist.net/r/84x124/images/anime/1804/95033.webp?s=741d65eab94ad48a3bb48807a6cbfec2");
-            clannad.AnimeTitle.Should().Be("Clannad");
-            clannad.CharacterName.Should().Be("Ichinose, Kotomi");
-            clannad.CharacterPic.Should().Be("https://cdn.myanimelist.net/r/84x124/images/characters/15/33494.webp?s=47aa679cbd6514ce4fcede99cf9835c6");
-            clannad.CharacterUrl.Should().Be("https://myanimelist.net/character/4602/Kotomi_Ichinose");
-            clannad.RoleType.Should().Be("Main");
+            var clannad = ichinose.FirstOrDefault(x => x.AnimeId == 2167);
+            clannad.Should().NotBeNull();
+            clannad?.AnimePicUrl.Should().Be("https://cdn.myanimelist.net/r/84x124/images/anime/1804/95033.webp?s=741d65eab94ad48a3bb48807a6cbfec2");
+            clannad?.AnimeTitle.Should().Be("Clannad");
+            clannad?.CharacterName.Should().Be("Ichinose, Kotomi");
+            clannad?.CharacterPic.Should().Be("https://cdn.myanimelist.net/r/84x124/images/characters/15/33494.webp?s=47aa679cbd6514ce4fcede99cf9835c6");
+            clannad?.CharacterUrl.Should().Be("https://myanimelist.net/character/4602/Kotomi_Ichinose");
+            clannad?.RoleType.Should().Be("Main");
         }
 
         [Test]
