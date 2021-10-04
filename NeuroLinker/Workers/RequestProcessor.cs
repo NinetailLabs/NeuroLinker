@@ -108,6 +108,7 @@ namespace NeuroLinker.Workers
                     .RetrieveWebsite(seiyuuDoc)
                     .RetrieveRoles(seiyuuDoc)
                     .RetrieveSeiyuuImage(seiyuuDoc);
+                ;
                 return new RetrievalWrapper<Seiyuu>(seiyuuResponse.ResponseStatusCode.Value, seiyuuResponse.Success,
                     seiyuu);
             }
