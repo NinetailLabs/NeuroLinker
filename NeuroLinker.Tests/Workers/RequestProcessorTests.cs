@@ -432,6 +432,35 @@ namespace NeuroLinker.Tests.Workers
             result.Success.Should().BeTrue();
         }
 
+        [Test]
+        public async Task RetrievingASeiyuuThatDoesNotExistReturnANotFoundMessage()
+        {
+            // arrange
+            var fixture = new RequestProcessorFixture();
+
+            var document = new HtmlDocument();
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            var examplePath = Path.Combine(path, "PageExamples", "53976.html");
+            await using (var htmlFile = File.Open(examplePath, FileMode.Open))
+            {
+                document.Load(htmlFile);
+            }
+
+            fixture.PageRetrieverMock
+                .Setup(t => t.RetrieveHtmlPageAsync(MalRouteBuilder.SeiyuuUrl(53976)))
+                .ReturnsAsync(new HtmlDocumentRetrievalWrapper(HttpStatusCode.OK, true, document));
+
+            var sut = fixture.Instance;
+
+            // act
+            var result = await sut.DoSeiyuuRetrieval(53976);
+
+            // assert
+            result.Success.Should().BeFalse();
+            result.ResponseData.ErrorMessage.Should().Be("Seiyuu not found");
+            result.ResponseStatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
         // Issue #34
         [Test]
         public async Task RetrievingSeiyuuWithoutAPictureDoesNotCauseAnError()
