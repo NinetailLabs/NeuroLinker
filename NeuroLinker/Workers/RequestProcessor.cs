@@ -4,6 +4,7 @@ using NeuroLinker.Interfaces.Helpers;
 using NeuroLinker.Interfaces.Workers;
 using NeuroLinker.Models;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -98,6 +99,14 @@ namespace NeuroLinker.Workers
                 }
 
                 var seiyuuDoc = seiyuuResponse.Document;
+
+                if (seiyuuDoc.DocumentNode.Descendants().Any(x => x.InnerText == "404 Not Found"))
+                {
+                    seiyuu.ErrorMessage = "Seiyuu not found";
+                    seiyuu.ErrorOccured = true;
+                    return new RetrievalWrapper<Seiyuu>(HttpStatusCode.NotFound, false, seiyuu);
+                }
+
 
                 seiyuu
                     .RetrieveName(seiyuuDoc)
