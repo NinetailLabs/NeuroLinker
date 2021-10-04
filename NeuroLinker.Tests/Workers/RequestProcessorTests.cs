@@ -400,8 +400,10 @@ namespace NeuroLinker.Tests.Workers
             retrievalWrapper.ResponseData.ErrorOccured.Should().BeFalse();
         }
 
+        [TestCase(40)]
         [TestCase(7495)]
         [TestCase(15811)]
+        [TestCase(51652)]
         public async Task RetrievingSeiyuuInformationWorksCorrectly(int seiyuuId)
         {
             // arrange

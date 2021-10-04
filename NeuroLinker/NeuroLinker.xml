@@ -198,6 +198,14 @@
             <param name="doc">Html document from which data should be pulled</param>
             <returns>Anime instance</returns>
         </member>
+        <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.GetGenres(HtmlAgilityPack.HtmlDocument)">
+            <summary>
+            Retrieve the genre.
+            This method will test both "Genres" and "Genre"
+            </summary>
+            <param name="doc">HTML document from which genres should be retrieved</param>
+            <returns>List of genres</returns>
+        </member>
         <member name="M:NeuroLinker.Extensions.AnimeInformationScrapingExtensions.GetInfoUrlFor(HtmlAgilityPack.HtmlDocument,System.String)">
             <summary>
             Retrieve info url

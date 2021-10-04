@@ -158,8 +158,16 @@ namespace NeuroLinker.Extensions
                 return seiyuu;
             }
 
-            var rows = doc.DocumentNode
-                .SelectNodes("//table")[1]
+            var table = doc.DocumentNode
+                .SelectNodes("//table")[1];
+
+            // Seiyuu does not have any roles
+            if (table.Attributes.All(x => x.Value != "js-table-people-anime"))
+            {
+                return seiyuu;
+            }
+
+            var rows = table
                 .ChildNodes
                 .Where(x => x.Name == "tr");
 
@@ -255,6 +263,7 @@ namespace NeuroLinker.Extensions
 
             role.AnimePicUrl = (animeImg?.Attributes["data-src"] ?? animeImg?.Attributes["src"])?.Value;
             role.AnimeTitle = roleNodes[1]
+                .ChildNodes["div"]
                 .ChildNodes["a"]
                 ?.InnerText;
 
@@ -274,13 +283,14 @@ namespace NeuroLinker.Extensions
             }
             
             role.CharacterName = roleNodes[2]
-                .ChildNodes["h3"]
+                .ChildNodes["div"]
+                .ChildNodes["a"]
                 .InnerText
                 .Trim()
                 .HtmlDecode();
 
             role.CharacterUrl = roleNodes[2]
-                .ChildNodes["h3"]
+                .ChildNodes["div"]
                 .ChildNodes["a"]
                 .Attributes["href"]
                 .Value;
@@ -288,8 +298,10 @@ namespace NeuroLinker.Extensions
             int.TryParse(role.CharacterUrl.Split('/')[4], out var id);
             role.CharacterId = id;
 
-            role.RoleType = roleNodes[2]
-                .ChildNodes["div"]
+            var roleTextNode = roleNodes[2]
+                .ChildNodes.Where(x => x.Name == "div").First(x => x.ChildNodes.Count == 1);
+
+            role.RoleType = roleTextNode
                 .InnerText
                 .Replace("&nbsp;", "")
                 .Trim()
