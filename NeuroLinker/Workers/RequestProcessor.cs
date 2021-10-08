@@ -57,6 +57,13 @@ namespace NeuroLinker.Workers
 
                 var characterDoc = characterResponse.Document;
 
+                if (characterDoc.DocumentNode.Descendants().Any(x => x.InnerText == "Invalid"))
+                {
+                    character.ErrorMessage = "Character not found";
+                    character.ErrorOccured = true;
+                    return new RetrievalWrapper<Character>(HttpStatusCode.NotFound, false, character);
+                }
+
                 character
                     .RetrieveCharacterName(characterDoc)
                     .RetrieveCharacterImage(characterDoc)
@@ -106,8 +113,7 @@ namespace NeuroLinker.Workers
                     seiyuu.ErrorOccured = true;
                     return new RetrievalWrapper<Seiyuu>(HttpStatusCode.NotFound, false, seiyuu);
                 }
-
-
+                
                 seiyuu
                     .RetrieveName(seiyuuDoc)
                     .RetrieveGivenName(seiyuuDoc)

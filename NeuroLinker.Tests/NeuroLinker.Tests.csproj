@@ -100,6 +100,9 @@
     <None Update="PageExamples\7495.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="PageExamples\78021.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="PageExamples\83.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
